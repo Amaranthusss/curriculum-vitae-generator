@@ -1,0 +1,10 @@
+$gap: 24px;
+
+.profileFormSplitter {
+  margin-right: calc($gap / 2);
+}
+
+.previewSplitter {
+  margin-left: $gap;
+  overflow: hidden !important;
+}

@@ -1,0 +1,12 @@
+.layout {
+  height: 100vh;
+
+  > .content {
+    margin: 24px;
+		padding: 24px;
+  }
+
+  > .footer {
+    text-align: center;
+  }
+}
