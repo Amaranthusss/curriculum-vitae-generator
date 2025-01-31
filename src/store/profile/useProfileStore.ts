@@ -11,10 +11,11 @@ export const useProfileStore = create<ProfileStore>()(
         surname: "",
         aboutMe: "",
         picture: "",
-        languages: [],
         email: "",
         country: "",
+        languages: [],
         education: [],
+        experience: [],
       };
     },
     { name: "profile-store" }

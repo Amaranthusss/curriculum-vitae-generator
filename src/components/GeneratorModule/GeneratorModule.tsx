@@ -9,7 +9,7 @@ export const GeneratorModule = (): React.ReactNode => {
   return (
     <Flex style={{ height: "100%" }} gap={16}>
       <ColorsPicker />
-      <Divider type={"vertical"} style={{height: '100%'}}/>
+      <Divider type={"vertical"} style={{ height: "100%" }} />
       <Splitter>
         <Splitter.Panel className={styles.profileFormSplitter}>
           <ProfileForm />

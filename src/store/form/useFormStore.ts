@@ -10,17 +10,16 @@ import type { FormStore } from "./interface";
 import type { DatePool } from "../profile/interface";
 import type { Profile } from "../profile/interface";
 
+type PoolsWithDates = "education" | "experience";
+
 const mapDates = <T extends keyof Profile & keyof ProfileFormValues>(
   param: T,
-  value: ProfileFormValues[T],
+  value: ProfileFormValues[PoolsWithDates],
   updated: Partial<Profile>
 ): void => {
   if (param !== "education" && param !== "experience") return;
 
-  const mappedParam: "education" | "experience" = param;
-  const mappedValue: FormDatePool[] = value as FormDatePool[];
-
-  updated[mappedParam] = _.chain(mappedValue)
+  updated[param satisfies PoolsWithDates] = _.chain(value)
     .map((datePool: FormDatePool): DatePool | null => {
       if (_.isNil(datePool)) return null;
       return {
