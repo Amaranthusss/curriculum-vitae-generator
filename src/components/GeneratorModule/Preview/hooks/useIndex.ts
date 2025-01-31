@@ -6,6 +6,7 @@ import { useEducation } from "./useEducation.ts";
 import { useLanguages } from "./useLanguages.ts";
 import { useElements } from "./useElements.ts";
 import { useCallback } from "react";
+import { useAboutMe } from "./useAboutMe.ts";
 import { usePicture } from "./usePicture.ts";
 
 import type { Content } from "pdfmake/interfaces";
@@ -20,6 +21,7 @@ export const useIndex = () => {
   const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
   const { renderEducation } = useEducation(renderCaption, renderListItem);
   const { renderExperience } = useExperience(renderCaption, renderListItem);
+  const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
 
   const { renderLanguages } = useLanguages(
     renderSidebarCaption,
@@ -48,6 +50,7 @@ export const useIndex = () => {
                   renderEmail(),
                   renderCountry(),
                   renderLanguages(),
+                  renderAboutMe(),
                 ],
               },
               {
@@ -64,8 +67,9 @@ export const useIndex = () => {
     ];
   }, [
     renderEmail,
-    renderCountry,
+    renderAboutMe,
     renderPicture,
+    renderCountry,
     renderEducation,
     renderNameLabel,
     renderLanguages,

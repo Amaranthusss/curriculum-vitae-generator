@@ -28,7 +28,7 @@ export const sidebar = {
     fontSize: 10,
     marginInline: 2,
     marginBottom: 4,
-    tagWidth: 24,
+    tagWidth: 16,
   },
   tag: {
     fontSize: 10,
