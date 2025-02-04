@@ -20,7 +20,7 @@ export const LinksList = (): React.ReactNode => {
     return _.chain(predefiniedLinkIcons)
       .map((filePath: string): SelectOption => {
         const [type, name] = _.split(filePath, "/");
-        const src = iconsAssetsFolderPath + filePath;
+        const src = "./" + iconsAssetsFolderPath + filePath;
 
         return {
           label: (
