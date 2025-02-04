@@ -13,6 +13,7 @@ export const useProfileStore = create<ProfileStore>()(
         picture: "",
         email: "",
         country: "",
+        links: [],
         languages: [],
         education: [],
         experience: [],

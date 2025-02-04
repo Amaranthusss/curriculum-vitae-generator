@@ -12,6 +12,7 @@ import { usePicture } from "./usePicture.ts";
 import type { Content } from "pdfmake/interfaces";
 
 import { layout, page, sidebar } from "../Preview.config.ts";
+import { useLinks } from "./useLinks.ts";
 
 export const useIndex = () => {
   const { renderCaption, renderListItem } = useBodyElements();
@@ -28,12 +29,14 @@ export const useIndex = () => {
     renderSidebarTag
   );
 
+  const { renderLinks } = useLinks(renderSidebarCaption, renderSidebarTag);
+
   const { renderEmail, renderCountry } = useElements(
     renderSidebarCaption,
     renderSidebarTag
   );
 
-  const renderContent = useCallback((): Content => {
+  const renderContent = useCallback(async (): Promise<Content> => {
     return [
       {
         table: {
@@ -51,6 +54,7 @@ export const useIndex = () => {
                   renderCountry(),
                   renderLanguages(),
                   renderAboutMe(),
+                  await renderLinks(),
                 ],
               },
               {
@@ -67,6 +71,7 @@ export const useIndex = () => {
     ];
   }, [
     renderEmail,
+    renderLinks,
     renderAboutMe,
     renderPicture,
     renderCountry,

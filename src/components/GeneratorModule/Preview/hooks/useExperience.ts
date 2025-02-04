@@ -5,7 +5,7 @@ import { useProfileStore } from "../../../../store/profile/useProfileStore";
 import _ from "lodash";
 
 import type { UseCommonElements } from "./useBodyElements";
-import type { Experience } from "../../../../store/profile/interface";
+import type { ExperienceField } from "../../../../store/profile/interface";
 import type { Content } from "pdfmake/interfaces";
 import dayjs from "dayjs";
 
@@ -13,7 +13,7 @@ export const useExperience = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
 ) => {
-  const experience: Experience[] = useProfileStore(
+  const experience: ExperienceField[] = useProfileStore(
     ({ experience }) => experience
   );
 
@@ -22,7 +22,7 @@ export const useExperience = (
       renderCaption("Professional Experience"),
       ..._.map(
         experience,
-        ({ text, startDate, endDate }: Experience, index: number): Content => {
+        ({ text, startDate, endDate }: ExperienceField, index: number): Content => {
           const startDateFormatted: string | undefined =
             startDate == null ? undefined : dayjs(startDate).format("L");
 

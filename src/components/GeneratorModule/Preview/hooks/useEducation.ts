@@ -5,7 +5,7 @@ import { useProfileStore } from "../../../../store/profile/useProfileStore";
 import _ from "lodash";
 
 import type { UseCommonElements } from "./useBodyElements";
-import type { Education } from "../../../../store/profile/interface";
+import type { EducationField } from "../../../../store/profile/interface";
 import type { Content } from "pdfmake/interfaces";
 import dayjs from "dayjs";
 
@@ -13,14 +13,14 @@ export const useEducation = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
 ) => {
-  const education: Education[] = useProfileStore(({ education }) => education);
+  const education: EducationField[] = useProfileStore(({ education }) => education);
 
   const renderEducation = useCallback((): Content => {
     return [
       renderCaption("Education"),
       ..._.map(
         education,
-        ({ text, startDate, endDate }: Education, index: number): Content => {
+        ({ text, startDate, endDate }: EducationField, index: number): Content => {
           const startDateFormatted: string | undefined =
             startDate == null ? undefined : dayjs(startDate).format("L");
 

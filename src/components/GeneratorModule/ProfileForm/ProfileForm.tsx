@@ -3,6 +3,7 @@ import { ExperienceList } from "./ExperienceList/ExperienceList";
 import { LanguagesList } from "./LanguagesList/LanguagesList";
 import { EducationList } from "./EducationList/EducationList";
 import { UploadImage } from "../../common/UploadImage/UploadImage";
+import { LinksList } from "./LinksList/LinksList";
 
 import { useCallback } from "react";
 import { useMemo } from "react";
@@ -48,6 +49,13 @@ export const ProfileForm = (): React.ReactNode => {
 
       if (isExperienceChange) {
         return updateValues({ experience: values.experience });
+      }
+
+      const isLinksChange: boolean = !_.isEmpty(changedValues.links);
+
+      if (isLinksChange) {
+        console.log(values.links);
+        return updateValues({ links: values.links });
       }
 
       updateValues(changedValues);
@@ -140,6 +148,7 @@ export const ProfileForm = (): React.ReactNode => {
       <LanguagesList />
       <EducationList />
       <ExperienceList />
+      <LinksList />
     </Form>
   );
 };

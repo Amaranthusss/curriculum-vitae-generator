@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
-import { useProfileStore } from "../../../store/profile/useProfileStore";
 import { useDocumentDefinition } from "./hooks/useDocumentDefinition";
+
+import { useProfileStore } from "../../../store/profile/useProfileStore";
 
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -18,11 +19,11 @@ export const Preview = (): React.ReactNode => {
 
   const profileStore: ProfileStore = useProfileStore();
 
-  const renderPdf = useCallback((): void => {
+  const renderPdf = useCallback(async (): Promise<void> => {
     if (ref.current == null) return;
 
     pdfMake
-      .createPdf(createDocumentDefinition())
+      .createPdf(await createDocumentDefinition())
       .getBlob((blob: Blob): void => {
         if (ref.current == null) return;
         ref.current.src = URL.createObjectURL(blob);

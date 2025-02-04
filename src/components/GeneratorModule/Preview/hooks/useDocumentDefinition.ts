@@ -6,13 +6,14 @@ import type { TDocumentDefinitions } from "pdfmake/interfaces";
 export const useDocumentDefinition = () => {
   const { renderContent } = useIndex();
 
-  const createDocumentDefinition = useCallback((): TDocumentDefinitions => {
-    return {
-      pageSize: "A4",
-      pageMargins: [0, 0, 0, 0],
-      content: renderContent(),
-    };
-  }, [renderContent]);
+  const createDocumentDefinition =
+    useCallback(async (): Promise<TDocumentDefinitions> => {
+      return {
+        pageSize: "A4",
+        pageMargins: [0, 0, 0, 0],
+        content: await renderContent(),
+      };
+    }, [renderContent]);
 
   return { createDocumentDefinition };
 };

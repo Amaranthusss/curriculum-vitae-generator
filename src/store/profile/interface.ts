@@ -16,9 +16,10 @@ export interface Profile {
   country: string;
   aboutMe?: string;
   picture: string;
-  languages: { text: string; level: LanguageLevel }[];
-  education: Education[];
-  experience: Experience[];
+  languages: LanguageField[];
+  education: EducationField[];
+  experience: ExperienceField[];
+  links: LinkField[];
 }
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
@@ -29,6 +30,17 @@ export interface DatePool {
   endDate: IsoString | null;
 }
 
-export type Experience = DatePool;
+export interface LanguageField {
+  text: string;
+  level: LanguageLevel;
+}
 
-export type Education = DatePool;
+export type ExperienceField = DatePool;
+
+export type EducationField = DatePool;
+
+export interface LinkField {
+  label: string;
+  icon?: string;
+  link: string;
+}
