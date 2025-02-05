@@ -11,7 +11,8 @@ import type { Content } from "pdfmake/interfaces";
 
 export const usePublications = (
   renderCaption: UseCommonElements["renderCaption"],
-  renderListItem: UseCommonElements["renderListItem"]
+  renderListItem: UseCommonElements["renderListItem"],
+  renderSubListItem: UseCommonElements["renderSubListItem"]
 ) => {
   const publications: PublicationField[] = useProfileStore(
     ({ publications }) => publications
@@ -25,7 +26,7 @@ export const usePublications = (
       ..._.map(publications, (publicationField: PublicationField): Content => {
         if (_.isEmpty(publicationField?.title)) return [];
 
-        const { title, publisher, publicationYear } = publicationField;
+        const { title, publisher, code, publicationYear } = publicationField;
 
         const publisherText: string = !_.isEmpty(publisher)
           ? ` - ${publisher}`
@@ -35,14 +36,24 @@ export const usePublications = (
           ? `, ${dayjs(publicationYear).format("YYYY")}`
           : "";
 
-        const text: string = `• ${title}${publisherText}${publicationYearText}`;
+        const text: string = `- ${title}${publisherText}${publicationYearText}`;
 
-        return renderListItem(text, {
-          disableLine: true,
-        });
+        const codeContent: Content = [renderSubListItem(code)];
+
+        if (!_.isEmpty(code)) {
+          codeContent.push();
+        }
+
+        return [
+          renderListItem(text, {
+            disableLine: true,
+            disableMarginBottom: true,
+          }),
+          ...codeContent,
+        ];
       }),
     ];
-  }, [publications, renderCaption, renderListItem]);
+  }, [publications, renderCaption, renderListItem, renderSubListItem]);
 
   return { renderPublications };
 };

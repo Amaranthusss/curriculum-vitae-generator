@@ -6,8 +6,12 @@ import _ from "lodash";
 
 import type { Content, Size, TableCell } from "pdfmake/interfaces";
 
-import { caption, color, paragraph, splitter } from "../Preview.config";
+import { subParagraph } from "../Preview.config";
 import { TextMarker } from "../../../../constants/TextMarker";
+import { paragraph } from "../Preview.config";
+import { splitter } from "../Preview.config";
+import { caption } from "../Preview.config";
+import { color } from "../Preview.config";
 
 const dateColumnWidth = 60;
 
@@ -68,10 +72,17 @@ export const useBodyElements = () => {
         endDate?: string;
         tab?: number;
         disableLine?: boolean;
+        disableMarginBottom?: boolean;
       }
     ): Content => {
       const body: TableCell[] = [];
       const widths: Size[] = [];
+
+      const overwrittenStyles: TableCell = {
+        ...paragraph,
+        marginBottom: extra?.disableMarginBottom ? 0 : paragraph.marginBottom,
+        marginLeft: extra?.tab,
+      };
 
       if (extra?.startDate != null || extra?.endDate != null) {
         const jointText: string | null =
@@ -83,6 +94,7 @@ export const useBodyElements = () => {
           text: jointText ?? extra?.endDate ?? extra?.startDate,
           ...paragraph,
           ...splitter,
+          ...overwrittenStyles,
         });
 
         widths.push(dateColumnWidth);
@@ -92,7 +104,7 @@ export const useBodyElements = () => {
         text: parseColoredText(text),
         ...paragraph,
         ...splitter,
-        marginLeft: extra?.tab,
+        ...overwrittenStyles,
       });
 
       widths.push("*");
@@ -107,7 +119,14 @@ export const useBodyElements = () => {
     [parseColoredText]
   );
 
-  return { renderCaption, renderListItem };
+  const renderSubListItem = useCallback((text: string): Content => {
+    return {
+      table: { widths: ["*"], body: [[{ text, ...subParagraph }]] },
+      layout: "noBorders",
+    };
+  }, []);
+
+  return { renderCaption, renderListItem, renderSubListItem };
 };
 
 export type UseCommonElements = ReturnType<typeof useBodyElements>;

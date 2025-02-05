@@ -51,6 +51,14 @@ export const paragraph = {
   marginBottom: 1,
 } satisfies TableCell;
 
+export const subParagraph = {
+  fontSize: 8,
+  alignment: "right",
+  marginBottom: 1,
+  color: "gray",
+  style: { italics: true },
+} satisfies TableCell;
+
 export const splitter = {
   border: [false, false, false, true],
 };

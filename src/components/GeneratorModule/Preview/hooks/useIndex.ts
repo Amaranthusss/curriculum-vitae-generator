@@ -18,15 +18,22 @@ import type { Content } from "pdfmake/interfaces";
 import { layout, page, sidebar } from "../Preview.config.ts";
 
 export const useIndex = () => {
-  const { renderCaption, renderListItem } = useBodyElements();
+  const { renderCaption, renderListItem, renderSubListItem } =
+    useBodyElements();
+
+  const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
 
   const { renderPicture } = usePicture();
   const { renderNameLabel } = useNameLabel();
-  const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
   const { renderEducation } = useEducation(renderCaption, renderListItem);
   const { renderExperience } = useExperience(renderCaption, renderListItem);
-  const { renderPublications } = usePublications(renderCaption, renderListItem);
   const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
+
+  const { renderPublications } = usePublications(
+    renderCaption,
+    renderListItem,
+    renderSubListItem
+  );
 
   const { renderQualifications } = useQualifications(
     renderCaption,
