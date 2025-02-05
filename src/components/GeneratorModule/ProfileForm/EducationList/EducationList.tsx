@@ -20,6 +20,7 @@ export const EducationList = (): React.ReactNode => {
                   <Form.Item
                     {...restField}
                     name={[name, "date" satisfies keyof FormEducation]}
+                    style={{ marginBottom: 8 }}
                   >
                     <DatePicker.RangePicker style={{ width: "100%" }} />
                   </Form.Item>

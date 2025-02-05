@@ -1,0 +1,58 @@
+import { useCallback } from "react";
+
+import { useProfileStore } from "../../../../store/profile/useProfileStore";
+
+import dayjs from "dayjs";
+import _ from "lodash";
+
+import type { QualificationField } from "../../../../store/profile/interface";
+import type { UseCommonElements } from "./useBodyElements";
+import type { Content } from "pdfmake/interfaces";
+import { TextMarker } from "../../../../constants/TextMarker";
+
+export const useQualifications = (
+  renderCaption: UseCommonElements["renderCaption"],
+  renderListItem: UseCommonElements["renderListItem"]
+) => {
+  const qualifications: QualificationField[] = useProfileStore(
+    ({ qualifications }) => qualifications
+  );
+
+  const renderQualifications = useCallback((): Content => {
+    if (_.isEmpty(qualifications)) return [];
+
+    return [
+      renderCaption("Additional Qualifications"),
+      ..._.map(
+        qualifications,
+        (qualificationField: QualificationField, index: number): Content => {
+          if (_.isEmpty(qualificationField?.name)) return [];
+
+          const { name, type, description, issueDate } = qualificationField;
+
+          const formatted: string | undefined =
+            issueDate == null ? undefined : dayjs(issueDate).format("L");
+
+          const text: string = _.chain([
+            type,
+            _.join(
+              [TextMarker.PrimaryBgColor, name, TextMarker.PrimaryBgColor],
+              ""
+            ),
+            description,
+          ])
+            .filter((text: string | undefined) => !_.isEmpty(text))
+            .join(" ")
+            .value();
+
+          return renderListItem(text, {
+            endDate: formatted,
+            disableLine: _.eq(index + 1, _.size(qualifications)),
+          });
+        }
+      ),
+    ];
+  }, [qualifications, renderCaption, renderListItem]);
+
+  return { renderQualifications };
+};

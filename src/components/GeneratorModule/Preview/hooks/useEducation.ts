@@ -13,14 +13,21 @@ export const useEducation = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
 ) => {
-  const education: EducationField[] = useProfileStore(({ education }) => education);
+  const education: EducationField[] = useProfileStore(
+    ({ education }) => education
+  );
 
   const renderEducation = useCallback((): Content => {
+    if (_.isEmpty(education)) return [];
+
     return [
       renderCaption("Education"),
       ..._.map(
         education,
-        ({ text, startDate, endDate }: EducationField, index: number): Content => {
+        (
+          { text, startDate, endDate }: EducationField,
+          index: number
+        ): Content => {
           const startDateFormatted: string | undefined =
             startDate == null ? undefined : dayjs(startDate).format("L");
 

@@ -4,14 +4,17 @@ import { ProfileForm } from "./ProfileForm/ProfileForm";
 import { Preview } from "./Preview/Preview";
 
 import styles from "./GeneratorModule.module.scss";
+import { useAppStore } from "../../store/app/useAppStore";
 
 export const GeneratorModule = (): React.ReactNode => {
+  const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
+
   return (
     <Flex style={{ height: "100%" }} gap={16}>
       <ColorsPicker />
       <Divider type={"vertical"} style={{ height: "100%" }} />
-      <Splitter>
-        <Splitter.Panel className={styles.profileFormSplitter}>
+      <Splitter layout={!isCompact ? "horizontal" : "vertical"}>
+        <Splitter.Panel className={styles.profileFormSplitter} min={350}>
           <ProfileForm />
         </Splitter.Panel>
 

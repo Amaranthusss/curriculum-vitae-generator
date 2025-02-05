@@ -1,3 +1,4 @@
+import type { QualificationField } from "../profile/interface";
 import type { Profile } from "../profile/interface";
 import type { Dayjs } from "dayjs";
 
@@ -27,3 +28,5 @@ export interface FormDatePool {
 export type FormEducation = FormDatePool;
 
 export type FormExperience = FormDatePool;
+
+export type FormQualification = QualificationField;

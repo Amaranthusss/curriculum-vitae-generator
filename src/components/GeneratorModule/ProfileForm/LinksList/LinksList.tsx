@@ -74,6 +74,7 @@ export const LinksList = (): React.ReactNode => {
                       placeholder={"Icon"}
                       options={predefiniedIcons}
                       popupMatchSelectWidth={false}
+											allowClear
                     />
                   </Form.Item>
                 </Flex>

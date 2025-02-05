@@ -22,15 +22,12 @@ export const useLinks = (
       if (_.isEmpty(link)) continue;
       if (_.isEmpty(link.link)) continue;
       if (_.isEmpty(link.label)) continue;
-      console.log(link);
 
       const iconBase64: string = await fetchIcon(link.icon);
 
       tags.push(renderSidebarCaption(link.label, iconBase64));
       tags.push(renderSidebarTag(link.link));
     }
-
-    console.log(tags);
 
     return tags;
   }, [renderSidebarCaption, renderSidebarTag, links]);

@@ -1,4 +1,5 @@
 import { useSidebarElements } from "./useSidebarElements.ts";
+import { useQualifications } from "./useQualifications.ts";
 import { useBodyElements } from "./useBodyElements.ts";
 import { useExperience } from "./useExperience.ts";
 import { useNameLabel } from "./useFullName.ts";
@@ -8,11 +9,11 @@ import { useElements } from "./useElements.ts";
 import { useCallback } from "react";
 import { useAboutMe } from "./useAboutMe.ts";
 import { usePicture } from "./usePicture.ts";
+import { useLinks } from "./useLinks.ts";
 
 import type { Content } from "pdfmake/interfaces";
 
 import { layout, page, sidebar } from "../Preview.config.ts";
-import { useLinks } from "./useLinks.ts";
 
 export const useIndex = () => {
   const { renderCaption, renderListItem } = useBodyElements();
@@ -23,6 +24,11 @@ export const useIndex = () => {
   const { renderEducation } = useEducation(renderCaption, renderListItem);
   const { renderExperience } = useExperience(renderCaption, renderListItem);
   const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
+
+  const { renderQualifications } = useQualifications(
+    renderCaption,
+    renderListItem
+  );
 
   const { renderLanguages } = useLanguages(
     renderSidebarCaption,
@@ -62,6 +68,7 @@ export const useIndex = () => {
                   renderNameLabel(),
                   renderEducation(),
                   renderExperience(),
+                  renderQualifications(),
                 ],
               },
             ],
@@ -79,6 +86,7 @@ export const useIndex = () => {
     renderNameLabel,
     renderLanguages,
     renderExperience,
+    renderQualifications,
   ]);
 
   return { renderContent };

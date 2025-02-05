@@ -17,6 +17,8 @@ export const useLanguages = (
   );
 
   const renderLanguages = useCallback((): Content => {
+    if (_.isEmpty(languages)) return [];
+
     const tags: Content[] = [];
 
     _.forEach(languages, (language: LanguageField): void => {

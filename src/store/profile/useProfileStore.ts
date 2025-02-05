@@ -17,6 +17,7 @@ export const useProfileStore = create<ProfileStore>()(
         languages: [],
         education: [],
         experience: [],
+        qualifications: [],
       };
     },
     { name: "profile-store" }

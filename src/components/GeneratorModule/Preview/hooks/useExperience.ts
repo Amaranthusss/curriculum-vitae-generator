@@ -2,12 +2,12 @@ import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
 
+import dayjs from "dayjs";
 import _ from "lodash";
 
 import type { UseCommonElements } from "./useBodyElements";
 import type { ExperienceField } from "../../../../store/profile/interface";
 import type { Content } from "pdfmake/interfaces";
-import dayjs from "dayjs";
 
 export const useExperience = (
   renderCaption: UseCommonElements["renderCaption"],
@@ -18,11 +18,16 @@ export const useExperience = (
   );
 
   const renderExperience = useCallback((): Content => {
+    if (_.isEmpty(experience)) return [];
+
     return [
       renderCaption("Professional Experience"),
       ..._.map(
         experience,
-        ({ text, startDate, endDate }: ExperienceField, index: number): Content => {
+        (
+          { text, startDate, endDate }: ExperienceField,
+          index: number
+        ): Content => {
           const startDateFormatted: string | undefined =
             startDate == null ? undefined : dayjs(startDate).format("L");
 

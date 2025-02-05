@@ -1,5 +1,8 @@
 import { App as AppProvider, theme } from "antd";
 import { ConfigProvider } from "antd";
+
+import { useCompact } from "./hooks/useCompact";
+
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
 
 import { Layout } from "./components/Layout/Layout";
@@ -9,6 +12,7 @@ dayjs.extend(LocalizedFormat);
 
 const App = (): React.ReactNode => {
   const { token } = theme.useToken();
+  useCompact();
 
   return (
     <ConfigProvider theme={{ token }}>

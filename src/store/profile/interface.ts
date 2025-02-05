@@ -19,10 +19,18 @@ export interface Profile {
   languages: LanguageField[];
   education: EducationField[];
   experience: ExperienceField[];
+  qualifications: QualificationField[];
   links: LinkField[];
 }
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
+
+export interface QualificationField {
+  type: string;
+  name: string;
+  description?: string;
+  issueDate?: string | null;
+}
 
 export interface DatePool {
   text: string;
