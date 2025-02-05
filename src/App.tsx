@@ -12,6 +12,7 @@ dayjs.extend(LocalizedFormat);
 
 const App = (): React.ReactNode => {
   const { token } = theme.useToken();
+
   useCompact();
 
   return (

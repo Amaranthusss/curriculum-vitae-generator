@@ -28,11 +28,13 @@ export const useExperience = (
           { text, startDate, endDate }: ExperienceField,
           index: number
         ): Content => {
-          const startDateFormatted: string | undefined =
-            startDate == null ? undefined : dayjs(startDate).format("L");
+          const startDateFormatted: string | undefined = _.isNil(startDate)
+            ? undefined
+            : dayjs(startDate).format("L");
 
-          const endDateFormatted: string | undefined =
-            endDate == null ? undefined : dayjs(endDate).format("L");
+          const endDateFormatted: string | undefined = _.isNil(endDate)
+            ? undefined
+            : dayjs(endDate).format("L");
 
           return renderListItem(text, {
             startDate: startDateFormatted,

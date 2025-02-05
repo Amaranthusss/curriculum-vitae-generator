@@ -2,6 +2,8 @@ import { useCallback } from "react";
 
 import { useColorsStore } from "../../../../store/colors/useColorsStore";
 
+import _ from "lodash";
+
 import type { Content, Size, TableCell } from "pdfmake/interfaces";
 
 import { caption, color, paragraph, splitter } from "../Preview.config";
@@ -22,6 +24,41 @@ export const useBodyElements = () => {
       },
     };
   }, []);
+
+  const parseColoredText = useCallback(
+    (text: string | undefined): Content[] => {
+      if (_.isNil(text) || _.isEmpty(text)) return [];
+
+      const parts: Content[] = [];
+      const regex: RegExp = new RegExp(
+        `${TextMarker.PrimaryBgColor}(.*?)${TextMarker.PrimaryBgColor}`,
+        "g"
+      );
+
+      let lastIndex: number = 0;
+
+      text.replace(
+        regex,
+        (match: string, group: Content, index: number): string => {
+          if (index > lastIndex) {
+            parts.push({ text: text.substring(lastIndex, index) });
+          }
+
+          parts.push({ text: group, color: primaryBgColor });
+          lastIndex = index + match.length;
+
+          return match;
+        }
+      );
+
+      if (lastIndex < text.length) {
+        parts.push({ text: text.substring(lastIndex) });
+      }
+
+      return parts.length > 0 ? parts : [{ text }];
+    },
+    [primaryBgColor]
+  );
 
   const renderListItem = useCallback(
     (
@@ -51,33 +88,6 @@ export const useBodyElements = () => {
         widths.push(dateColumnWidth);
       }
 
-      const parseColoredText = (text: string): Content[] => {
-        const regex: RegExp = new RegExp(
-          `${TextMarker.PrimaryBgColor}(.*?)${TextMarker.PrimaryBgColor}`,
-          "g"
-        );
-
-        const parts: Content[] = [];
-        let lastIndex = 0;
-
-        text.replace(regex, (match, group, index) => {
-          if (index > lastIndex) {
-            parts.push({ text: text.substring(lastIndex, index) });
-          }
-
-          parts.push({ text: group, color: primaryBgColor });
-
-          lastIndex = index + match.length;
-          return match;
-        });
-
-        if (lastIndex < text.length) {
-          parts.push({ text: text.substring(lastIndex) });
-        }
-
-        return parts.length > 0 ? parts : [{ text }];
-      };
-
       body.push({
         text: parseColoredText(text),
         ...paragraph,
@@ -94,7 +104,7 @@ export const useBodyElements = () => {
         },
       };
     },
-    [primaryBgColor]
+    [parseColoredText]
   );
 
   return { renderCaption, renderListItem };

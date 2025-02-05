@@ -84,7 +84,7 @@ export const LinksList = (): React.ReactNode => {
             )
           )}
 
-          <AddListItem add={add} text={"Add language"} />
+          <AddListItem add={add} text={"Add reference or link"} />
         </>
       )}
     </Form.List>

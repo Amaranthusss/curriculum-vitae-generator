@@ -1,5 +1,6 @@
 import { Divider, Flex, Form, Input, Space, UploadProps } from "antd";
 import { QualificationsList } from "./QualificationsList/QualificationsList";
+import { PublicationsList } from "./PublicationsList/PublicationsList";
 import { ExperienceList } from "./ExperienceList/ExperienceList";
 import { LanguagesList } from "./LanguagesList/LanguagesList";
 import { EducationList } from "./EducationList/EducationList";
@@ -64,6 +65,14 @@ export const ProfileForm = (): React.ReactNode => {
 
       if (isQualificationsChange) {
         return updateValues({ qualifications: values.qualifications });
+      }
+
+      const isPublicationsChange: boolean = !_.isEmpty(
+        changedValues.publications
+      );
+
+      if (isPublicationsChange) {
+        return updateValues({ publications: values.publications });
       }
 
       updateValues(changedValues);
@@ -157,6 +166,7 @@ export const ProfileForm = (): React.ReactNode => {
       <EducationList />
       <ExperienceList />
       <QualificationsList />
+      <PublicationsList />
       <LinksList />
     </Form>
   );

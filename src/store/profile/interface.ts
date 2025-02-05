@@ -1,3 +1,5 @@
+import type { Dayjs } from "dayjs";
+
 export type ProfileStore = Profile;
 
 export enum LanguageLevel {
@@ -20,10 +22,18 @@ export interface Profile {
   education: EducationField[];
   experience: ExperienceField[];
   qualifications: QualificationField[];
+  publications: PublicationField[];
   links: LinkField[];
 }
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
+
+export interface PublicationField {
+  title: string;
+  publisher: string;
+  code: string;
+  publicationYear?: Dayjs | null;
+}
 
 export interface QualificationField {
   type: string;
@@ -34,8 +44,8 @@ export interface QualificationField {
 
 export interface DatePool {
   text: string;
-  startDate: IsoString | null;
-  endDate: IsoString | null;
+  startDate: Dayjs | null;
+  endDate: Dayjs | null;
 }
 
 export interface LanguageField {

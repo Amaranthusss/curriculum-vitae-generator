@@ -24,8 +24,8 @@ const mapDates = <T extends keyof Profile & keyof ProfileFormValues>(
       if (_.isNil(datePool)) return null;
       return {
         text: datePool.text,
-        startDate: datePool.date?.[0].toISOString() ?? null,
-        endDate: datePool.date?.[1].toISOString() ?? null,
+        startDate: datePool.date?.[0] ?? null,
+        endDate: datePool.date?.[1] ?? null,
       };
     })
     .filter((pool: DatePool | null) => !_.isNull(pool))

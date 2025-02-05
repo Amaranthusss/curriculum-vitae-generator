@@ -1,15 +1,17 @@
 import { useSidebarElements } from "./useSidebarElements.ts";
 import { useQualifications } from "./useQualifications.ts";
 import { useBodyElements } from "./useBodyElements.ts";
+import { usePublications } from "./usePublications.ts";
 import { useExperience } from "./useExperience.ts";
 import { useNameLabel } from "./useFullName.ts";
 import { useEducation } from "./useEducation.ts";
 import { useLanguages } from "./useLanguages.ts";
-import { useElements } from "./useElements.ts";
+import { useCountry } from "./useCountry.ts";
 import { useCallback } from "react";
 import { useAboutMe } from "./useAboutMe.ts";
 import { usePicture } from "./usePicture.ts";
 import { useLinks } from "./useLinks.ts";
+import { useEmail } from "./useEmail.ts";
 
 import type { Content } from "pdfmake/interfaces";
 
@@ -23,6 +25,7 @@ export const useIndex = () => {
   const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
   const { renderEducation } = useEducation(renderCaption, renderListItem);
   const { renderExperience } = useExperience(renderCaption, renderListItem);
+  const { renderPublications } = usePublications(renderCaption, renderListItem);
   const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
 
   const { renderQualifications } = useQualifications(
@@ -35,12 +38,9 @@ export const useIndex = () => {
     renderSidebarTag
   );
 
+  const { renderCountry } = useCountry(renderSidebarCaption, renderSidebarTag);
+  const { renderEmail } = useEmail(renderSidebarCaption, renderSidebarTag);
   const { renderLinks } = useLinks(renderSidebarCaption, renderSidebarTag);
-
-  const { renderEmail, renderCountry } = useElements(
-    renderSidebarCaption,
-    renderSidebarTag
-  );
 
   const renderContent = useCallback(async (): Promise<Content> => {
     return [
@@ -69,6 +69,7 @@ export const useIndex = () => {
                   renderEducation(),
                   renderExperience(),
                   renderQualifications(),
+                  renderPublications(),
                 ],
               },
             ],
@@ -86,6 +87,7 @@ export const useIndex = () => {
     renderNameLabel,
     renderLanguages,
     renderExperience,
+    renderPublications,
     renderQualifications,
   ]);
 
