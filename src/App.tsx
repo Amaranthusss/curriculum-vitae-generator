@@ -7,6 +7,7 @@ import LocalizedFormat from "dayjs/plugin/localizedFormat";
 
 import { Layout } from "./components/Layout/Layout";
 import dayjs from "dayjs";
+import "./utils/i18n";
 
 dayjs.extend(LocalizedFormat);
 

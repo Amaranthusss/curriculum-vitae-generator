@@ -87,4 +87,4 @@ export const predefiniedLinkIcons: string[] = [
   "filled" + "/" + "youtube" + ".svg",
 ];
 
-export const iconsAssetsFolderPath = "/assets/icons/";
+export const iconsAssetsFolderPath = "./assets/icons/";

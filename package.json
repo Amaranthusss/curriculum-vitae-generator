@@ -4,19 +4,24 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "yarn utt & vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-translations-types": "npx i18next-resources-for-ts toc -i ./public/locales/en -o ./src/types/resources.ts",
+    "utt": "yarn update-translations-types"
   },
   "dependencies": {
     "antd": "^5.23.2",
     "antd-img-crop": "^4.24.0",
     "dayjs": "^1.11.13",
+    "i18next": "^24.2.2",
+    "i18next-http-backend": "^3.0.2",
     "lodash": "^4.17.21",
     "pdfmake": "^0.2.18",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-i18next": "^15.4.0",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
@@ -30,6 +35,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
+    "i18next-resources-for-ts": "^1.5.0",
     "sass": "^1.83.4",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",

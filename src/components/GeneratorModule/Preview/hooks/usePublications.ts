@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
@@ -14,6 +15,8 @@ export const usePublications = (
   renderListItem: UseCommonElements["renderListItem"],
   renderSubListItem: UseCommonElements["renderSubListItem"]
 ) => {
+  const { t } = useTranslation("publications");
+
   const publications: PublicationField[] = useProfileStore(
     ({ publications }) => publications
   );
@@ -22,7 +25,7 @@ export const usePublications = (
     if (_.isEmpty(publications)) return [];
 
     return [
-      renderCaption("Research Publications"),
+      renderCaption(t("render.caption")),
       ..._.map(publications, (publicationField: PublicationField): Content => {
         if (_.isEmpty(publicationField?.title)) return [];
 
@@ -53,7 +56,7 @@ export const usePublications = (
         ];
       }),
     ];
-  }, [publications, renderCaption, renderListItem, renderSubListItem]);
+  }, [t, publications, renderCaption, renderListItem, renderSubListItem]);
 
   return { renderPublications };
 };

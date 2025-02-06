@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import _ from "lodash";
 
 import type { FormListFieldData } from "antd";
-import type { SelectOption } from "./LinksList.interface";
+import type { SelectOption } from "../../../../types/antd";
 import type { Profile } from "../../../../store/profile/interface";
 
 import { iconsAssetsFolderPath } from "./LinksList.config";
@@ -20,7 +20,7 @@ export const LinksList = (): React.ReactNode => {
     return _.chain(predefiniedLinkIcons)
       .map((filePath: string): SelectOption => {
         const [type, name] = _.split(filePath, "/");
-        const src = "./" + iconsAssetsFolderPath + filePath;
+        const src = iconsAssetsFolderPath + filePath;
 
         return {
           label: (
@@ -74,7 +74,7 @@ export const LinksList = (): React.ReactNode => {
                       placeholder={"Icon"}
                       options={predefiniedIcons}
                       popupMatchSelectWidth={false}
-											allowClear
+                      allowClear
                     />
                   </Form.Item>
                 </Flex>
