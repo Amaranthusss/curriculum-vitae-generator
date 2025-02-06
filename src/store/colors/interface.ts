@@ -8,7 +8,6 @@ export interface Colors {
   primaryBgColor: React.CSSProperties["color"];
   sidebarColor: React.CSSProperties["color"];
   sidebarBgColor: React.CSSProperties["color"];
-  sidebarSidebarColor: React.CSSProperties["color"];
   sidebarSidebarCaptionColor: React.CSSProperties["color"];
   sidebarSidebarCaptionBgColor: React.CSSProperties["color"];
 }

@@ -2,6 +2,7 @@ import { Image, Upload } from "antd";
 import ImgCrop from "antd-img-crop";
 
 import { useCallback, useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 import { getBase64 } from "../../../utils/getBase64";
 import _ from "lodash";
@@ -17,6 +18,8 @@ export const UploadImage = ({
   const [previewImage, setPreviewImage] = useState<string>("");
   const [previewOpen, setPreviewOpen] = useState<boolean>(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  const { t } = useTranslation();
 
   const handlePreview = useCallback(async (file: UploadFile): Promise<void> => {
     if (!file.url && !file.preview) {
@@ -51,6 +54,9 @@ export const UploadImage = ({
         aspect={1 / 1.5}
         onModalOk={onModalOk}
         quality={1}
+        modalTitle={t("upload-image.edit-picture")}
+        modalOk={t("upload-image.modal-ok")}
+        modalCancel={t("upload-image.modal-cancel")}
       >
         <Upload
           customRequest={({ onSuccess }): void => onSuccess?.("ok")}
@@ -61,7 +67,9 @@ export const UploadImage = ({
           onPreview={handlePreview}
           onChange={handleChange}
         >
-          {fileList.length === 0 && <>Add picture</>}
+          {fileList.length === 0 && (
+            <Trans i18nKey={"upload-image.add-picture"} />
+          )}
         </Upload>
       </ImgCrop>
 

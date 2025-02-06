@@ -1,18 +1,21 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
 
+import dayjs from "dayjs";
 import _ from "lodash";
 
 import type { UseCommonElements } from "./useBodyElements";
 import type { EducationField } from "../../../../store/profile/interface";
 import type { Content } from "pdfmake/interfaces";
-import dayjs from "dayjs";
 
 export const useEducation = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
 ) => {
+  const { t } = useTranslation();
+
   const education: EducationField[] = useProfileStore(
     ({ education }) => education
   );
@@ -21,7 +24,7 @@ export const useEducation = (
     if (_.isEmpty(education)) return [];
 
     return [
-      renderCaption("Education"),
+      renderCaption(t("education.caption")),
       ..._.map(
         education,
         (
@@ -44,7 +47,7 @@ export const useEducation = (
         }
       ),
     ];
-  }, [education, renderCaption, renderListItem]);
+  }, [t, education, renderCaption, renderListItem]);
 
   return { renderEducation };
 };

@@ -1,0 +1,81 @@
+{
+  "personal-data": {
+    "caption": "Dane osobiste",
+    "name": "Imię",
+    "surname": "Nazwisko",
+    "full-name": "Imię i nazwisko",
+    "country": "Kraj",
+    "about-me": "O mnie",
+    "about-me-placeholder": "Napisz coś o sobie",
+    "email": "E-mail"
+  },
+  "upload-image": {
+    "add-picture": "Dodaj zdjęcie",
+    "edit-picture": "Dotnij zdjęcie",
+    "modal-ok": "Zatwierdź",
+    "modal-cancel": "Anuluj"
+  },
+  "languages": {
+    "caption": "Znajomość języków",
+    "add": "Dodaj język",
+    "language": "Język",
+    "a1": "Poziom elementarny",
+    "a2": "Poziom wstępny",
+    "b1": "Poziom progowy ",
+    "b2": "Poziom średni ogólny",
+    "c1": "Poziom efektywnej biegłości językowej",
+    "c2": "Poziom zaawansowany",
+    "native": "Język ojczysty"
+  },
+  "education": {
+    "caption": "Edukacja",
+    "add": "Dodaj etap edukacji",
+    "start-date": "Data rozpoczęcia",
+    "end-date": "Data zakończenia",
+    "title": "Tytuł",
+    "description": "Opis"
+  },
+  "experience": {
+    "caption": "Doświadczenie zawodowe",
+    "add": "Dodaj doświadczenie",
+    "start-date": "Data rozpoczęcia",
+    "end-date": "Data zakończenia",
+    "work-station": "Stanowisko",
+    "description": "Opis stanowiska"
+  },
+  "qualifications": {
+    "caption": "Dodatkowe kwalifikacje",
+    "add": "Dodaj kwalifikację",
+    "type": "Typ",
+    "name": "Nazwa",
+    "issue-date": "Data kursu",
+    "description": "Opis kwalifikacji"
+  },
+  "publications": {
+    "caption": "Publikacje naukowe",
+    "add": "Dodaj publikację",
+    "title": "Tytuł",
+    "year": "Rok",
+    "publisher": "Wydawca",
+    "code": "Kod"
+  },
+  "references": {
+    "caption": "Odnośniki i linki",
+    "add": "Dodaj odnośnik lub link",
+    "label": "Nagłówek",
+    "website-address": "Adres strony internetowej",
+    "icon": "Ikona",
+    "colored-icon": "Kolorowa",
+    "filled-icon": "Wypełniona",
+    "light-icon": "Tryb jasny",
+    "dark-icon": "Tryb ciemny"
+  },
+  "colors": {
+    "primary": "Kolor tekstu przewodniego motywu",
+    "primary-bg": "Kolor tła przewodniego motywu",
+    "sidebar": "Kolor tekstu bocznego paska",
+    "sidebar-bg": "Kolor tła bocznego paska",
+    "sidebar-caption": "Kolor tekstu nagłówka w bocznym pasku",
+    "sidebar-caption-bg": "Kolor tła nagłówka w bocznym pasku"
+  }
+}

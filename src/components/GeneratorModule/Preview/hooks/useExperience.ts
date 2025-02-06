@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
@@ -13,6 +14,8 @@ export const useExperience = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
 ) => {
+  const { t } = useTranslation();
+
   const experience: ExperienceField[] = useProfileStore(
     ({ experience }) => experience
   );
@@ -21,7 +24,7 @@ export const useExperience = (
     if (_.isEmpty(experience)) return [];
 
     return [
-      renderCaption("Professional Experience"),
+      renderCaption(t("experience.caption")),
       ..._.map(
         experience,
         (
@@ -44,7 +47,7 @@ export const useExperience = (
         }
       ),
     ];
-  }, [experience, renderCaption, renderListItem]);
+  }, [t, experience, renderCaption, renderListItem]);
 
   return { renderExperience };
 };

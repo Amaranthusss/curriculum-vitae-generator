@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
@@ -8,12 +9,15 @@ import _ from "lodash";
 import type { QualificationField } from "../../../../store/profile/interface";
 import type { UseCommonElements } from "./useBodyElements";
 import type { Content } from "pdfmake/interfaces";
+
 import { TextMarker } from "../../../../constants/TextMarker";
 
 export const useQualifications = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
 ) => {
+  const { t } = useTranslation();
+
   const qualifications: QualificationField[] = useProfileStore(
     ({ qualifications }) => qualifications
   );
@@ -22,7 +26,7 @@ export const useQualifications = (
     if (_.isEmpty(qualifications)) return [];
 
     return [
-      renderCaption("Additional Qualifications"),
+      renderCaption(t("qualifications.caption")),
       ..._.map(
         qualifications,
         (qualificationField: QualificationField, index: number): Content => {
@@ -52,7 +56,7 @@ export const useQualifications = (
         }
       ),
     ];
-  }, [qualifications, renderCaption, renderListItem]);
+  }, [t, qualifications, renderCaption, renderListItem]);
 
   return { renderQualifications };
 };

@@ -22,13 +22,18 @@ export interface ProfileFormValues
 }
 
 export interface FormDatePool {
-  text: string;
   date: LimitedArray<Dayjs, 2> | null;
 }
 
-export type FormEducation = FormDatePool;
+export interface FormEducation extends FormDatePool {
+  title: string;
+  description: string;
+}
 
-export type FormExperience = FormDatePool;
+export interface FormExperience extends FormDatePool {
+  workStation: string;
+  description: string;
+}
 
 export type FormQualification = QualificationField;
 

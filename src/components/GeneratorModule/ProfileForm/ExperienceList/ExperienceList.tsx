@@ -1,17 +1,24 @@
 import { Form, Input, Divider, DatePicker, Flex } from "antd";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
+import { Trans } from "react-i18next";
+
+import { useTranslation } from "react-i18next";
 
 import type { FormListFieldData } from "antd";
 import type { FormExperience } from "../../../../store/form/interface";
 import type { Profile } from "../../../../store/profile/interface";
 
 export const ExperienceList = (): React.ReactNode => {
+  const { t } = useTranslation();
+
   return (
     <Form.List name={"experience" satisfies keyof Profile}>
       {(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
         <>
-          <Divider orientation={"left"}>Professional Experience</Divider>
+          <Divider orientation={"left"}>
+            <Trans i18nKey={"experience.caption"} />
+          </Divider>
 
           {fields.map(
             ({ key, name, ...restField }): React.ReactNode => (
@@ -22,14 +29,28 @@ export const ExperienceList = (): React.ReactNode => {
                     name={[name, "date" satisfies keyof FormExperience]}
                     style={{ marginBottom: 8 }}
                   >
-                    <DatePicker.RangePicker style={{ width: "100%" }} />
+                    <DatePicker.RangePicker
+                      style={{ width: "100%" }}
+                      placeholder={[
+                        t("experience.start-date"),
+                        t("experience.end-date"),
+                      ]}
+                    />
                   </Form.Item>
 
                   <Form.Item
                     {...restField}
-                    name={[name, "text" satisfies keyof FormExperience]}
+                    style={{ marginBottom: 8 }}
+                    name={[name, "workStation" satisfies keyof FormExperience]}
                   >
-                    <Input.TextArea placeholder={"Work station"} />
+                    <Input placeholder={t("experience.work-station")} />
+                  </Form.Item>
+
+                  <Form.Item
+                    {...restField}
+                    name={[name, "description" satisfies keyof FormExperience]}
+                  >
+                    <Input.TextArea placeholder={t("experience.description")} />
                   </Form.Item>
                 </Flex>
 
@@ -38,7 +59,7 @@ export const ExperienceList = (): React.ReactNode => {
             )
           )}
 
-          <AddListItem add={add} text={"Add experience"} />
+          <AddListItem add={add} text={t("experience.add")} />
         </>
       )}
     </Form.List>

@@ -1,10 +1,11 @@
 import { useColorsStore } from "../../../../store/colors/useColorsStore";
 import { useCallback } from "react";
 
+import _ from "lodash";
+
 import type { Content, Size, TableCell } from "pdfmake/interfaces";
 
 import { sidebar } from "../Preview.config";
-import _ from "lodash";
 
 export const useSidebarElements = () => {
   const primaryBgColor: React.CSSProperties["color"] = useColorsStore(

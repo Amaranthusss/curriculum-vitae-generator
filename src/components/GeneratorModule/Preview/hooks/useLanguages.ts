@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
@@ -12,6 +13,8 @@ export const useLanguages = (
   renderSidebarCaption: UseSidebarElements["renderSidebarCaption"],
   renderSidebarTag: UseSidebarElements["renderSidebarTag"]
 ) => {
+  const { t } = useTranslation();
+
   const languages: LanguageField[] = useProfileStore(
     ({ languages }) => languages
   );
@@ -33,8 +36,8 @@ export const useLanguages = (
       tags.push(renderSidebarTag(language.text + levelDescription));
     });
 
-    return [renderSidebarCaption("Languages"), ...tags];
-  }, [renderSidebarCaption, renderSidebarTag, languages]);
+    return [renderSidebarCaption(t("languages.caption")), ...tags];
+  }, [t, renderSidebarCaption, renderSidebarTag, languages]);
 
   return { renderLanguages };
 };

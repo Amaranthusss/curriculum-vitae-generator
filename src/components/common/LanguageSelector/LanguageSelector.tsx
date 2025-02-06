@@ -31,7 +31,6 @@ export const LanguageSelector = (): React.ReactNode => {
       {
         label: <LabelWithFlag language={Language.German} text={"Deutsch"} />,
         value: Language.German,
-        disabled: true,
       },
     ];
   }, []);

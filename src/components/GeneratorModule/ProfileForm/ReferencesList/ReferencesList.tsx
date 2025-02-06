@@ -1,7 +1,9 @@
 import { Form, Input, Divider, Flex, Select } from "antd";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
+import { Trans } from "react-i18next";
 
+import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 
 import _ from "lodash";
@@ -10,24 +12,42 @@ import type { FormListFieldData } from "antd";
 import type { SelectOption } from "../../../../types/antd";
 import type { Profile } from "../../../../store/profile/interface";
 
-import { iconsAssetsFolderPath } from "./LinksList.config";
-import { predefiniedLinkIcons } from "./LinksList.config";
+import { iconsAssetsFolderPath } from "./ReferencesList.config";
+import { predefiniedLinkIcons } from "./ReferencesList.config";
 
-import styles from "./LinksList.module.scss";
+import styles from "./ReferencesList.module.scss";
 
-export const LinksList = (): React.ReactNode => {
+export const ReferencesList = (): React.ReactNode => {
+  const { t } = useTranslation();
+
   const predefiniedIcons = useMemo((): SelectOption[] => {
     return _.chain(predefiniedLinkIcons)
       .map((filePath: string): SelectOption => {
         const [type, name] = _.split(filePath, "/");
         const src = iconsAssetsFolderPath + filePath;
+        let translatedType: string = "";
+
+        switch (type) {
+          case "colored":
+            translatedType = `${t("references.colored-icon")}`;
+            break;
+          case "filled":
+            translatedType = `${t("references.filled-icon")}`;
+            break;
+          case "light":
+            translatedType = `${t("references.light-icon")}`;
+            break;
+          case "dark":
+            translatedType = `${t("references.dark-icon")}`;
+            break;
+        }
 
         return {
           label: (
             <div className={styles.label}>
               <img src={src} alt={type + " " + name} />
               <span>
-                ({type})&nbsp;{name}
+                {translatedType}&nbsp;{name}
               </span>
             </div>
           ),
@@ -37,13 +57,15 @@ export const LinksList = (): React.ReactNode => {
       })
       .sortBy("type")
       .value();
-  }, []);
+  }, [t]);
 
   return (
     <Form.List name={"links" satisfies keyof Profile}>
       {(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
         <>
-          <Divider orientation={"left"}>References / Links</Divider>
+          <Divider orientation={"left"}>
+            <Trans i18nKey={"references.caption"} />
+          </Divider>
 
           {fields.map(
             ({ key, name, ...restField }): React.ReactNode => (
@@ -54,7 +76,7 @@ export const LinksList = (): React.ReactNode => {
                     name={[name, "label"]}
                     style={{ flex: 1 }}
                   >
-                    <Input placeholder={"Label"} />
+                    <Input placeholder={t("references.label")} />
                   </Form.Item>
 
                   <Form.Item
@@ -62,7 +84,7 @@ export const LinksList = (): React.ReactNode => {
                     name={[name, "link"]}
                     style={{ flex: 1 }}
                   >
-                    <Input placeholder={"Website address"} />
+                    <Input placeholder={t("references.website-address")} />
                   </Form.Item>
 
                   <Form.Item
@@ -71,7 +93,7 @@ export const LinksList = (): React.ReactNode => {
                     style={{ flex: 1 }}
                   >
                     <Select
-                      placeholder={"Icon"}
+                      placeholder={t("references.icon")}
                       options={predefiniedIcons}
                       popupMatchSelectWidth={false}
                       allowClear
@@ -84,7 +106,7 @@ export const LinksList = (): React.ReactNode => {
             )
           )}
 
-          <AddListItem add={add} text={"Add reference or link"} />
+          <AddListItem add={add} text={t("references.add")} />
         </>
       )}
     </Form.List>

@@ -12,7 +12,6 @@ export const useColorsStore = create<ColorsStore>()(
         primaryBgColor: "#00439c",
         sidebarColor: "#ffffff",
         sidebarBgColor: "#1d1c1c",
-        sidebarSidebarColor: "#ffffff",
         sidebarSidebarCaptionColor: "#ffffff",
         sidebarSidebarCaptionBgColor: "#2e2e2e",
 

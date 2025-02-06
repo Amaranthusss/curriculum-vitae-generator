@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
@@ -12,12 +13,17 @@ export const useCountry = (
   renderSidebarCaption: UseSidebarElements["renderSidebarCaption"],
   renderSidebarTag: UseSidebarElements["renderSidebarTag"]
 ) => {
+  const { t } = useTranslation();
+
   const country: Profile["country"] = useProfileStore(({ country }) => country);
 
   const renderCountry = useCallback((): Content => {
     if (_.isEmpty(country)) return [];
-    return [renderSidebarCaption("Country"), renderSidebarTag(country)];
-  }, [renderSidebarCaption, renderSidebarTag, country]);
+    return [
+      renderSidebarCaption(t("personal-data.country")),
+      renderSidebarTag(country),
+    ];
+  }, [t, renderSidebarCaption, renderSidebarTag, country]);
 
   return { renderCountry };
 };

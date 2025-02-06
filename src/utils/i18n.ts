@@ -11,7 +11,8 @@ i18next
     debug: import.meta.env.DEV,
     fallbackLng: Language.British,
     interpolation: { escapeValue: false },
-    ns: ["publications"],
+    ns: ["translations"],
+    defaultNS: "translations",
     backend: {
       loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/{{ns}}.json`,
     },

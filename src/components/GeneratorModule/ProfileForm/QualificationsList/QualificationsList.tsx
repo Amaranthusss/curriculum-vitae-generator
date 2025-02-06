@@ -1,17 +1,24 @@
 import { Form, Input, Divider, DatePicker, Flex, Space } from "antd";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
+import { Trans } from "react-i18next";
+
+import { useTranslation } from "react-i18next";
 
 import type { FormListFieldData } from "antd";
 import type { FormQualification } from "../../../../store/form/interface";
 import type { Profile } from "../../../../store/profile/interface";
 
 export const QualificationsList = (): React.ReactNode => {
+  const { t } = useTranslation();
+
   return (
     <Form.List name={"qualifications" satisfies keyof Profile}>
       {(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
         <>
-          <Divider orientation={"left"}>Additional Qualifications</Divider>
+          <Divider orientation={"left"}>
+            <Trans i18nKey={"qualifications.caption"} />
+          </Divider>
 
           {fields.map(
             ({ key, name, ...restField }): React.ReactNode => (
@@ -28,7 +35,7 @@ export const QualificationsList = (): React.ReactNode => {
                           ]}
                           style={{ width: "100%", marginBottom: 8 }}
                         >
-                          <Input placeholder={"Type"} />
+                          <Input placeholder={t("qualifications.type")} />
                         </Form.Item>
 
                         <Form.Item
@@ -39,7 +46,7 @@ export const QualificationsList = (): React.ReactNode => {
                           ]}
                           style={{ width: "100%", marginBottom: 8 }}
                         >
-                          <Input placeholder={"Name"} />
+                          <Input placeholder={t("qualifications.name")} />
                         </Form.Item>
                       </Space.Compact>
                     </Flex>
@@ -55,7 +62,7 @@ export const QualificationsList = (): React.ReactNode => {
                       >
                         <DatePicker
                           style={{ width: "100%" }}
-                          placeholder={"Issue date"}
+                          placeholder={t("qualifications.issue-date")}
                         />
                       </Form.Item>
                     </Flex>
@@ -68,7 +75,9 @@ export const QualificationsList = (): React.ReactNode => {
                       "description" satisfies keyof FormQualification,
                     ]}
                   >
-                    <Input.TextArea placeholder={"Description"} />
+                    <Input.TextArea
+                      placeholder={t("qualifications.description")}
+                    />
                   </Form.Item>
                 </Flex>
 
@@ -77,7 +86,7 @@ export const QualificationsList = (): React.ReactNode => {
             )
           )}
 
-          <AddListItem add={add} text={"Add qualification"} />
+          <AddListItem add={add} text={t("qualifications.add")} />
         </>
       )}
     </Form.List>

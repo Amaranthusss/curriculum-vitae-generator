@@ -1,6 +1,9 @@
 import { Form, Input, Divider, DatePicker, Flex } from "antd";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
+import { Trans } from "react-i18next";
+
+import { useTranslation } from "react-i18next";
 
 import type { FormListFieldData } from "antd";
 import type { FormPublication } from "../../../../store/form/interface";
@@ -8,11 +11,15 @@ import type { Profile } from "../../../../store/profile/interface";
 import type { Dayjs } from "dayjs";
 
 export const PublicationsList = (): React.ReactNode => {
+  const { t } = useTranslation();
+
   return (
     <Form.List name={"publications" satisfies keyof Profile}>
       {(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
         <>
-          <Divider orientation={"left"}>Research Publications</Divider>
+          <Divider orientation={"left"}>
+            <Trans i18nKey={"publications.caption"} />
+          </Divider>
 
           {fields.map(
             ({ key, name, ...restField }): React.ReactNode => (
@@ -24,7 +31,7 @@ export const PublicationsList = (): React.ReactNode => {
                       name={[name, "title" satisfies keyof FormPublication]}
                       style={{ width: "100%", marginBottom: 8 }}
                     >
-                      <Input placeholder={"Title"} />
+                      <Input placeholder={t("publications.title")} />
                     </Form.Item>
 
                     <Form.Item
@@ -38,7 +45,7 @@ export const PublicationsList = (): React.ReactNode => {
                       <DatePicker
                         picker={"year"}
                         style={{ width: "100%" }}
-                        placeholder={"Year"}
+                        placeholder={t("publications.year")}
                         disabledDate={(date: Dayjs): boolean => {
                           return (
                             date.isBefore("1900-01-01", "year") ||
@@ -59,7 +66,7 @@ export const PublicationsList = (): React.ReactNode => {
                         ]}
                         style={{ width: "100%" }}
                       >
-                        <Input placeholder={"Publisher"} />
+                        <Input placeholder={t("publications.publisher")} />
                       </Form.Item>
                     </Flex>
 
@@ -69,7 +76,7 @@ export const PublicationsList = (): React.ReactNode => {
                         name={[name, "code" satisfies keyof FormPublication]}
                         style={{ width: "100%" }}
                       >
-                        <Input placeholder={"Code"} />
+                        <Input placeholder={t("publications.code")} />
                       </Form.Item>
                     </Flex>
                   </Flex>
@@ -80,7 +87,7 @@ export const PublicationsList = (): React.ReactNode => {
             )
           )}
 
-          <AddListItem add={add} text={"Add publication"} />
+          <AddListItem add={add} text={t("publications.add")} />
         </>
       )}
     </Form.List>

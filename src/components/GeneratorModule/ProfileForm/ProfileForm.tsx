@@ -2,10 +2,13 @@ import { Divider, Flex, Form, Input, Space, UploadProps } from "antd";
 import { QualificationsList } from "./QualificationsList/QualificationsList";
 import { PublicationsList } from "./PublicationsList/PublicationsList";
 import { ExperienceList } from "./ExperienceList/ExperienceList";
+import { ReferencesList } from "./ReferencesList/ReferencesList";
 import { LanguagesList } from "./LanguagesList/LanguagesList";
 import { EducationList } from "./EducationList/EducationList";
 import { UploadImage } from "../../common/UploadImage/UploadImage";
-import { LinksList } from "./LinksList/LinksList";
+import { Trans } from "react-i18next";
+
+import { useTranslation } from "react-i18next";
 
 import { useCallback } from "react";
 import { useMemo } from "react";
@@ -20,6 +23,8 @@ import type { ProfileFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
 
 export const ProfileForm = (): React.ReactNode => {
+  const { t } = useTranslation();
+
   const getInitialFormValues: GetInitialFormValues = useFormStore(
     ({ getInitialFormValues }) => getInitialFormValues
   );
@@ -111,37 +116,39 @@ export const ProfileForm = (): React.ReactNode => {
       initialValues={initialValues}
       style={{ paddingRight: 12 }}
     >
-      <Divider orientation={"left"}>Personal Data</Divider>
+      <Divider orientation={"left"}>
+        <Trans i18nKey={"personal-data.caption"} />
+      </Divider>
 
       <Flex gap={16}>
         <UploadImage onChange={onUploadImage} />
 
         <Flex vertical>
-          <Form.Item label={"Full name"}>
+          <Form.Item label={t("personal-data.full-name")}>
             <Space.Compact>
               <Form.Item
                 noStyle
-                label={"Name"}
+                label={t("personal-data.name")}
                 name={"name" satisfies keyof ProfileFormValues}
               >
-                <Input placeholder={"Name"} />
+                <Input placeholder={t("personal-data.name")} />
               </Form.Item>
 
               <Form.Item
                 noStyle
-                label={"Surname"}
+                label={t("personal-data.surname")}
                 name={"surname" satisfies keyof ProfileFormValues}
               >
-                <Input placeholder={"Surname"} />
+                <Input placeholder={t("personal-data.surname")} />
               </Form.Item>
             </Space.Compact>
           </Form.Item>
 
           <Form.Item
-            label={"Country"}
+            label={t("personal-data.country")}
             name={"country" satisfies keyof ProfileFormValues}
           >
-            <Input placeholder={"Country"} />
+            <Input placeholder={t("personal-data.country")} />
           </Form.Item>
         </Flex>
       </Flex>
@@ -149,17 +156,17 @@ export const ProfileForm = (): React.ReactNode => {
       <Divider />
 
       <Form.Item
-        label={"About me"}
+        label={t("personal-data.about-me")}
         name={"aboutMe" satisfies keyof ProfileFormValues}
       >
-        <Input.TextArea placeholder={"Tell something about you"} />
+        <Input.TextArea placeholder={t("personal-data.about-me-placeholder")} />
       </Form.Item>
 
       <Form.Item
-        label={"E-mail"}
+        label={t("personal-data.email")}
         name={"email" satisfies keyof ProfileFormValues}
       >
-        <Input placeholder={"E-mail"} />
+        <Input placeholder={t("personal-data.email")} />
       </Form.Item>
 
       <LanguagesList />
@@ -167,7 +174,7 @@ export const ProfileForm = (): React.ReactNode => {
       <ExperienceList />
       <QualificationsList />
       <PublicationsList />
-      <LinksList />
+      <ReferencesList />
     </Form>
   );
 };

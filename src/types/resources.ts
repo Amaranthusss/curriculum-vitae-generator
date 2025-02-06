@@ -1,7 +1,7 @@
-import publications from '../../public/locales/en-GB/publications.json';
+import translations from '../../public/locales/en-GB/translations.json';
 
 const resources = {
-  publications
+  translations
 } as const;
 
 export default resources;

@@ -15,7 +15,7 @@ export const usePublications = (
   renderListItem: UseCommonElements["renderListItem"],
   renderSubListItem: UseCommonElements["renderSubListItem"]
 ) => {
-  const { t } = useTranslation("publications");
+  const { t } = useTranslation();
 
   const publications: PublicationField[] = useProfileStore(
     ({ publications }) => publications
@@ -25,7 +25,7 @@ export const usePublications = (
     if (_.isEmpty(publications)) return [];
 
     return [
-      renderCaption(t("render.caption")),
+      renderCaption(t("publications.caption")),
       ..._.map(publications, (publicationField: PublicationField): Content => {
         if (_.isEmpty(publicationField?.title)) return [];
 

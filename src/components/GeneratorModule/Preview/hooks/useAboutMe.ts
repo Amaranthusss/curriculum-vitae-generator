@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
@@ -12,12 +13,17 @@ export const useAboutMe = (
   renderSidebarCaption: UseSidebarElements["renderSidebarCaption"],
   renderSidebarTag: UseSidebarElements["renderSidebarTag"]
 ) => {
+  const { t } = useTranslation();
+
   const aboutMe: Profile["aboutMe"] = useProfileStore(({ aboutMe }) => aboutMe);
 
   const renderAboutMe = useCallback((): Content => {
     if (_.isEmpty(aboutMe) || _.isNil(aboutMe)) return [];
-    return [renderSidebarCaption("About me"), renderSidebarTag(aboutMe)];
-  }, [renderSidebarCaption, renderSidebarTag, aboutMe]);
+    return [
+      renderSidebarCaption(t("personal-data.about-me")),
+      renderSidebarTag(aboutMe),
+    ];
+  }, [t, renderSidebarCaption, renderSidebarTag, aboutMe]);
 
   return { renderAboutMe };
 };

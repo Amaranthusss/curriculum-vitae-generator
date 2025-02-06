@@ -1,0 +1,81 @@
+{
+  "personal-data": {
+    "caption": "Personal data",
+    "name": "Name",
+    "surname": "Surname",
+    "full-name": "Full name",
+    "country": "Country",
+    "about-me": "About me",
+    "about-me-placeholder": "Tell something about you",
+    "email": "E-mail"
+  },
+  "upload-image": {
+    "add-picture": "Add picture",
+    "edit-picture": "Cut picture",
+    "modal-ok": "Confirm",
+    "modal-cancel": "Cancel"
+  },
+  "languages": {
+    "caption": "Languages knowledge",
+    "add": "Add language",
+    "language": "Language",
+    "a1": "Beginner",
+    "a2": "Elementary",
+    "b1": "Intermediate",
+    "b2": "Upper-intermediate",
+    "c1": "Advanced",
+    "c2": "Proficiency",
+    "native": "Native language"
+  },
+  "education": {
+    "caption": "Education",
+    "add": "Add education",
+    "start-date": "Start date",
+    "end-date": "End date",
+    "title": "Title",
+    "description": "Description"
+  },
+  "experience": {
+    "caption": "Professional experience",
+    "add": "Add experience",
+    "start-date": "Start date",
+    "end-date": "End date",
+    "work-station": "Work station",
+    "description": "Work station description"
+  },
+  "qualifications": {
+    "caption": "Additional qualifications",
+    "add": "Add qualification",
+    "type": "Type",
+    "name": "Name",
+    "issue-date": "Issue date",
+    "description": "Qualification description"
+  },
+  "publications": {
+    "caption": "Research publications",
+    "add": "Add publication",
+    "title": "Title",
+    "year": "Year",
+    "publisher": "Publisher",
+    "code": "Code"
+  },
+  "references": {
+    "caption": "References and links",
+    "add": "Add reference or link",
+    "label": "Label",
+    "website-address": "Website address",
+    "icon": "Icon",
+    "colored-icon": "Colored",
+    "filled-icon": "Filled",
+    "light-icon": "Light",
+    "dark-icon": "Dark"
+  },
+  "colors": {
+    "primary": "Primary text color",
+    "primary-bg": "Primary background color",
+    "sidebar": "Sidebar text color",
+    "sidebar-bg": "Sidebar background color",
+    "sidebar-caption": "Sidebar caption text color",
+    "sidebar-caption-bg": "Sidebar caption background color"
+  }
+}
