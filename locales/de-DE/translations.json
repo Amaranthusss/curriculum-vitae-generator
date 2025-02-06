@@ -1,0 +1,82 @@
+{
+  "personal-data": {
+    "caption": "Persönliche Daten",
+    "name": "Name",
+    "surname": "Nachname",
+    "full-name": "Vollständiger Name",
+    "country": "Land",
+    "about-me": "Über mich",
+    "about-me-placeholder": "Erzähle etwas über dich",
+    "email": "E-Mail"
+  },
+  "upload-image": {
+    "add-picture": "Bild hinzufügen",
+    "edit-picture": "Bild zuschneiden",
+    "modal-ok": "Bestätigen",
+    "modal-cancel": "Abbrechen"
+  },
+  "languages": {
+    "caption": "Sprachkenntnisse",
+    "add": "Sprache hinzufügen",
+    "language": "Sprache",
+    "a1": "Anfänger-Niveau",
+    "a2": "Grundkenntnisse",
+    "b1": "Mittleres Niveau",
+    "b2": "Gehobenes mittleres Niveau",
+    "c1": "Fortgeschrittenes Niveau",
+    "c2": "Fachkundige Sprachkenntnisse",
+    "native": "Muttersprache"
+  },
+  "education": {
+    "caption": "Bildung",
+    "add": "Bildung hinzufügen",
+    "start-date": "Startdatum",
+    "end-date": "Enddatum",
+    "title": "Titel",
+    "description": "Beschreibung"
+  },
+  "experience": {
+    "caption": "Berufserfahrung",
+    "add": "Erfahrung hinzufügen",
+    "start-date": "Startdatum",
+    "end-date": "Enddatum",
+    "work-station": "Arbeitsstelle",
+    "description": "Beschreibung der Arbeitsstelle"
+  },
+  "qualifications": {
+    "caption": "Zusätzliche Qualifikationen",
+    "add": "Qualifikation hinzufügen",
+    "type": "Typ",
+    "name": "Name",
+    "issue-date": "Ausgabedatum",
+    "description": "Beschreibung der Qualifikation"
+  },
+  "publications": {
+    "caption": "Forschungsveröffentlichungen",
+    "add": "Veröffentlichung hinzufügen",
+    "title": "Titel",
+    "year": "Jahr",
+    "publisher": "Verlag",
+    "code": "Code"
+  },
+  "references": {
+    "caption": "Referenzen und Links",
+    "add": "Referenz oder Link hinzufügen",
+    "label": "Bezeichnung",
+    "website-address": "Webseitenadresse",
+    "icon": "Symbol",
+    "colored-icon": "Farbig",
+    "filled-icon": "Ausgefüllt",
+    "light-icon": "Hell",
+    "dark-icon": "Dunkel"
+  },
+  "colors": {
+    "primary": "Primärtextfarbe",
+    "primary-bg": "Primärer Hintergrundfarbe",
+    "secondary": "Textfarbe sekundärer Elemente",
+    "sidebar": "Seitenleisten-Textfarbe",
+    "sidebar-bg": "Seitenleisten-Hintergrundfarbe",
+    "sidebar-caption": "Seitenleisten-Überschriftfarbe",
+    "sidebar-caption-bg": "Seitenleisten-Überschrift-Hintergrundfarbe"
+  }
+}
