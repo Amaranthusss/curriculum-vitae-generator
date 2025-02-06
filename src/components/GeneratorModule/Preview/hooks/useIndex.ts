@@ -13,11 +13,17 @@ import { usePicture } from "./usePicture.ts";
 import { useLinks } from "./useLinks.ts";
 import { useEmail } from "./useEmail.ts";
 
+import { useColorsStore } from "../../../../store/colors/useColorsStore.ts";
+
 import type { Content } from "pdfmake/interfaces";
 
-import { layout, page, sidebar } from "../Preview.config.ts";
+import { layout, page } from "../Preview.config.ts";
 
 export const useIndex = () => {
+  const sidebarBgColor: React.CSSProperties["color"] = useColorsStore(
+    ({ sidebarBgColor }) => sidebarBgColor
+  );
+
   const { renderCaption, renderListItem, renderSubListItem } =
     useBodyElements();
 
@@ -59,7 +65,7 @@ export const useIndex = () => {
             [
               {
                 text: "sidebar",
-                fillColor: sidebar.bgColor,
+                fillColor: sidebarBgColor,
                 border: [false, false, false, false],
                 stack: [
                   renderPicture(),
@@ -85,6 +91,7 @@ export const useIndex = () => {
       },
     ];
   }, [
+    sidebarBgColor,
     renderEmail,
     renderLinks,
     renderAboutMe,
