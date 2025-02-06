@@ -10,6 +10,8 @@ import type { UseCommonElements } from "./useBodyElements";
 import type { ExperienceField } from "../../../../store/profile/interface";
 import type { Content } from "pdfmake/interfaces";
 
+import { TextMarker } from "../../../../constants/TextMarker";
+
 export const useExperience = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
@@ -27,17 +29,34 @@ export const useExperience = (
       renderCaption(t("experience.caption")),
       ..._.map(
         experience,
-        (
-          { text, startDate, endDate }: ExperienceField,
-          index: number
-        ): Content => {
-          const startDateFormatted: string | undefined = _.isNil(startDate)
-            ? undefined
-            : dayjs(startDate).format("L");
+        (experienceField: ExperienceField, index: number): Content => {
+          if (
+            _.isEmpty(experienceField?.workStation) &&
+            _.isEmpty(experienceField?.date)
+          ) {
+            return [];
+          }
 
-          const endDateFormatted: string | undefined = _.isNil(endDate)
+          const { workStation, date, description } = experienceField;
+
+          const startDateFormatted: string | undefined = _.isNil(date?.[0])
             ? undefined
-            : dayjs(endDate).format("L");
+            : dayjs(date[0]).format("L");
+
+          const endDateFormatted: string | undefined = _.isNil(date?.[1])
+            ? undefined
+            : dayjs(date[1]).format("L");
+
+          const text: string = _.join(
+            [
+              TextMarker.PrimaryBgColor,
+              workStation,
+              TextMarker.PrimaryBgColor,
+              " ",
+              description ?? "",
+            ],
+            ""
+          );
 
           return renderListItem(text, {
             startDate: startDateFormatted,

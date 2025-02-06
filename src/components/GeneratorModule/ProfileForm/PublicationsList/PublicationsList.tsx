@@ -6,7 +6,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import type { FormListFieldData } from "antd";
-import type { FormPublication } from "../../../../store/form/interface";
+import type { PublicationField } from "../../../../store/profile/interface";
 import type { Profile } from "../../../../store/profile/interface";
 import type { Dayjs } from "dayjs";
 
@@ -28,7 +28,7 @@ export const PublicationsList = (): React.ReactNode => {
                   <Flex gap={8}>
                     <Form.Item
                       {...restField}
-                      name={[name, "title" satisfies keyof FormPublication]}
+                      name={[name, "title" satisfies keyof PublicationField]}
                       style={{ width: "100%", marginBottom: 8 }}
                     >
                       <Input placeholder={t("publications.title")} />
@@ -38,7 +38,7 @@ export const PublicationsList = (): React.ReactNode => {
                       {...restField}
                       name={[
                         name,
-                        "publicationYear" satisfies keyof FormPublication,
+                        "publicationYear" satisfies keyof PublicationField,
                       ]}
                       style={{ width: "100%", marginBottom: 8, maxWidth: 80 }}
                     >
@@ -62,7 +62,7 @@ export const PublicationsList = (): React.ReactNode => {
                         {...restField}
                         name={[
                           name,
-                          "publisher" satisfies keyof FormPublication,
+                          "publisher" satisfies keyof PublicationField,
                         ]}
                         style={{ width: "100%" }}
                       >
@@ -73,7 +73,7 @@ export const PublicationsList = (): React.ReactNode => {
                     <Flex flex={1}>
                       <Form.Item
                         {...restField}
-                        name={[name, "code" satisfies keyof FormPublication]}
+                        name={[name, "code" satisfies keyof PublicationField]}
                         style={{ width: "100%" }}
                       >
                         <Input placeholder={t("publications.code")} />

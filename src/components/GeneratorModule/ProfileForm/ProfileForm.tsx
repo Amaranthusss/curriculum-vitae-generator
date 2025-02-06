@@ -19,8 +19,8 @@ import { getBase64 } from "../../../utils/getBase64";
 import _ from "lodash";
 
 import type { GetInitialFormValues } from "../../../store/form/interface";
-import type { ProfileFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
+import type { Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
   const { t } = useTranslation();
@@ -34,10 +34,7 @@ export const ProfileForm = (): React.ReactNode => {
   );
 
   const onValuesChange = useCallback(
-    (
-      changedValues: Partial<ProfileFormValues>,
-      values: ProfileFormValues
-    ): void => {
+    (changedValues: Partial<Profile>, values: Profile): void => {
       const isLanguagesListChange: boolean = !_.isEmpty(
         changedValues.languages
       );
@@ -105,12 +102,12 @@ export const ProfileForm = (): React.ReactNode => {
     [convertPictureToBase64]
   );
 
-  const initialValues = useMemo((): ProfileFormValues => {
+  const initialValues = useMemo((): Profile => {
     return getInitialFormValues();
   }, [getInitialFormValues]);
 
   return (
-    <Form<ProfileFormValues>
+    <Form<Profile>
       name={"profileForm"}
       onValuesChange={onValuesChange}
       initialValues={initialValues}
@@ -129,7 +126,7 @@ export const ProfileForm = (): React.ReactNode => {
               <Form.Item
                 noStyle
                 label={t("personal-data.name")}
-                name={"name" satisfies keyof ProfileFormValues}
+                name={"name" satisfies keyof Profile}
               >
                 <Input placeholder={t("personal-data.name")} />
               </Form.Item>
@@ -137,7 +134,7 @@ export const ProfileForm = (): React.ReactNode => {
               <Form.Item
                 noStyle
                 label={t("personal-data.surname")}
-                name={"surname" satisfies keyof ProfileFormValues}
+                name={"surname" satisfies keyof Profile}
               >
                 <Input placeholder={t("personal-data.surname")} />
               </Form.Item>
@@ -146,7 +143,7 @@ export const ProfileForm = (): React.ReactNode => {
 
           <Form.Item
             label={t("personal-data.country")}
-            name={"country" satisfies keyof ProfileFormValues}
+            name={"country" satisfies keyof Profile}
           >
             <Input placeholder={t("personal-data.country")} />
           </Form.Item>
@@ -157,14 +154,14 @@ export const ProfileForm = (): React.ReactNode => {
 
       <Form.Item
         label={t("personal-data.about-me")}
-        name={"aboutMe" satisfies keyof ProfileFormValues}
+        name={"aboutMe" satisfies keyof Profile}
       >
         <Input.TextArea placeholder={t("personal-data.about-me-placeholder")} />
       </Form.Item>
 
       <Form.Item
         label={t("personal-data.email")}
-        name={"email" satisfies keyof ProfileFormValues}
+        name={"email" satisfies keyof Profile}
       >
         <Input placeholder={t("personal-data.email")} />
       </Form.Item>

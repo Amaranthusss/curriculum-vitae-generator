@@ -6,6 +6,7 @@ export interface ColorsStore extends Colors {
 export interface Colors {
   primaryColor: React.CSSProperties["color"];
   primaryBgColor: React.CSSProperties["color"];
+  secondaryColor: React.CSSProperties["color"];
   sidebarColor: React.CSSProperties["color"];
   sidebarBgColor: React.CSSProperties["color"];
   sidebarSidebarCaptionColor: React.CSSProperties["color"];

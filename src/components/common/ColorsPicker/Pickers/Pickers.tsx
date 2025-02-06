@@ -19,6 +19,8 @@ export const Pickers = ({ initialValues }: PickersProps): React.ReactNode => {
           return t("colors.primary");
         case "primaryBgColor":
           return t("colors.primary-bg");
+        case "secondaryColor":
+          return t("colors.secondary");
         case "sidebarColor":
           return t("colors.sidebar");
         case "sidebarBgColor":

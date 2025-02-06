@@ -13,7 +13,7 @@ export const LabelWithFlag = ({
   }, [language]);
 
   return (
-    <Flex gap={8} align={'center'}>
+    <Flex gap={8} align={"center"}>
       <img alt={language} src={src} height={12} />
       {text}
     </Flex>

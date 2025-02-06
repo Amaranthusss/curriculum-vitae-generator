@@ -8,7 +8,7 @@ i18next
   .use(Backend)
   .use(initReactI18next)
   .init({
-    debug: import.meta.env.DEV,
+    // debug: import.meta.env.DEV,
     fallbackLng: Language.British,
     interpolation: { escapeValue: false },
     ns: ["translations"],

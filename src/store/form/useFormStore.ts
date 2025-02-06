@@ -1,37 +1,10 @@
 import { useProfileStore } from "../profile/useProfileStore";
 import { devtools } from "zustand/middleware";
 import { create } from "zustand";
-import dayjs from "dayjs";
 import _ from "lodash";
 
-import type { ProfileFormValues } from "./interface";
-import type { FormDatePool } from "./interface";
 import type { FormStore } from "./interface";
-import type { DatePool } from "../profile/interface";
 import type { Profile } from "../profile/interface";
-
-type PoolsWithDates = "education" | "experience";
-
-const mapDates = <T extends keyof Profile & keyof ProfileFormValues>(
-  param: T,
-  value: ProfileFormValues[PoolsWithDates],
-  updated: Partial<Profile>
-): void => {
-  if (param !== "education" && param !== "experience") return;
-
-  updated[param satisfies PoolsWithDates] = _.chain(value)
-    .map((datePool: FormDatePool): DatePool | null => {
-      if (_.isNil(datePool)) return null;
-      return {
-        text: datePool.text,
-        startDate: datePool.date?.[0] ?? null,
-        endDate: datePool.date?.[1] ?? null,
-      };
-    })
-    .filter((pool: DatePool | null) => !_.isNull(pool))
-    .sortBy(({ endDate }) => dayjs(endDate).valueOf())
-    .value();
-};
 
 export const useFormStore = create<FormStore>()(
   devtools(
@@ -44,30 +17,12 @@ export const useFormStore = create<FormStore>()(
           return [name, surname].filter((v) => !_.isEmpty(v)).join(" ");
         },
 
-        getInitialFormValues: (): ProfileFormValues => {
-          const profile: Profile = _.omit(useProfileStore.getState(), []);
-
-          return {
-            ...profile,
-            experience: [],
-            education: [],
-          };
+        getInitialFormValues: (): Profile => {
+          return useProfileStore.getState();
         },
 
-        updateValues: (values: Partial<ProfileFormValues>): void => {
-          const updated: Partial<Profile> = {
-            ..._.omit(values, ["education", "experience"]),
-          };
-
-          if (values.experience != null) {
-            mapDates("experience", values.experience, updated);
-          }
-
-          if (values.education != null) {
-            mapDates("education", values.education, updated);
-          }
-
-          useProfileStore.setState(updated);
+        updateValues: (values: Partial<Profile>): void => {
+          useProfileStore.setState(values);
         },
       };
     },

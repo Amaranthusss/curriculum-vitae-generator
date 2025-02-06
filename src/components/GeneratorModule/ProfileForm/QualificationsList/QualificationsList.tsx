@@ -6,7 +6,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import type { FormListFieldData } from "antd";
-import type { FormQualification } from "../../../../store/form/interface";
+import type { QualificationField } from "../../../../store/profile/interface";
 import type { Profile } from "../../../../store/profile/interface";
 
 export const QualificationsList = (): React.ReactNode => {
@@ -31,7 +31,7 @@ export const QualificationsList = (): React.ReactNode => {
                           {...restField}
                           name={[
                             name,
-                            "type" satisfies keyof FormQualification,
+                            "type" satisfies keyof QualificationField,
                           ]}
                           style={{ width: "100%", marginBottom: 8 }}
                         >
@@ -42,7 +42,7 @@ export const QualificationsList = (): React.ReactNode => {
                           {...restField}
                           name={[
                             name,
-                            "name" satisfies keyof FormQualification,
+                            "name" satisfies keyof QualificationField,
                           ]}
                           style={{ width: "100%", marginBottom: 8 }}
                         >
@@ -56,7 +56,7 @@ export const QualificationsList = (): React.ReactNode => {
                         {...restField}
                         name={[
                           name,
-                          "issueDate" satisfies keyof FormQualification,
+                          "issueDate" satisfies keyof QualificationField,
                         ]}
                         style={{ width: "100%", marginBottom: 8 }}
                       >
@@ -72,7 +72,7 @@ export const QualificationsList = (): React.ReactNode => {
                     {...restField}
                     name={[
                       name,
-                      "description" satisfies keyof FormQualification,
+                      "description" satisfies keyof QualificationField,
                     ]}
                   >
                     <Input.TextArea

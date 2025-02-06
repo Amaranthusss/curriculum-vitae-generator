@@ -19,11 +19,11 @@
     "caption": "Sprachkenntnisse",
     "add": "Sprache hinzufügen",
     "language": "Sprache",
-    "a1": "Anfänger",
+    "a1": "Anfänger-Niveau",
     "a2": "Grundkenntnisse",
-    "b1": "Mittelstufe",
-    "b2": "Gehobene Mittelstufe",
-    "c1": "Fortgeschritten",
+    "b1": "Mittleres Niveau",
+    "b2": "Gehobenes mittleres Niveau",
+    "c1": "Fortgeschrittenes Niveau",
     "c2": "Fachkundige Sprachkenntnisse",
     "native": "Muttersprache"
   },
@@ -73,6 +73,7 @@
   "colors": {
     "primary": "Primärtextfarbe",
     "primary-bg": "Primärer Hintergrundfarbe",
+    "secondary": "Textfarbe sekundärer Elemente",
     "sidebar": "Seitenleisten-Textfarbe",
     "sidebar-bg": "Seitenleisten-Hintergrundfarbe",
     "sidebar-caption": "Seitenleisten-Überschriftfarbe",

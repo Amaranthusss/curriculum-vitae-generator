@@ -6,7 +6,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import type { FormListFieldData } from "antd";
-import type { FormExperience } from "../../../../store/form/interface";
+import type { ExperienceField } from "../../../../store/profile/interface";
 import type { Profile } from "../../../../store/profile/interface";
 
 export const ExperienceList = (): React.ReactNode => {
@@ -26,7 +26,7 @@ export const ExperienceList = (): React.ReactNode => {
                 <Flex vertical flex={1}>
                   <Form.Item
                     {...restField}
-                    name={[name, "date" satisfies keyof FormExperience]}
+                    name={[name, "date" satisfies keyof ExperienceField]}
                     style={{ marginBottom: 8 }}
                   >
                     <DatePicker.RangePicker
@@ -41,14 +41,14 @@ export const ExperienceList = (): React.ReactNode => {
                   <Form.Item
                     {...restField}
                     style={{ marginBottom: 8 }}
-                    name={[name, "workStation" satisfies keyof FormExperience]}
+                    name={[name, "workStation" satisfies keyof ExperienceField]}
                   >
                     <Input placeholder={t("experience.work-station")} />
                   </Form.Item>
 
                   <Form.Item
                     {...restField}
-                    name={[name, "description" satisfies keyof FormExperience]}
+                    name={[name, "description" satisfies keyof ExperienceField]}
                   >
                     <Input.TextArea placeholder={t("experience.description")} />
                   </Form.Item>

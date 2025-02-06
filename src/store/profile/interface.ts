@@ -42,20 +42,24 @@ export interface QualificationField {
   issueDate?: string | null;
 }
 
-export interface DatePool {
-  text: string;
-  startDate: Dayjs | null;
-  endDate: Dayjs | null;
-}
-
 export interface LanguageField {
   text: string;
   level: LanguageLevel;
 }
 
-export type ExperienceField = DatePool;
+export interface FormDatePool {
+  date: LimitedArray<Dayjs, 2> | null;
+}
 
-export type EducationField = DatePool;
+export interface EducationField extends FormDatePool {
+  title: string;
+  description: string;
+}
+
+export interface ExperienceField extends FormDatePool {
+  workStation: string;
+  description: string;
+}
 
 export interface LinkField {
   label: string;

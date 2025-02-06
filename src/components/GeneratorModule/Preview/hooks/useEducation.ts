@@ -10,6 +10,8 @@ import type { UseCommonElements } from "./useBodyElements";
 import type { EducationField } from "../../../../store/profile/interface";
 import type { Content } from "pdfmake/interfaces";
 
+import { TextMarker } from "../../../../constants/TextMarker";
+
 export const useEducation = (
   renderCaption: UseCommonElements["renderCaption"],
   renderListItem: UseCommonElements["renderListItem"]
@@ -27,17 +29,34 @@ export const useEducation = (
       renderCaption(t("education.caption")),
       ..._.map(
         education,
-        (
-          { text, startDate, endDate }: EducationField,
-          index: number
-        ): Content => {
-          const startDateFormatted: string | undefined = _.isNil(startDate)
-            ? undefined
-            : dayjs(startDate).format("L");
+        (educationField: EducationField, index: number): Content => {
+          if (
+            _.isEmpty(educationField?.title) &&
+            _.isEmpty(educationField?.date)
+          ) {
+            return [];
+          }
 
-          const endDateFormatted: string | undefined = _.isNil(endDate)
+          const { title, description, date } = educationField;
+
+          const startDateFormatted: string | undefined = _.isNil(date?.[0])
             ? undefined
-            : dayjs(endDate).format("L");
+            : dayjs(date[0]).format("L");
+
+          const endDateFormatted: string | undefined = _.isNil(date?.[1])
+            ? undefined
+            : dayjs(date[1]).format("L");
+
+          const text: string = _.join(
+            [
+              TextMarker.PrimaryBgColor,
+              title,
+              TextMarker.PrimaryBgColor,
+              " ",
+              description ?? "",
+            ],
+            ""
+          );
 
           return renderListItem(text, {
             startDate: startDateFormatted,

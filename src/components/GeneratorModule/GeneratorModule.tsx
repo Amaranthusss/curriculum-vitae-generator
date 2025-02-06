@@ -3,8 +3,9 @@ import { ColorsPicker } from "../common/ColorsPicker/ColorsPicker";
 import { ProfileForm } from "./ProfileForm/ProfileForm";
 import { Preview } from "./Preview/Preview";
 
-import styles from "./GeneratorModule.module.scss";
 import { useAppStore } from "../../store/app/useAppStore";
+
+import styles from "./GeneratorModule.module.scss";
 
 export const GeneratorModule = (): React.ReactNode => {
   const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);

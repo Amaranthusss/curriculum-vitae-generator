@@ -12,8 +12,8 @@ export const useSidebarElements = () => {
     ({ primaryBgColor }) => primaryBgColor
   );
 
-  const sidebarSidebarColor: React.CSSProperties["color"] = useColorsStore(
-    ({ sidebarSidebarColor }) => sidebarSidebarColor
+  const sidebarColor: React.CSSProperties["color"] = useColorsStore(
+    ({ sidebarColor }) => sidebarColor
   );
 
   const sidebarSidebarCaptionColor: React.CSSProperties["color"] =
@@ -59,7 +59,13 @@ export const useSidebarElements = () => {
   );
 
   const renderSidebarTag = useCallback(
-    (text: string): Content => {
+    (
+      text: string,
+      extra?: {
+        textColor?: React.CSSProperties["color"];
+        disableMarginBottom?: boolean;
+      }
+    ): Content => {
       return {
         table: {
           widths: [sidebar.caption.tagWidth, "*"],
@@ -69,8 +75,10 @@ export const useSidebarElements = () => {
               {
                 text,
                 fontSize: sidebar.tag.fontSize,
-                color: sidebarSidebarColor,
-                marginBottom: sidebar.tag.marginBottom,
+                color: extra?.textColor ?? sidebarColor,
+                marginBottom: extra?.disableMarginBottom
+                  ? 0
+                  : sidebar.tag.marginBottom,
               },
             ],
           ],
@@ -78,7 +86,7 @@ export const useSidebarElements = () => {
         layout: "noBorders",
       };
     },
-    [sidebarSidebarColor]
+    [sidebarColor]
   );
 
   return { renderSidebarCaption, renderSidebarTag };

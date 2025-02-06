@@ -19,12 +19,12 @@
     "caption": "Znajomość języków",
     "add": "Dodaj język",
     "language": "Język",
-    "a1": "Poziom elementarny",
-    "a2": "Poziom wstępny",
-    "b1": "Poziom progowy ",
-    "b2": "Poziom średni ogólny",
+    "a1": "Poziom elementarny języka",
+    "a2": "Poziom wstępny języka",
+    "b1": "Poziom progowy języka",
+    "b2": "Poziom średni ogólny języka",
     "c1": "Poziom efektywnej biegłości językowej",
-    "c2": "Poziom zaawansowany",
+    "c2": "Poziom zaawansowany języka",
     "native": "Język ojczysty"
   },
   "education": {
@@ -73,6 +73,7 @@
   "colors": {
     "primary": "Kolor tekstu przewodniego motywu",
     "primary-bg": "Kolor tła przewodniego motywu",
+    "secondary": "Text color of secondary elements",
     "sidebar": "Kolor tekstu bocznego paska",
     "sidebar-bg": "Kolor tła bocznego paska",
     "sidebar-caption": "Kolor tekstu nagłówka w bocznym pasku",

@@ -19,12 +19,12 @@
     "caption": "Languages knowledge",
     "add": "Add language",
     "language": "Language",
-    "a1": "Beginner",
-    "a2": "Elementary",
-    "b1": "Intermediate",
-    "b2": "Upper-intermediate",
-    "c1": "Advanced",
-    "c2": "Proficiency",
+    "a1": "Beginner language",
+    "a2": "Elementary language",
+    "b1": "Intermediate language",
+    "b2": "Upper-intermediate language",
+    "c1": "Advanced language",
+    "c2": "Proficiency language",
     "native": "Native language"
   },
   "education": {
@@ -73,6 +73,7 @@
   "colors": {
     "primary": "Primary text color",
     "primary-bg": "Primary background color",
+    "secondary": "Text color of secondary elements",
     "sidebar": "Sidebar text color",
     "sidebar-bg": "Sidebar background color",
     "sidebar-caption": "Sidebar caption text color",
