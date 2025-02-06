@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "update-translations-types": "npx i18next-resources-for-ts toc -i ./public/locales/en -o ./src/types/resources.ts",
+    "update-translations-types": "npx i18next-resources-for-ts toc -i ./public/locales/en-GB -o ./src/types/resources.ts",
     "utt": "yarn update-translations-types"
   },
   "dependencies": {

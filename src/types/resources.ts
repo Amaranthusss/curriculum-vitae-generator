@@ -1,4 +1,4 @@
-import publications from '../../public/locales/en/publications.json';
+import publications from '../../public/locales/en-GB/publications.json';
 
 const resources = {
   publications
