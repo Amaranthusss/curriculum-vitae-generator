@@ -30,16 +30,12 @@
   "education": {
     "caption": "Edukacja",
     "add": "Dodaj etap edukacji",
-    "start-date": "Data rozpoczęcia",
-    "end-date": "Data zakończenia",
     "title": "Tytuł",
     "description": "Opis"
   },
   "experience": {
     "caption": "Doświadczenie zawodowe",
     "add": "Dodaj doświadczenie",
-    "start-date": "Data rozpoczęcia",
-    "end-date": "Data zakończenia",
     "work-station": "Stanowisko",
     "description": "Opis stanowiska"
   },
@@ -78,5 +74,10 @@
     "sidebar-bg": "Kolor tła bocznego paska",
     "sidebar-caption": "Kolor tekstu nagłówka w bocznym pasku",
     "sidebar-caption-bg": "Kolor tła nagłówka w bocznym pasku"
+  },
+  "date-range-form-item": {
+    "start-date": "Data rozpoczęcia",
+    "end-date": "Data zakończenia",
+    "present": "Aktualnie"
   }
 }

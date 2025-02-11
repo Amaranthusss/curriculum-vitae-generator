@@ -37,15 +37,20 @@ export const useExperience = (
             return [];
           }
 
-          const { workStation, date, description } = experienceField;
+          const { workStation, description, date } = experienceField;
 
-          const startDateFormatted: string | undefined = _.isNil(date?.[0])
-            ? undefined
-            : dayjs(date[0]).format("L");
+          const startDateFormatted: string | undefined =
+            _.isArray(date.value) && !_.isNil(date.value?.[0])
+              ? dayjs(date.value[0]).format("L")
+              : !_.isArray(date.value) && !_.isNil(date.value)
+              ? dayjs(date.value).format("L")
+              : undefined;
 
-          const endDateFormatted: string | undefined = _.isNil(date?.[1])
-            ? undefined
-            : dayjs(date[1]).format("L");
+          const endDateFormatted: string | undefined = date?.present
+            ? t("date-range-form-item.present")
+            : _.isArray(date.value) && !_.isNil(date?.value?.[1])
+            ? dayjs(date.value[1]).format("L")
+            : undefined;
 
           const text: string = _.join(
             [

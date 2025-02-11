@@ -47,8 +47,12 @@ export interface LanguageField {
   level: LanguageLevel;
 }
 
+export interface FormDate {
+  value: Dayjs | LimitedArray<Dayjs, 2> | null;
+  present: boolean;
+}
 export interface FormDatePool {
-  date: LimitedArray<Dayjs, 2> | null;
+  date: FormDate;
 }
 
 export interface EducationField extends FormDatePool {

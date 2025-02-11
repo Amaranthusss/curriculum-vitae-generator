@@ -1,4 +1,5 @@
-import { Form, Input, Divider, DatePicker, Flex } from "antd";
+import { Form, Input, Divider, Flex } from "antd";
+import { DateRangeFormItem } from "../../../common/DateRangeFormItem/DateRangeFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
 import { Trans } from "react-i18next";
@@ -24,19 +25,11 @@ export const ExperienceList = (): React.ReactNode => {
             ({ key, name, ...restField }): React.ReactNode => (
               <Flex key={key} gap={8}>
                 <Flex vertical flex={1}>
-                  <Form.Item
-                    {...restField}
-                    name={[name, "date" satisfies keyof ExperienceField]}
-                    style={{ marginBottom: 8 }}
-                  >
-                    <DatePicker.RangePicker
-                      style={{ width: "100%" }}
-                      placeholder={[
-                        t("experience.start-date"),
-                        t("experience.end-date"),
-                      ]}
-                    />
-                  </Form.Item>
+                  <DateRangeFormItem
+                    name={name}
+                    restField={restField}
+                    subname={"date" satisfies keyof ExperienceField}
+                  />
 
                   <Form.Item
                     {...restField}
