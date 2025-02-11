@@ -30,16 +30,12 @@
   "education": {
     "caption": "Education",
     "add": "Add education",
-    "start-date": "Start date",
-    "end-date": "End date",
     "title": "Title",
     "description": "Description"
   },
   "experience": {
     "caption": "Professional experience",
     "add": "Add experience",
-    "start-date": "Start date",
-    "end-date": "End date",
     "work-station": "Work station",
     "description": "Work station description"
   },
@@ -78,5 +74,10 @@
     "sidebar-bg": "Sidebar background color",
     "sidebar-caption": "Sidebar caption text color",
     "sidebar-caption-bg": "Sidebar caption background color"
-  }
+  },
+	"date-range-form-item": {
+    "start-date": "Start date",
+    "end-date": "End date",
+		"present": "Present"
+	}
 }
