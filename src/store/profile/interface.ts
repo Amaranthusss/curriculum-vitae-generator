@@ -56,7 +56,7 @@ export interface LanguageField {
 }
 
 export interface FormDate {
-  value: Dayjs | LimitedArray<Dayjs, 2> | null;
+  value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
   present: boolean;
 }
 export interface FormDatePool {
