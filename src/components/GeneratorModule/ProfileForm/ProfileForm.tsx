@@ -8,11 +8,11 @@ import { EducationList } from "./EducationList/EducationList";
 import { UploadImage } from "../../common/UploadImage/UploadImage";
 import { Trans } from "react-i18next";
 
+import { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-import { useCallback } from "react";
 import { useMemo } from "react";
 
+import { useProfileStore } from "../../../store/profile/useProfileStore";
 import { useFormStore } from "../../../store/form/useFormStore";
 
 import { getBase64 } from "../../../utils/getBase64";
@@ -23,155 +23,166 @@ import type { UpdateValues } from "../../../store/form/interface";
 import type { Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
-  const { t } = useTranslation();
+	const signalProfile = useFormStore(({ signalProfile }) => signalProfile);
+	const [form] = Form.useForm();
+	const { t } = useTranslation();
 
-  const getInitialFormValues: GetInitialFormValues = useFormStore(
-    ({ getInitialFormValues }) => getInitialFormValues
-  );
+	const getInitialFormValues: GetInitialFormValues = useFormStore(
+		({ getInitialFormValues }) => getInitialFormValues
+	);
 
-  const updateValues: UpdateValues = useFormStore(
-    ({ updateValues }) => updateValues
-  );
+	const updateValues: UpdateValues = useFormStore(
+		({ updateValues }) => updateValues
+	);
 
-  const onValuesChange = useCallback(
-    (changedValues: Partial<Profile>, values: Profile): void => {
-      const isLanguagesListChange: boolean = !_.isEmpty(
-        changedValues.languages
-      );
+	const onValuesChange = useCallback(
+		(changedValues: Partial<Profile>, values: Profile): void => {
+			const isLanguagesListChange: boolean = !_.isEmpty(
+				changedValues.languages
+			);
 
-      if (isLanguagesListChange) {
-        return updateValues({ languages: values.languages });
-      }
+			if (isLanguagesListChange) {
+				return updateValues({ languages: values.languages });
+			}
 
-      const isEducationChange: boolean = !_.isEmpty(changedValues.education);
+			const isEducationChange: boolean = !_.isEmpty(changedValues.education);
 
-      if (isEducationChange) {
-        return updateValues({ education: values.education });
-      }
+			if (isEducationChange) {
+				return updateValues({ education: values.education });
+			}
 
-      const isExperienceChange: boolean = !_.isEmpty(changedValues.experience);
+			const isExperienceChange: boolean = !_.isEmpty(changedValues.experience);
 
-      if (isExperienceChange) {
-        return updateValues({ experience: values.experience });
-      }
+			if (isExperienceChange) {
+				return updateValues({ experience: values.experience });
+			}
 
-      const isLinksChange: boolean = !_.isEmpty(changedValues.links);
+			const isLinksChange: boolean = !_.isEmpty(changedValues.links);
 
-      if (isLinksChange) {
-        return updateValues({ links: values.links });
-      }
+			if (isLinksChange) {
+				return updateValues({ links: values.links });
+			}
 
-      const isQualificationsChange: boolean = !_.isEmpty(
-        changedValues.qualifications
-      );
+			const isQualificationsChange: boolean = !_.isEmpty(
+				changedValues.qualifications
+			);
 
-      if (isQualificationsChange) {
-        return updateValues({ qualifications: values.qualifications });
-      }
+			if (isQualificationsChange) {
+				return updateValues({ qualifications: values.qualifications });
+			}
 
-      const isPublicationsChange: boolean = !_.isEmpty(
-        changedValues.publications
-      );
+			const isPublicationsChange: boolean = !_.isEmpty(
+				changedValues.publications
+			);
 
-      if (isPublicationsChange) {
-        return updateValues({ publications: values.publications });
-      }
+			if (isPublicationsChange) {
+				return updateValues({ publications: values.publications });
+			}
 
-      updateValues(changedValues);
-    },
-    [updateValues]
-  );
+			updateValues(changedValues);
+		},
+		[updateValues]
+	);
 
-  const convertPictureToBase64 = useCallback(
-    async (
-      value: ReturnType<Exclude<UploadProps["beforeUpload"], undefined>> | null
-    ): Promise<void> => {
-      updateValues({
-        picture: value == null ? "" : await getBase64(value as File),
-      });
-    },
-    [updateValues]
-  );
+	const convertPictureToBase64 = useCallback(
+		async (
+			value: ReturnType<Exclude<UploadProps["beforeUpload"], undefined>> | null
+		): Promise<void> => {
+			updateValues({
+				picture: value == null ? "" : await getBase64(value as File),
+			});
+		},
+		[updateValues]
+	);
 
-  const onUploadImage = useCallback(
-    (
-      value: ReturnType<Exclude<UploadProps["beforeUpload"], undefined>> | null
-    ): void => {
-      convertPictureToBase64(value);
-    },
-    [convertPictureToBase64]
-  );
+	const onUploadImage = useCallback(
+		(
+			value: ReturnType<Exclude<UploadProps["beforeUpload"], undefined>> | null
+		): void => {
+			convertPictureToBase64(value);
+		},
+		[convertPictureToBase64]
+	);
 
-  const initialValues = useMemo((): Profile => {
-    return getInitialFormValues();
-  }, [getInitialFormValues]);
+	const initialValues = useMemo((): Profile => {
+		return getInitialFormValues();
+	}, [getInitialFormValues]);
 
-  return (
-    <Form<Profile>
-      name={"profileForm"}
-      onValuesChange={onValuesChange}
-      initialValues={initialValues}
-      style={{ paddingRight: 12 }}
-    >
-      <Divider orientation={"left"}>
-        <Trans i18nKey={"personal-data.caption"} />
-      </Divider>
+	useEffect(() => {
+		if (signalProfile == null) return;
 
-      <Flex gap={16}>
-        <UploadImage onChange={onUploadImage} />
+		const profile: Profile = useProfileStore.getState().getProfile();
+		console.log(profile)
+		form.setFieldsValue(profile);
+	}, [signalProfile, form]);
 
-        <Flex vertical>
-          <Form.Item label={t("personal-data.full-name")}>
-            <Space.Compact>
-              <Form.Item
-                noStyle
-                label={t("personal-data.name")}
-                name={"name" satisfies keyof Profile}
-              >
-                <Input placeholder={t("personal-data.name")} />
-              </Form.Item>
+	return (
+		<Form<Profile>
+			form={form}
+			name={"profileForm"}
+			onValuesChange={onValuesChange}
+			initialValues={initialValues}
+			style={{ paddingRight: 12 }}
+		>
+			<Divider orientation={"left"}>
+				<Trans i18nKey={"personal-data.caption"} />
+			</Divider>
 
-              <Form.Item
-                noStyle
-                label={t("personal-data.surname")}
-                name={"surname" satisfies keyof Profile}
-              >
-                <Input placeholder={t("personal-data.surname")} />
-              </Form.Item>
-            </Space.Compact>
-          </Form.Item>
+			<Flex gap={16}>
+				<UploadImage onChange={onUploadImage} />
 
-          <Form.Item
-            label={t("personal-data.country")}
-            name={"country" satisfies keyof Profile}
-          >
-            <Input placeholder={t("personal-data.country")} />
-          </Form.Item>
-        </Flex>
-      </Flex>
+				<Flex vertical>
+					<Form.Item label={t("personal-data.full-name")}>
+						<Space.Compact>
+							<Form.Item
+								noStyle
+								label={t("personal-data.name")}
+								name={"name" satisfies keyof Profile}
+							>
+								<Input placeholder={t("personal-data.name")} />
+							</Form.Item>
 
-      <Divider />
+							<Form.Item
+								noStyle
+								label={t("personal-data.surname")}
+								name={"surname" satisfies keyof Profile}
+							>
+								<Input placeholder={t("personal-data.surname")} />
+							</Form.Item>
+						</Space.Compact>
+					</Form.Item>
 
-      <Form.Item
-        label={t("personal-data.about-me")}
-        name={"aboutMe" satisfies keyof Profile}
-      >
-        <Input.TextArea placeholder={t("personal-data.about-me-placeholder")} />
-      </Form.Item>
+					<Form.Item
+						label={t("personal-data.country")}
+						name={"country" satisfies keyof Profile}
+					>
+						<Input placeholder={t("personal-data.country")} />
+					</Form.Item>
+				</Flex>
+			</Flex>
 
-      <Form.Item
-        label={t("personal-data.email")}
-        name={"email" satisfies keyof Profile}
-      >
-        <Input placeholder={t("personal-data.email")} />
-      </Form.Item>
+			<Divider />
 
-      <LanguagesList />
-      <EducationList />
-      <ExperienceList />
-      <QualificationsList />
-      <PublicationsList />
-      <ReferencesList />
-    </Form>
-  );
+			<Form.Item
+				label={t("personal-data.about-me")}
+				name={"aboutMe" satisfies keyof Profile}
+			>
+				<Input.TextArea placeholder={t("personal-data.about-me-placeholder")} />
+			</Form.Item>
+
+			<Form.Item
+				label={t("personal-data.email")}
+				name={"email" satisfies keyof Profile}
+			>
+				<Input placeholder={t("personal-data.email")} />
+			</Form.Item>
+
+			<LanguagesList />
+			<EducationList />
+			<ExperienceList />
+			<QualificationsList />
+			<PublicationsList />
+			<ReferencesList />
+		</Form>
+	);
 };

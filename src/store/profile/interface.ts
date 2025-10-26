@@ -1,6 +1,11 @@
 import type { Dayjs } from "dayjs";
 
-export type ProfileStore = Profile;
+export interface ProfileStore extends Profile
+{
+	getProfile: () => Profile;
+	saveProfile: () => void;
+	loadProfile: () => Promise<void>;
+};
 
 export enum LanguageLevel {
   A1,

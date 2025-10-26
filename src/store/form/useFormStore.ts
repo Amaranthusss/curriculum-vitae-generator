@@ -7,25 +7,31 @@ import type { FormStore } from "./interface";
 import type { Profile } from "../profile/interface";
 
 export const useFormStore = create<FormStore>()(
-  devtools(
-    (): FormStore => {
-      return {
-        joinNameAndSurname: (): string | null => {
-          const { name, surname } = useProfileStore.getState();
+	devtools(
+		(set, get): FormStore => {
+			return {
+				signalProfile: null,
 
-          if (_.isEmpty(name) && _.isEmpty(surname)) return null;
-          return [name, surname].filter((v) => !_.isEmpty(v)).join(" ");
-        },
+				joinNameAndSurname: (): string | null => {
+					const { name, surname } = useProfileStore.getState();
 
-        getInitialFormValues: (): Profile => {
-          return useProfileStore.getState();
-        },
+					if (_.isEmpty(name) && _.isEmpty(surname)) return null;
+					return [name, surname].filter((v) => !_.isEmpty(v)).join(" ");
+				},
 
-        updateValues: (values: Partial<Profile>): void => {
-          useProfileStore.setState(values);
-        },
-      };
-    },
-    { name: "form-store" }
-  )
+				getInitialFormValues: (): Profile => {
+					return useProfileStore.getState();
+				},
+
+				updateValues: (values: Partial<Profile>): void => {
+					useProfileStore.setState(values);
+				},
+
+				triggerSignalProfile: (): void => {
+					set({ signalProfile: (get().signalProfile ?? 0) + 1 });
+				}
+			};
+		},
+		{ name: "form-store" }
+	)
 );

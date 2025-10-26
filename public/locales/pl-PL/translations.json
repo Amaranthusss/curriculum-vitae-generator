@@ -1,4 +1,8 @@
 {
+	"app-settings": {
+		"save-profile": "Zapisz aktualne ustawienia",
+		"load-profile": "Wczytaj ustawienia z pliku"
+	},
   "personal-data": {
     "caption": "Dane osobiste",
     "name": "Imię",
