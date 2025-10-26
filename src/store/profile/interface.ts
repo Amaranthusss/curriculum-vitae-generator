@@ -1,3 +1,4 @@
+import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
 
@@ -31,7 +32,7 @@ export interface Profile {
 	links: LinkField[];
 }
 
-export type ProfileFile = Profile & Colors & { version: string };
+export type ProfileFile = Profile & Colors & { version: string, language: Language };
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
 

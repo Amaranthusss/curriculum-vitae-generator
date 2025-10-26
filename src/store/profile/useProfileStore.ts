@@ -4,9 +4,11 @@ import { useFormStore } from "../form/useFormStore";
 import { devtools } from "zustand/middleware";
 import { create } from "zustand";
 import dayjs from "dayjs";
+import i18n from "../../utils/i18n";
 import _ from "lodash";
 
 import type { FormDate, FormDatePool, Profile, ProfileFile, ProfileStore } from "./interface";
+import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
 
@@ -37,7 +39,14 @@ export const useProfileStore = create<ProfileStore>()(
 				saveProfile: (): void => {
 					const profile: Profile = get().getProfile();
 					const colors: Colors = useColorsStore.getState().getColors();
-					const profileFile: ProfileFile = { ...profile, ...colors, version: dayjs().toISOString() };
+
+					const profileFile: ProfileFile = {
+						...profile,
+						...colors,
+						version: dayjs().toISOString(),
+						language: i18n.language as Language
+					};
+
 					const json: string = JSON.stringify(profileFile, null, 2);
 					const blob: Blob = new Blob([json], { type: "application/json" });
 					const url: string = URL.createObjectURL(blob);
@@ -82,6 +91,7 @@ export const useProfileStore = create<ProfileStore>()(
 								useFormStore.getState().triggerSignalProfile();
 								useColorsStore.getState().setColors(colors);
 								useColorsStore.getState().triggerSignalProfile();
+								i18n.changeLanguage(loadedProfile.language)
 								resolve();
 							} catch (error: unknown) {
 								console.error("Could not read the file", error);
