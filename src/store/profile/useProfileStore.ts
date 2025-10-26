@@ -58,8 +58,13 @@ export const useProfileStore = create<ProfileStore>()(
 								const text: string = await file.text();
 								const loadedProfile: Profile = JSON.parse(text);
 
-								loadedProfile.education = mapIsoStringDates(loadedProfile.education);
-								loadedProfile.experience = mapIsoStringDates(loadedProfile.experience);
+								loadedProfile.education = mapFormDatePoolIsoStringDates(loadedProfile.education);
+								loadedProfile.experience = mapFormDatePoolIsoStringDates(loadedProfile.experience);
+
+								loadedProfile.publications = _.map(loadedProfile.publications, p => ({
+									...p,
+									publicationYear: !_.isNil(p.publicationYear) ? dayjs(p.publicationYear) : null
+								}));
 
 								set(loadedProfile);
 								useFormStore.getState().triggerSignalProfile();
@@ -81,7 +86,7 @@ export const useProfileStore = create<ProfileStore>()(
 	)
 );
 
-const mapIsoStringDates = <T extends FormDatePool>(fields: T[]): T[] => {
+const mapFormDatePoolIsoStringDates = <T extends FormDatePool>(fields: T[]): T[] => {
 	return _.map(fields, e => ({ ...e, date: toFormDate(e.date) }));
 }
 
