@@ -8,6 +8,10 @@ import _ from "lodash";
 
 import type { FormDate, FormDatePool, Profile, ProfileFile, ProfileStore } from "./interface";
 import type { Colors } from "../colors/interface";
+import type { Dayjs } from "dayjs";
+
+import { ProfileKeys } from "./constants";
+import { ColorsKeys } from "../colors/constants";
 
 export const useProfileStore = create<ProfileStore>()(
 	devtools(
@@ -33,11 +37,15 @@ export const useProfileStore = create<ProfileStore>()(
 				saveProfile: (): void => {
 					const profile: Profile = get().getProfile();
 					const colors: Colors = useColorsStore.getState().getColors();
-					const profileFile: ProfileFile = { ...profile, ...colors };
+					const profileFile: ProfileFile = { ...profile, ...colors, version: dayjs().toISOString() };
 					const json: string = JSON.stringify(profileFile, null, 2);
 					const blob: Blob = new Blob([json], { type: "application/json" });
 					const url: string = URL.createObjectURL(blob);
 					const link: HTMLAnchorElement = document.createElement("a");
+
+					console.log('colors', colors)
+					console.log('profile', profile)
+					console.log('profileFile', profileFile)
 
 					link.href = url;
 					link.download = (useFormStore.getState().joinNameAndSurname() ?? 'profile') + ".json";
@@ -64,15 +72,15 @@ export const useProfileStore = create<ProfileStore>()(
 
 								loadedProfile.education = mapFormDatePoolIsoStringDates(loadedProfile.education);
 								loadedProfile.experience = mapFormDatePoolIsoStringDates(loadedProfile.experience);
+								loadedProfile.publications = mapDateParam(loadedProfile.publications, 'publicationYear');
+								loadedProfile.qualifications = mapDateParam(loadedProfile.qualifications, 'issueDate');
 
-								loadedProfile.publications = _.map(loadedProfile.publications, p => ({
-									...p,
-									publicationYear: !_.isNil(p.publicationYear) ? dayjs(p.publicationYear) : null
-								}));
+								const profile: Profile = _.pick(loadedProfile, ProfileKeys);
+								const colors: Colors = _.pick(loadedProfile, ColorsKeys);
 
-								set(loadedProfile);
+								set(profile);
 								useFormStore.getState().triggerSignalProfile();
-								useColorsStore.getState().setColors(loadedProfile);
+								useColorsStore.getState().setColors(colors);
 								useColorsStore.getState().triggerSignalProfile();
 								resolve();
 							} catch (error: unknown) {
@@ -105,3 +113,25 @@ const toFormDate = (date: FormDate): FormDate => {
 
 	return { value, present: date.present ?? false };
 }
+
+const mapSingleDate = (value: Dayjs | null | undefined): Dayjs | null => {
+	return !_.isNil(value) && _.isString(value) ? dayjs(value)
+		: dayjs.isDayjs(value) ? value
+			: null;
+}
+
+type KeysWithDate<T> = {
+	[P in keyof T]: T[P] extends Dayjs | null | undefined ? P : never
+}[keyof T];
+
+const mapDateParam = <T, K extends KeysWithDate<T>>(
+	list: T[],
+	dateParam: K
+): T[] => {
+	return _.map(list, (p: T): T => {
+		return {
+			...p,
+			[dateParam]: mapSingleDate(p[dateParam] as Dayjs | null | undefined)
+		};
+	});
+};

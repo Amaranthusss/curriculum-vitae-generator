@@ -4,6 +4,8 @@ import _ from "lodash";
 
 import type { Colors, ColorsStore } from "./interface";
 
+import { ColorsKeys } from "./constants";
+
 export const useColorsStore = create<ColorsStore>()(
 	devtools(
 		(set, get): ColorsStore => {
@@ -18,12 +20,7 @@ export const useColorsStore = create<ColorsStore>()(
 				sidebarSidebarCaptionBgColor: "#2e2e2e",
 
 				getColors: (): Colors => {
-					return _.omit(get(), [
-						'getColors',
-						'setColors',
-						'signalProfile',
-						'triggerSignalProfile',
-					] satisfies (keyof ColorsStore)[]);
+					return _.pick(get(), ColorsKeys);
 				},
 
 				setColors: (partial: Partial<ColorsStore>): void => set(partial),

@@ -116,17 +116,17 @@ export const ProfileForm = (): React.ReactNode => {
 
 		const profile: Profile = useProfileStore.getState().getProfile();
 
-		if (profile.picture) {
+		if (profile.picture && _.startsWith(profile.picture, 'data:')) {
 			imageController.current?.setFileList([
 				{
 					uid: '-1',
 					name: 'profile-picture.png',
 					status: 'done',
-					url: _.startsWith(profile.picture, 'data:')
-						? profile.picture
-						: `data:image/png;base64,${profile.picture}`,
+					url: profile.picture
 				},
 			]);
+		} else {
+			imageController.current?.setFileList([]);
 		}
 
 		form.setFieldsValue(profile);

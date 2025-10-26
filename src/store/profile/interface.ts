@@ -1,80 +1,79 @@
 import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
 
-export interface ProfileStore extends Profile
-{
+export interface ProfileStore extends Profile {
 	getProfile: () => Profile;
 	saveProfile: () => void;
 	loadProfile: () => Promise<void>;
 };
 
 export enum LanguageLevel {
-  A1,
-  A2,
-  B1,
-  B2,
-  C1,
-  C2,
+	A1,
+	A2,
+	B1,
+	B2,
+	C1,
+	C2,
 }
 
 export interface Profile {
-  name: string;
-  surname: string;
-  email: string;
-  country: string;
-  aboutMe?: string;
-  picture: string;
-  languages: LanguageField[];
-  education: EducationField[];
-  experience: ExperienceField[];
-  qualifications: QualificationField[];
-  publications: PublicationField[];
-  links: LinkField[];
+	name: string;
+	surname: string;
+	email: string;
+	country: string;
+	aboutMe?: string;
+	picture: string;
+	languages: LanguageField[];
+	education: EducationField[];
+	experience: ExperienceField[];
+	qualifications: QualificationField[];
+	publications: PublicationField[];
+	links: LinkField[];
 }
 
-export type ProfileFile = Profile & Colors;
+export type ProfileFile = Profile & Colors & { version: string };
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
 
 export interface PublicationField {
-  title: string;
-  publisher: string;
-  code: string;
-  publicationYear?: Dayjs | null;
+	title: string;
+	publisher: string;
+	code: string;
+	publicationYear?: Dayjs | null;
 }
 
 export interface QualificationField {
-  type: string;
-  name: string;
-  description?: string;
-  issueDate?: string | null;
+	type: string;
+	name: string;
+	description?: string;
+	issueDate?: Dayjs | null;
 }
 
 export interface LanguageField {
-  text: string;
-  level: LanguageLevel;
+	text: string;
+	level: LanguageLevel;
 }
 
 export interface FormDate {
-  value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
-  present: boolean;
+	value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
+	present: boolean;
 }
 export interface FormDatePool {
-  date: FormDate;
+	date: FormDate;
 }
 
 export interface EducationField extends FormDatePool {
-  title: string;
-  description: string;
+	title: string;
+	description: string;
 }
 
 export interface ExperienceField extends FormDatePool {
-  workStation: string;
-  description: string;
+	workStation: string;
+	description: string;
 }
 
 export interface LinkField {
-  label: string;
-  icon?: string;
-  link: string;
+	label: string;
+	icon?: string;
+	link: string;
 }
