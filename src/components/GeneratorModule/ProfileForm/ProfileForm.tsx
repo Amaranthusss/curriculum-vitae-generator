@@ -13,16 +13,19 @@ import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 
 import { useProfileStore } from "../../../store/profile/useProfileStore";
+import { useController } from "../../../hooks/useController";
 import { useFormStore } from "../../../store/form/useFormStore";
 
 import { getBase64 } from "../../../utils/getBase64";
 import _ from "lodash";
 
+import type { UploadImageController } from "../../common/UploadImage/UploadImage.interface";
 import type { GetInitialFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
 import type { Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
+	const { controller: imageController, setController: setImageController } = useController<UploadImageController>();
 	const signalProfile = useFormStore(({ signalProfile }) => signalProfile);
 	const [form] = Form.useForm();
 	const { t } = useTranslation();
@@ -112,9 +115,23 @@ export const ProfileForm = (): React.ReactNode => {
 		if (signalProfile == null) return;
 
 		const profile: Profile = useProfileStore.getState().getProfile();
+
+		if (profile.picture) {
+			imageController.current?.setFileList([
+				{
+					uid: '-1',
+					name: 'profile-picture.png',
+					status: 'done',
+					url: _.startsWith(profile.picture, 'data:')
+						? profile.picture
+						: `data:image/png;base64,${profile.picture}`,
+				},
+			]);
+		}
+
 		console.log(profile)
 		form.setFieldsValue(profile);
-	}, [signalProfile, form]);
+	}, [imageController, signalProfile, form]);
 
 	return (
 		<Form<Profile>
@@ -129,7 +146,7 @@ export const ProfileForm = (): React.ReactNode => {
 			</Divider>
 
 			<Flex gap={16}>
-				<UploadImage onChange={onUploadImage} />
+				<UploadImage setController={setImageController} onChange={onUploadImage} />
 
 				<Flex vertical>
 					<Form.Item label={t("personal-data.full-name")}>

@@ -2,10 +2,10 @@ import { useFormStore } from "../form/useFormStore";
 
 import { devtools } from "zustand/middleware";
 import { create } from "zustand";
+import dayjs from "dayjs";
 import _ from "lodash";
 
 import type { FormDate, FormDatePool, Profile, ProfileStore } from "./interface";
-import dayjs from "dayjs";
 
 export const useProfileStore = create<ProfileStore>()(
 	devtools(
