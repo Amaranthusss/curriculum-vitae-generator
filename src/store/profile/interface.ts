@@ -1,3 +1,4 @@
+import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
 
 export interface ProfileStore extends Profile
@@ -30,6 +31,8 @@ export interface Profile {
   publications: PublicationField[];
   links: LinkField[];
 }
+
+export type ProfileFile = Profile & Colors;
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
 

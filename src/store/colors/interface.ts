@@ -1,6 +1,10 @@
+import type { TriggerSignalProfile } from "../form/interface";
+
 export interface ColorsStore extends Colors {
+	getColors: GetColors;
   setColors: SetColors;
-  getInitialColors: GetInitialColors;
+	signalProfile: number | null;
+	triggerSignalProfile: TriggerSignalProfile;
 }
 
 export interface Colors {
@@ -15,4 +19,4 @@ export interface Colors {
 
 export type SetColors = (partial: Partial<ColorsStore>) => void;
 
-export type GetInitialColors = () => Colors;
+export type GetColors = () => Colors;

@@ -111,7 +111,7 @@ export const ProfileForm = (): React.ReactNode => {
 		return getInitialFormValues();
 	}, [getInitialFormValues]);
 
-	useEffect(() => {
+	useEffect((): void => {
 		if (signalProfile == null) return;
 
 		const profile: Profile = useProfileStore.getState().getProfile();
@@ -129,7 +129,6 @@ export const ProfileForm = (): React.ReactNode => {
 			]);
 		}
 
-		console.log(profile)
 		form.setFieldsValue(profile);
 	}, [imageController, signalProfile, form]);
 

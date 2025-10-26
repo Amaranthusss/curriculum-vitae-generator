@@ -1,3 +1,4 @@
+import { useColorsStore } from "../colors/useColorsStore";
 import { useFormStore } from "../form/useFormStore";
 
 import { devtools } from "zustand/middleware";
@@ -5,7 +6,8 @@ import { create } from "zustand";
 import dayjs from "dayjs";
 import _ from "lodash";
 
-import type { FormDate, FormDatePool, Profile, ProfileStore } from "./interface";
+import type { FormDate, FormDatePool, Profile, ProfileFile, ProfileStore } from "./interface";
+import type { Colors } from "../colors/interface";
 
 export const useProfileStore = create<ProfileStore>()(
 	devtools(
@@ -30,7 +32,9 @@ export const useProfileStore = create<ProfileStore>()(
 
 				saveProfile: (): void => {
 					const profile: Profile = get().getProfile();
-					const json: string = JSON.stringify(profile, null, 2);
+					const colors: Colors = useColorsStore.getState().getColors();
+					const profileFile: ProfileFile = { ...profile, ...colors };
+					const json: string = JSON.stringify(profileFile, null, 2);
 					const blob: Blob = new Blob([json], { type: "application/json" });
 					const url: string = URL.createObjectURL(blob);
 					const link: HTMLAnchorElement = document.createElement("a");
@@ -56,7 +60,7 @@ export const useProfileStore = create<ProfileStore>()(
 
 							try {
 								const text: string = await file.text();
-								const loadedProfile: Profile = JSON.parse(text);
+								const loadedProfile: ProfileFile = JSON.parse(text);
 
 								loadedProfile.education = mapFormDatePoolIsoStringDates(loadedProfile.education);
 								loadedProfile.experience = mapFormDatePoolIsoStringDates(loadedProfile.experience);
@@ -68,6 +72,8 @@ export const useProfileStore = create<ProfileStore>()(
 
 								set(loadedProfile);
 								useFormStore.getState().triggerSignalProfile();
+								useColorsStore.getState().setColors(loadedProfile);
+								useColorsStore.getState().triggerSignalProfile();
 								resolve();
 							} catch (error: unknown) {
 								console.error("Could not read the file", error);
