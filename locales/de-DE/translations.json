@@ -1,4 +1,8 @@
 {
+	"app-settings": {
+		"save-profile": "Aktuelles Profil speichern",
+		"load-profile": "Profil aus Datei laden"
+	},
   "personal-data": {
     "caption": "Persönliche Daten",
     "name": "Name",
