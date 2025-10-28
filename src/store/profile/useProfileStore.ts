@@ -129,5 +129,5 @@ const toFormDate = (date: FormDate): FormDate => {
 				: _.isString(date.value) ? dayjs(date.value)
 					: null;
 
-	return { value, present: date.present ?? false, displayLimit: date?.displayLimit };
+	return { value, present: date.present ? date.present : undefined, displayLimit: date.displayLimit };
 }
