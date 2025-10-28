@@ -55,7 +55,7 @@
     "caption": "Research publications",
     "add": "Add publication",
     "title": "Title",
-    "year": "Year",
+    "publish-date": "Publish date",
     "publisher": "Publisher",
     "code": "Code"
   },
@@ -82,7 +82,6 @@
 	"date-range-form-item": {
     "start-date": "Start date",
     "end-date": "End date",
-		"display-limit-prefix": "Display ",
 		"display-limit-year": "Year",
 		"display-limit-month": "Month",
 		"display-limit-day": "Day",

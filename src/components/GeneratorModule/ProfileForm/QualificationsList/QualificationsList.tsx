@@ -1,5 +1,5 @@
-import { Form, Input, Divider, DatePicker, Flex, Space } from "antd";
-import { DisplayLimitFormItem } from "../../../common/DisplayLimitFormItem/DisplayLimitFormItem";
+import { Form, Input, Divider, Flex, Space } from "antd";
+import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
 import { Trans } from "react-i18next";
@@ -26,62 +26,36 @@ export const QualificationsList = (): React.ReactNode => {
 							<Flex key={key} gap={8}>
 								<Flex vertical flex={1}>
 									<Flex gap={8}>
-										<Flex flex={1}>
-											<Space.Compact block>
-												<Form.Item
-													{...restField}
-													name={[
-														name,
-														"type" satisfies keyof QualificationField,
-													]}
-													style={{ width: "100%", marginBottom: 8 }}
-												>
-													<Input placeholder={t("qualifications.type")} />
-												</Form.Item>
+										<Space.Compact block>
+											<Form.Item
+												{...restField}
+												name={[name, "type" satisfies keyof QualificationField]}
+												style={{ width: "100%", marginBottom: 8 }}
+											>
+												<Input placeholder={t("qualifications.type")} />
+											</Form.Item>
 
-												<Form.Item
-													{...restField}
-													name={[
-														name,
-														"name" satisfies keyof QualificationField,
-													]}
-													style={{ width: "100%", marginBottom: 8 }}
-												>
-													<Input placeholder={t("qualifications.name")} />
-												</Form.Item>
-											</Space.Compact>
-										</Flex>
+											<Form.Item
+												{...restField}
+												name={[name, "name" satisfies keyof QualificationField]}
+												style={{ width: "100%", marginBottom: 8 }}
+											>
+												<Input placeholder={t("qualifications.name")} />
+											</Form.Item>
+										</Space.Compact>
 
-										<Flex flex={1} style={{ width: "100%", maxWidth: 300 }}>
-											<Space.Compact block>
-												<Form.Item
-													{...restField}
-													name={[
-														name,
-														"issueDate" satisfies keyof QualificationField,
-													]}
-													style={{ width: "100%", marginBottom: 8 }}
-												>
-													<DatePicker
-														style={{ width: "100%" }}
-														placeholder={t("qualifications.issue-date")}
-													/>
-												</Form.Item>
-
-												<DisplayLimitFormItem
-													restField={restField}
-													name={[name, "issueDateDisplayLimit" satisfies keyof QualificationField,]}
-												/>
-											</Space.Compact>
-										</Flex>
+										<DatePickerFormItem
+											name={name}
+											disableRange
+											restField={restField}
+											placeholders={[t("qualifications.issue-date"), '']}
+											subname={"date" satisfies keyof QualificationField}
+										/>
 									</Flex>
 
 									<Form.Item
 										{...restField}
-										name={[
-											name,
-											"description" satisfies keyof QualificationField,
-										]}
+										name={[name, "description" satisfies keyof QualificationField]}
 									>
 										<Input.TextArea
 											placeholder={t("qualifications.description")}

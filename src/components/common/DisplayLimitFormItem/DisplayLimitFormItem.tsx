@@ -12,7 +12,13 @@ import { DisplayLimit } from "../../../constants/DisplayLimit";
 
 import styles from './DisplayLimitFormItem.module.scss';
 
-export const DisplayLimitFormItem = ({ name, restField, className }: DisplayLimitFormItemProps): React.ReactNode => {
+export const DisplayLimitFormItem = ({
+	name,
+	onChange,
+	restField,
+	className,
+	defaultValue = DisplayLimit.Day,
+}: DisplayLimitFormItemProps): React.ReactNode => {
 	const { t } = useTranslation();
 
 	const displayLimitOptions = useMemo((): DefaultOptionType[] => {
@@ -23,21 +29,26 @@ export const DisplayLimitFormItem = ({ name, restField, className }: DisplayLimi
 		];
 	}, [t]);
 
+	const placeholder = useMemo((): string | undefined => {
+		return _.find(displayLimitOptions, o => o.value === defaultValue)?.label?.toString();
+	}, [defaultValue, displayLimitOptions]);
+
 	const classNames = useMemo((): string => {
 		const classes: string[] = [styles.displayLimitSelector];
 
 		if (!_.isNil(className) && !_.isEmpty(className)) classes.push(className);
 
 		return _.join(classes, ' ');
-	}, [className])
+	}, [className]);
 
 	return (
 		<Form.Item {...restField} name={name} >
 			<Select
 				allowClear
-				options={displayLimitOptions}
 				className={classNames}
-				placeholder={t("date-range-form-item.display-limit-prefix")}
+				onChange={(v, o) => onChange?.(v, o as DefaultOptionType)}
+				options={displayLimitOptions}
+				placeholder={placeholder}
 			/>
 		</Form.Item>
 	);

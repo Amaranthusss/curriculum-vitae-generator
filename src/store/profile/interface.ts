@@ -37,20 +37,16 @@ export type ProfileFile = Profile & Colors & { version: string, language: Langua
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
 
-export interface PublicationField {
+export interface PublicationField extends FormDatePool {
 	title: string;
 	publisher: string;
 	code: string;
-	publicationYear?: Dayjs | null;
-	publicationYearDisplayLimit?: DisplayLimit
 }
 
-export interface QualificationField {
+export interface QualificationField extends FormDatePool {
 	type: string;
 	name: string;
 	description?: string;
-	issueDate?: Dayjs | null;
-	issueDateDisplayLimit?: DisplayLimit
 }
 
 export interface LanguageField {

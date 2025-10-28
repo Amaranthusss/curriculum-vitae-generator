@@ -55,7 +55,7 @@
     "caption": "Publikacje naukowe",
     "add": "Dodaj publikację",
     "title": "Tytuł",
-    "year": "Rok",
+    "publish-date": "Data wydania",
     "publisher": "Wydawca",
     "code": "Kod"
   },
@@ -82,7 +82,6 @@
   "date-range-form-item": {
     "start-date": "Data rozpoczęcia",
     "end-date": "Data zakończenia",
-		"display-limit-prefix": "Wyświetl ",
 		"display-limit-year": "Rok",
 		"display-limit-month": "Miesiąc",
 		"display-limit-day": "Dzień",

@@ -1,5 +1,5 @@
 import { Form, Input, Divider, Flex } from "antd";
-import { DateRangeFormItem } from "../../../common/DateRangeFormItem/DateRangeFormItem";
+import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
 import { Trans } from "react-i18next";
@@ -25,7 +25,7 @@ export const ExperienceList = (): React.ReactNode => {
             ({ key, name, ...restField }): React.ReactNode => (
               <Flex key={key} gap={8}>
                 <Flex vertical flex={1}>
-                  <DateRangeFormItem
+                  <DatePickerFormItem
                     name={name}
                     restField={restField}
                     subname={"date" satisfies keyof ExperienceField}

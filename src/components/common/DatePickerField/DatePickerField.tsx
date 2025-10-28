@@ -6,29 +6,32 @@ import type { RangeValueType } from "rc-picker/lib/PickerInput/RangePicker";
 import type { Dayjs } from "dayjs";
 
 export const DatePickerField = ({
-  present,
-  value,
-  onChange,
-  placeholder,
+	value,
+	picker,
+	present,
+	onChange,
+	placeholder,
 }: DatePickerFieldProps): React.ReactNode => {
-  if (present) {
-    return (
-      <DatePicker
-        value={value as NoUndefinedRangeValueType<Dayjs> | null}
-        style={{ width: "100%" }}
-        placeholder={placeholder?.[0]}
-        onChange={onChange}
-      />
-    );
-  }
+	if (present) {
+		return (
+			<DatePicker
+				value={value as NoUndefinedRangeValueType<Dayjs> | null}
+				picker={picker}
+				style={{ width: "100%" }}
+				placeholder={placeholder?.[0]}
+				onChange={onChange}
+			/>
+		);
+	}
 
-  return (
-    <DatePicker.RangePicker
-      value={value as RangeValueType<Dayjs> | null}
-      style={{ width: "100%" }}
-      allowEmpty={[true, false]}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-  );
+	return (
+		<DatePicker.RangePicker
+			value={value as RangeValueType<Dayjs> | null}
+			picker={picker}
+			style={{ width: "100%" }}
+			allowEmpty={[true, false]}
+			placeholder={placeholder}
+			onChange={onChange}
+		/>
+	);
 };

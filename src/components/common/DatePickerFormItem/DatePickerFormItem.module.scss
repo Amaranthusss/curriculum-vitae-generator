@@ -4,15 +4,13 @@
 	>.datePicker {
 		flex: 1;
 		margin-bottom: 8px;
+		min-width: 120px;
 	}
 
-	>.displayLimit {
-		width: 150px;
-
-		:not(div[class~='ant-select-open'])>div[class~='ant-select-selector']:not(:hover) {
-			border-inline-color: rgba(0, 0, 0, 0);
-		}
+	.hideLeftBorder:not(div[class~='ant-select-open'])>div[class~='ant-select-selector']:not(:hover) {
+		border-left-color: rgba(0, 0, 0, 0);
 	}
+
 
 	>.present {
 		margin-bottom: 8px;

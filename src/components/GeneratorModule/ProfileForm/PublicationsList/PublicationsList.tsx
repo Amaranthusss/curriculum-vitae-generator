@@ -1,5 +1,5 @@
-import { Form, Input, Divider, DatePicker, Flex } from "antd";
-import { DisplayLimitFormItem } from "../../../common/DisplayLimitFormItem/DisplayLimitFormItem";
+import { Form, Input, Divider, Flex } from "antd";
+import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
 import { Trans } from "react-i18next";
@@ -9,7 +9,8 @@ import { useTranslation } from "react-i18next";
 import type { FormListFieldData } from "antd";
 import type { PublicationField } from "../../../../store/profile/interface";
 import type { Profile } from "../../../../store/profile/interface";
-import type { Dayjs } from "dayjs";
+
+import { DisplayLimit } from "../../../../constants/DisplayLimit";
 
 export const PublicationsList = (): React.ReactNode => {
 	const { t } = useTranslation();
@@ -35,30 +36,13 @@ export const PublicationsList = (): React.ReactNode => {
 											<Input placeholder={t("publications.title")} />
 										</Form.Item>
 
-										<Form.Item
-											{...restField}
-											name={[
-												name,
-												"publicationYear" satisfies keyof PublicationField,
-											]}
-											style={{ width: "100%", marginBottom: 8, maxWidth: 80 }}
-										>
-											<DatePicker
-												picker={"year"}
-												style={{ width: "100%" }}
-												placeholder={t("publications.year")}
-												disabledDate={(date: Dayjs): boolean => {
-													return (
-														date.isBefore("1900-01-01", "year") ||
-														date.isAfter(new Date().toISOString(), "year")
-													);
-												}}
-											/>
-										</Form.Item>
-
-										<DisplayLimitFormItem
+										<DatePickerFormItem
+											name={name}
+											disableRange
 											restField={restField}
-											name={[name, "publicationYearDisplayLimit" satisfies keyof PublicationField,]}
+											displayLimitDefault={DisplayLimit.Year}
+											placeholders={[t("publications.publish-date"), '']}
+											subname={"date" satisfies keyof PublicationField}
 										/>
 									</Flex>
 
@@ -66,10 +50,7 @@ export const PublicationsList = (): React.ReactNode => {
 										<Flex flex={2}>
 											<Form.Item
 												{...restField}
-												name={[
-													name,
-													"publisher" satisfies keyof PublicationField,
-												]}
+												name={[name, "publisher" satisfies keyof PublicationField]}
 												style={{ width: "100%" }}
 											>
 												<Input placeholder={t("publications.publisher")} />
