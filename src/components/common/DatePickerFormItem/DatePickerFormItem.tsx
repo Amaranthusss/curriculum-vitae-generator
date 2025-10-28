@@ -3,12 +3,12 @@ import { DisplayLimitFormItem } from "../DisplayLimitFormItem/DisplayLimitFormIt
 import { DatePickerField } from "../DatePickerField/DatePickerField";
 import { Trans } from "react-i18next";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import type { CheckboxChangeEvent, DatePickerProps } from "antd";
+import type { DatePickerProps, FormInstance } from "antd";
 import type { DatePickerFormItemProps } from "./DatePickerFormItem.interface";
-import type { FormDate } from "../../../store/profile/interface";
+import type { FormDate, Profile } from "../../../store/profile/interface";
 
 import { DisplayLimit } from "../../../constants/DisplayLimit";
 
@@ -18,15 +18,13 @@ export const DatePickerFormItem = ({
 	name,
 	subname,
 	restField,
+	parentName,
 	placeholders,
 	disableRange,
 	displayLimitDefault,
 }: DatePickerFormItemProps): React.ReactNode => {
-	const defaultPresent = useMemo((): boolean => {
-		if (disableRange == null) return false;
-		if (disableRange) return true;
-		return false;
-	}, [disableRange])
+	const form: FormInstance<Profile> = Form.useFormInstance();
+	const present = Form.useWatch([...parentName, name, subname, "present"], form);
 
 	const displayLimitDefaultToPicker = useCallback((displayLimit?: DisplayLimit): DatePickerProps['picker'] => {
 		switch (displayLimit) {
@@ -41,8 +39,6 @@ export const DatePickerFormItem = ({
 		}
 	}, [])
 
-	const [present, setPresent] = useState<boolean>(defaultPresent);
-	
 	const [picker, setPicker] = useState<DatePickerProps['picker']>(
 		displayLimitDefaultToPicker(displayLimitDefault)
 	);
@@ -52,10 +48,6 @@ export const DatePickerFormItem = ({
 	const onDisplayLimitChange = useCallback((value: DisplayLimit): void => {
 		setPicker(displayLimitDefaultToPicker(value));
 	}, [displayLimitDefaultToPicker]);
-
-	const onPresentChange = useCallback((event: CheckboxChangeEvent): void => {
-		setPresent(event.target.checked);
-	}, []);
 
 	return (
 		<Space.Compact className={styles.compactSpace}>
@@ -83,20 +75,18 @@ export const DatePickerFormItem = ({
 			/>
 
 			{!disableRange && (
-				<Form.Item
-					{...restField}
-					name={[name, subname, "present" satisfies keyof FormDate]}
-					valuePropName={"checked"}
-					className={styles.present}
-				>
-					<Button>
-						<Checkbox onChange={onPresentChange}>
+				<Button className={styles.present}>
+					<Form.Item
+						{...restField}
+						name={[name, subname, "present" satisfies keyof FormDate]}
+						valuePropName={"checked"}
+					>
+						<Checkbox>
 							<Trans i18nKey={"date-range-form-item.present"} />
 						</Checkbox>
-					</Button>
-				</Form.Item>
+					</Form.Item>
+				</Button>
 			)}
-
 		</Space.Compact>
 	);
 };

@@ -3,6 +3,7 @@ import type { DisplayLimitFormItemProps } from "../DisplayLimitFormItem/DisplayL
 export interface DatePickerFormItemProps {
 	restField: { fieldKey?: number };
 	name: number;
+	parentName: string[];
 	subname: string;
 	placeholders?: [string, string];
 	displayLimitDefault?: DisplayLimitFormItemProps['defaultValue'];

@@ -51,6 +51,7 @@ export const EducationList = (): React.ReactNode => {
 											name={name}
 											restField={restField}
 											subname={"date" satisfies keyof EducationField}
+											parentName={["education" satisfies keyof Profile]}
 											displayLimitDefault={generalSettings.education.dateDisplayLimit}
 										/>
 

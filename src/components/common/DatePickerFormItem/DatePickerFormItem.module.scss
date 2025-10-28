@@ -13,15 +13,8 @@
 
 
 	>.present {
-		margin-bottom: 8px;
-
-		>button {
-			padding-inline: unset;
-			border-left: unset;
-
-			>label {
-				padding-inline: 12px;
-			}
+		>* {
+			margin: 0;
 		}
 	}
 }

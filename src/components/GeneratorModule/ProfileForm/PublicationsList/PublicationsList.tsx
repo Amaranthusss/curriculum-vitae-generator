@@ -62,6 +62,7 @@ export const PublicationsList = (): React.ReactNode => {
 												restField={restField}
 												placeholders={[t("publications.publish-date"), '']}
 												subname={"date" satisfies keyof PublicationField}
+												parentName={["publications" satisfies keyof Profile]}
 												displayLimitDefault={generalSettings.publications.dateDisplayLimit}
 											/>
 										</Flex>

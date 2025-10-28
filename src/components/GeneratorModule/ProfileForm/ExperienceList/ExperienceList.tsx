@@ -52,6 +52,7 @@ export const ExperienceList = (): React.ReactNode => {
 											name={name}
 											restField={restField}
 											subname={"date" satisfies keyof ExperienceField}
+											parentName={["experience" satisfies keyof Profile]}
 											displayLimitDefault={generalSettings.experience.dateDisplayLimit}
 											/>
 

@@ -72,6 +72,7 @@ export const QualificationsList = (): React.ReactNode => {
 												restField={restField}
 												placeholders={[t("qualifications.issue-date"), '']}
 												subname={"date" satisfies keyof QualificationField}
+												parentName={["qualifications" satisfies keyof Profile]}
 												displayLimitDefault={generalSettings.qualifications.dateDisplayLimit}
 											/>
 										</Flex>

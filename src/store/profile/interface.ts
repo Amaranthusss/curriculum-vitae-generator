@@ -69,7 +69,7 @@ export interface LanguageField {
 export interface FormDate {
 	value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
 	displayLimit?: DisplayLimit
-	present: boolean;
+	present?: boolean;
 }
 
 export interface FormDatePool {
