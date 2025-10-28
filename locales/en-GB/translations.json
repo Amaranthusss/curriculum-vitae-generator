@@ -1,7 +1,9 @@
 {
 	"app-settings": {
-		"save-profile": "Save the current profile",
-		"load-profile": "Load a profile from file"
+		"save-profile": "Save profile",
+		"save-profile-tooltip": "Save the current profile",
+		"load-profile": "Load profile",
+		"load-profile-tooltip": "Load a profile from file"
 	},
   "personal-data": {
     "caption": "Personal data",
@@ -55,7 +57,7 @@
     "caption": "Research publications",
     "add": "Add publication",
     "title": "Title",
-    "year": "Year",
+    "publish-date": "Publish date",
     "publisher": "Publisher",
     "code": "Code"
   },
@@ -82,6 +84,9 @@
 	"date-range-form-item": {
     "start-date": "Start date",
     "end-date": "End date",
+		"display-limit-year": "Year",
+		"display-limit-month": "Month",
+		"display-limit-day": "Day",
 		"present": "Present"
 	}
 }

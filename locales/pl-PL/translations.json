@@ -1,7 +1,9 @@
 {
 	"app-settings": {
-		"save-profile": "Zapisz aktualne ustawienia",
-		"load-profile": "Wczytaj ustawienia z pliku"
+		"save-profile": "Zapisz profil",
+		"save-profile-tooltip": "Zapisz aktualne ustawienia",
+		"load-profile": "Wczytaj profil",
+		"load-profile-tooltip": "Wczytaj ustawienia z pliku"
 	},
   "personal-data": {
     "caption": "Dane osobiste",
@@ -55,7 +57,7 @@
     "caption": "Publikacje naukowe",
     "add": "Dodaj publikację",
     "title": "Tytuł",
-    "year": "Rok",
+    "publish-date": "Data wydania",
     "publisher": "Wydawca",
     "code": "Kod"
   },
@@ -82,6 +84,9 @@
   "date-range-form-item": {
     "start-date": "Data rozpoczęcia",
     "end-date": "Data zakończenia",
+		"display-limit-year": "Rok",
+		"display-limit-month": "Miesiąc",
+		"display-limit-day": "Dzień",
     "present": "Aktualnie"
   }
 }
