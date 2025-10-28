@@ -1,7 +1,9 @@
 {
 	"app-settings": {
-		"save-profile": "Zapisz aktualne ustawienia",
-		"load-profile": "Wczytaj ustawienia z pliku"
+		"save-profile": "Zapisz profil",
+		"save-profile-tooltip": "Zapisz aktualne ustawienia",
+		"load-profile": "Wczytaj profil",
+		"load-profile-tooltip": "Wczytaj ustawienia z pliku"
 	},
   "personal-data": {
     "caption": "Dane osobiste",

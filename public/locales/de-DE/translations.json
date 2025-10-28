@@ -1,7 +1,9 @@
 {
 	"app-settings": {
-		"save-profile": "Aktuelles Profil speichern",
-		"load-profile": "Profil aus Datei laden"
+		"save-profile": "Profil speichern",
+		"save-profile-tooltip": "Aktuelles Profil speichern",
+		"load-profile": "Profil laden",
+		"load-profile-tooltip": "Profil aus Datei laden"
 	},
   "personal-data": {
     "caption": "Persönliche Daten",

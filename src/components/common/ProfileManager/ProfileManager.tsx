@@ -1,7 +1,7 @@
 import { ReadOutlined, SaveOutlined } from "@ant-design/icons";
 import { Button, Space, Tooltip } from "antd";
 
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import { useProfileStore } from "../../../store/profile/useProfileStore";
 
@@ -12,11 +12,15 @@ export const ProfileManager = (): React.ReactNode => {
 
 	return (
 		<Space.Compact block>
-			<Tooltip title={t('app-settings.load-profile')}>
-				<Button icon={<ReadOutlined />} onClick={loadProfile} />
+			<Tooltip title={t('app-settings.load-profile-tooltip')}>
+				<Button icon={<ReadOutlined />} onClick={loadProfile}>
+					<Trans i18nKey={'app-settings.load-profile'} />
+				</Button>
 			</Tooltip>
-			<Tooltip title={t('app-settings.save-profile')}>
-				<Button icon={<SaveOutlined />} onClick={saveProfile} />
+			<Tooltip title={t('app-settings.save-profile-tooltip')}>
+				<Button icon={<SaveOutlined />} onClick={saveProfile}>
+					<Trans i18nKey={'app-settings.save-profile'} />
+				</Button>
 			</Tooltip>
 		</Space.Compact>
 	)
