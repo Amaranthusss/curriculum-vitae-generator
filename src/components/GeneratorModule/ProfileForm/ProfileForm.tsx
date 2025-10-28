@@ -30,16 +30,17 @@ export const ProfileForm = (): React.ReactNode => {
 	const [form] = Form.useForm();
 	const { t } = useTranslation();
 
-	const getInitialFormValues: GetInitialFormValues = useFormStore(
-		({ getInitialFormValues }) => getInitialFormValues
-	);
-
-	const updateValues: UpdateValues = useFormStore(
-		({ updateValues }) => updateValues
-	);
+	const getInitialFormValues: GetInitialFormValues = useFormStore(({ getInitialFormValues }) => getInitialFormValues);
+	const updateValues: UpdateValues = useFormStore(({ updateValues }) => updateValues);
 
 	const onValuesChange = useCallback(
 		(changedValues: Partial<Profile>, values: Profile): void => {
+			const isGeneralSettingsChange: boolean = !_.isEmpty(changedValues.generalSettings);
+
+			if (isGeneralSettingsChange) {
+				return updateValues({ generalSettings: values.generalSettings });
+			}
+
 			const isLanguagesListChange: boolean = !_.isEmpty(
 				changedValues.languages
 			);

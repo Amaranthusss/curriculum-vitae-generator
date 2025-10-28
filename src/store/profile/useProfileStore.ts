@@ -10,8 +10,8 @@ import _ from "lodash";
 import type { FormDate, FormDatePool, Profile, ProfileFile, ProfileStore } from "./interface";
 import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
-import type { Dayjs } from "dayjs";
 
+import { DisplayLimit } from "../../constants/DisplayLimit";
 import { ProfileKeys } from "./constants";
 import { ColorsKeys } from "../colors/constants";
 
@@ -31,6 +31,12 @@ export const useProfileStore = create<ProfileStore>()(
 				experience: [],
 				qualifications: [],
 				publications: [],
+				generalSettings: {
+					education: { dateDisplayLimit: DisplayLimit.Month },
+					experience: { dateDisplayLimit: DisplayLimit.Month },
+					publications: { dateDisplayLimit: DisplayLimit.Year },
+					qualifications: { dateDisplayLimit: DisplayLimit.Month },
+				},
 
 				getProfile: (): Profile => {
 					return _.omit(get(), ['getProfile', 'saveProfile', 'loadProfile'] satisfies (keyof ProfileStore)[]);
@@ -81,13 +87,13 @@ export const useProfileStore = create<ProfileStore>()(
 
 								loadedProfile.education = mapFormDatePoolIsoStringDates(loadedProfile.education);
 								loadedProfile.experience = mapFormDatePoolIsoStringDates(loadedProfile.experience);
-								loadedProfile.publications = mapDateParam(loadedProfile.publications, 'publicationYear');
-								loadedProfile.qualifications = mapDateParam(loadedProfile.qualifications, 'issueDate');
+								loadedProfile.publications = mapFormDatePoolIsoStringDates(loadedProfile.publications);
+								loadedProfile.qualifications = mapFormDatePoolIsoStringDates(loadedProfile.qualifications);
 
 								const profile: Profile = _.pick(loadedProfile, ProfileKeys);
 								const colors: Colors = _.pick(loadedProfile, ColorsKeys);
 
-								set(profile);
+								set({ ...get().getProfile(), ...profile }); // ToDo Create profile data validation
 								useFormStore.getState().triggerSignalProfile();
 								useColorsStore.getState().setColors(colors);
 								useColorsStore.getState().triggerSignalProfile();
@@ -115,33 +121,13 @@ const mapFormDatePoolIsoStringDates = <T extends FormDatePool>(fields: T[]): T[]
 }
 
 const toFormDate = (date: FormDate): FormDate => {
+	if (_.isNil(date)) return { value: null, present: false };
+
 	const value: FormDate['value'] =
 		_.isNil(date.value) ? null
 			: _.isArray(date.value) && date.value.length === 2 ? _.map(date.value, v => _.isNil(v) ? null : dayjs(v))
 				: _.isString(date.value) ? dayjs(date.value)
 					: null;
 
-	return { value, present: date.present ?? false };
+	return { value, present: date.present ?? false, displayLimit: date?.displayLimit };
 }
-
-const mapSingleDate = (value: Dayjs | null | undefined): Dayjs | null => {
-	return !_.isNil(value) && _.isString(value) ? dayjs(value)
-		: dayjs.isDayjs(value) ? value
-			: null;
-}
-
-type KeysWithDate<T> = {
-	[P in keyof T]: T[P] extends Dayjs | null | undefined ? P : never
-}[keyof T];
-
-const mapDateParam = <T, K extends KeysWithDate<T>>(
-	list: T[],
-	dateParam: K
-): T[] => {
-	return _.map(list, (p: T): T => {
-		return {
-			...p,
-			[dateParam]: mapSingleDate(p[dateParam] as Dayjs | null | undefined)
-		};
-	});
-};

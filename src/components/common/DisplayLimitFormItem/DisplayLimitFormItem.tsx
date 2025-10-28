@@ -14,6 +14,7 @@ import styles from './DisplayLimitFormItem.module.scss';
 
 export const DisplayLimitFormItem = ({
 	name,
+	style,
 	onChange,
 	restField,
 	className,
@@ -42,7 +43,7 @@ export const DisplayLimitFormItem = ({
 	}, [className]);
 
 	return (
-		<Form.Item {...restField} name={name} >
+		<Form.Item {...restField} name={name} style={style} >
 			<Select
 				allowClear
 				className={classNames}

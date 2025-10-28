@@ -18,6 +18,17 @@ export enum LanguageLevel {
 	C2,
 }
 
+interface DateDisplayLimit {
+	dateDisplayLimit: DisplayLimit;
+}
+
+export interface GeneralSettings {
+	education: DateDisplayLimit;
+	experience: DateDisplayLimit;
+	publications: DateDisplayLimit;
+	qualifications: DateDisplayLimit;
+}
+
 export interface Profile {
 	name: string;
 	surname: string;
@@ -31,6 +42,7 @@ export interface Profile {
 	qualifications: QualificationField[];
 	publications: PublicationField[];
 	links: LinkField[];
+	generalSettings: GeneralSettings;
 }
 
 export type ProfileFile = Profile & Colors & { version: string, language: Language };
