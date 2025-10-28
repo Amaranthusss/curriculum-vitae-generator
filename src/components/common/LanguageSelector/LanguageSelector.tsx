@@ -4,6 +4,9 @@ import { Select } from "antd";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { toLanguageDayjs } from "../../../utils/toLanguageDayjs";
+import dayjs from "dayjs";
+
 import type { SelectOption } from "../../../types/antd";
 
 import { Language } from "../../../constants/Language";
@@ -34,13 +37,15 @@ export const LanguageSelector = (): React.ReactNode => {
 	const onChange = useCallback(
 		(language: Language): void => {
 			i18n.changeLanguage(language);
+			dayjs.locale(toLanguageDayjs(language));
 			setValue(language);
-		},
-		[i18n]
-	);
+		}, [i18n]);
 
 	useEffect((): void => {
-		setValue(i18n.language as Language);
+		const language: Language = i18n.language as Language;
+
+		setValue(language);
+		dayjs.locale(toLanguageDayjs(language));
 	}, [i18n.language]);
 
 	return (
