@@ -82,6 +82,10 @@
 	"date-range-form-item": {
     "start-date": "Startdatum",
     "end-date": "Enddatum",
+		"display-limit-prefix": "Anzeige ",
+		"display-limit-year": "Jahr",
+		"display-limit-month": "Monat",
+		"display-limit-day": "Tag",
 		"present": "Gegenwärtig"
 	}
 }

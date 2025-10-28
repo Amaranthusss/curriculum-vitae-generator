@@ -82,6 +82,10 @@
   "date-range-form-item": {
     "start-date": "Data rozpoczęcia",
     "end-date": "Data zakończenia",
+		"display-limit-prefix": "Wyświetl ",
+		"display-limit-year": "Rok",
+		"display-limit-month": "Miesiąc",
+		"display-limit-day": "Dzień",
     "present": "Aktualnie"
   }
 }

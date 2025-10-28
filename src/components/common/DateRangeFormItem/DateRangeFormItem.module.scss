@@ -1,21 +1,29 @@
 .compactSpace {
-  display: flex;
+	display: flex;
 
-  > .datePicker {
-    flex: 1;
-    margin-bottom: 8px;
-  }
+	>.datePicker {
+		flex: 1;
+		margin-bottom: 8px;
+	}
 
-  > .present {
-    margin-bottom: 8px;
+	>.displayLimit {
+		width: 150px;
 
-    > button {
-      padding-inline: unset;
-      border-left: unset;
+		:not(div[class~='ant-select-open'])>div[class~='ant-select-selector']:not(:hover) {
+			border-inline-color: rgba(0, 0, 0, 0);
+		}
+	}
 
-      > label {
-        padding-inline: 12px;
-      }
-    }
-  }
+	>.present {
+		margin-bottom: 8px;
+
+		>button {
+			padding-inline: unset;
+			border-left: unset;
+
+			>label {
+				padding-inline: 12px;
+			}
+		}
+	}
 }
