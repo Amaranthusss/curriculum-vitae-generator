@@ -3,6 +3,7 @@ import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
 
+import { formatDate } from "../../../../utils/formatDate";
 import dayjs from "dayjs";
 import _ from "lodash";
 
@@ -29,14 +30,16 @@ export const usePublications = (
       ..._.map(publications, (publicationField: PublicationField): Content => {
         if (_.isEmpty(publicationField?.title)) return [];
 
-        const { title, publisher, code, publicationYear } = publicationField;
+        const { title, publisher, code, publicationYear, publicationYearDisplayLimit } = publicationField;
+
+				const format: string = formatDate(publicationYearDisplayLimit)
 
         const publisherText: string = !_.isEmpty(publisher)
           ? ` - ${publisher}`
           : "";
 
         const publicationYearText: string = !_.isNil(publicationYear)
-          ? `, ${dayjs(publicationYear).format("YYYY")}`
+          ? `, ${dayjs(publicationYear).format(format)}`
           : "";
 
         const text: string = `- ${title}${publisherText}${publicationYearText}`;

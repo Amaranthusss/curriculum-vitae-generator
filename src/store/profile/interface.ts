@@ -1,3 +1,4 @@
+import type { DisplayLimit } from "../../constants/DisplayLimit";
 import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
@@ -41,6 +42,7 @@ export interface PublicationField {
 	publisher: string;
 	code: string;
 	publicationYear?: Dayjs | null;
+	publicationYearDisplayLimit?: DisplayLimit
 }
 
 export interface QualificationField {
@@ -48,6 +50,7 @@ export interface QualificationField {
 	name: string;
 	description?: string;
 	issueDate?: Dayjs | null;
+	issueDateDisplayLimit?: DisplayLimit
 }
 
 export interface LanguageField {
@@ -57,8 +60,10 @@ export interface LanguageField {
 
 export interface FormDate {
 	value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
+	displayLimit?: DisplayLimit
 	present: boolean;
 }
+
 export interface FormDatePool {
 	date: FormDate;
 }

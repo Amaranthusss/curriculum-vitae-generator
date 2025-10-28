@@ -3,6 +3,7 @@ import { useCallback } from "react";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
 
+import { formatDate } from "../../../../utils/formatDate";
 import dayjs from "dayjs";
 import _ from "lodash";
 
@@ -32,10 +33,12 @@ export const useQualifications = (
         (qualificationField: QualificationField, index: number): Content => {
           if (_.isEmpty(qualificationField?.name)) return [];
 
-          const { name, type, description, issueDate } = qualificationField;
+          const { name, type, description, issueDate, issueDateDisplayLimit } = qualificationField;
+
+					const format: string = formatDate(issueDateDisplayLimit)
 
           const formatted: string | undefined =
-            issueDate == null ? undefined : dayjs(issueDate).format("L");
+            issueDate == null ? undefined : dayjs(issueDate).format(format);
 
           const text: string = _.chain([
             type,
