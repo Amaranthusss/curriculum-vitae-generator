@@ -1,19 +1,25 @@
 {
-	"app-settings": {
-		"save-profile": "Profil speichern",
-		"save-profile-tooltip": "Aktuelles Profil speichern",
-		"load-profile": "Profil laden",
-		"load-profile-tooltip": "Profil aus Datei laden"
-	},
+  "app-settings": {
+    "save-profile": "Profil speichern",
+    "save-profile-tooltip": "Aktuelles Profil speichern",
+    "load-profile": "Profil laden",
+    "load-profile-tooltip": "Profil aus Datei laden"
+  },
   "personal-data": {
     "caption": "Persönliche Daten",
     "name": "Name",
     "surname": "Nachname",
     "full-name": "Vollständiger Name",
     "country": "Land",
+		"contact-data": "Kontaktdaten",
     "about-me": "Über mich",
+    "about-me-content": "Inhalt",
     "about-me-placeholder": "Erzähle etwas über dich",
-    "email": "E-Mail"
+    "about-me-position": "Position",
+    "about-me-sidebar-position": "Seitenleiste",
+    "about-me-page-position": "Seiteninhalt",
+    "email": "E-Mail",
+    "mobile": "Telefonnummer"
   },
   "upload-image": {
     "add-picture": "Bild hinzufügen",
@@ -81,12 +87,12 @@
     "sidebar-caption": "Seitenleisten-Überschriftfarbe",
     "sidebar-caption-bg": "Seitenleisten-Überschrift-Hintergrundfarbe"
   },
-	"date-range-form-item": {
+  "date-range-form-item": {
     "start-date": "Startdatum",
     "end-date": "Enddatum",
-		"display-limit-year": "Jahr",
-		"display-limit-month": "Monat",
-		"display-limit-day": "Tag",
-		"present": "Gegenwärtig"
-	}
+    "display-limit-year": "Jahr",
+    "display-limit-month": "Monat",
+    "display-limit-day": "Tag",
+    "present": "Gegenwärtig"
+  }
 }
