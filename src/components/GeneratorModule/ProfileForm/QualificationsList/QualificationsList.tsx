@@ -1,8 +1,8 @@
 import { Form, Input, Divider, Flex, Space } from "antd";
 import { DragAndDropProfileList } from "../../../common/DragAndDropProfileList";
 import { DisplayLimitFormItem } from "../../../common/DisplayLimitFormItem/DisplayLimitFormItem";
+import { FormListItemToolbar } from "../../../common/FormListItemToolbar/FormListItemToolbar";
 import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
-import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
 import { Trans } from "react-i18next";
 
@@ -28,7 +28,7 @@ export const QualificationsList = (): React.ReactNode => {
 					</Divider>
 				</Flex>
 
-				<Flex style={{ minWidth: 132 }}>
+				<Flex style={{ minWidth: 200 }}>
 					<Divider orientation={"center"} >
 						<DisplayLimitFormItem
 							style={{ margin: 0 }}
@@ -91,8 +91,7 @@ export const QualificationsList = (): React.ReactNode => {
 												</Form.Item>
 											</Flex>
 
-											<DeleteListItem name={name} remove={remove} />
-											<DragAndDropProfileList.Handler />
+											<FormListItemToolbar name={name} remove={remove} />
 										</Flex>
 									</DragAndDropProfileList.Item>
 								)

@@ -1,6 +1,6 @@
 import { Form, Input, Divider, Flex, Select } from "antd";
 import { DragAndDropProfileList } from "../../../common/DragAndDropProfileList";
-import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
+import { FormListItemToolbar } from "../../../common/FormListItemToolbar/FormListItemToolbar";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
 import { Trans } from "react-i18next";
 
@@ -105,8 +105,7 @@ export const ReferencesList = (): React.ReactNode => {
 											</Form.Item>
 										</Flex>
 
-										<DeleteListItem name={name} remove={remove} />
-										<DragAndDropProfileList.Handler />
+										<FormListItemToolbar name={name} remove={remove} />
 									</Flex>
 								</DragAndDropProfileList.Item>
 							)

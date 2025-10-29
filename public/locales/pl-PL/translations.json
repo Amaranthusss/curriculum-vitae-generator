@@ -3,7 +3,9 @@
 		"save-profile": "Zapisz profil",
 		"save-profile-tooltip": "Zapisz aktualne ustawienia",
 		"load-profile": "Wczytaj profil",
-		"load-profile-tooltip": "Wczytaj ustawienia z pliku"
+		"load-profile-tooltip": "Wczytaj ustawienia z pliku",
+		"remove-form-list-element": "Usuń element z listy",
+		"drag-and-drop-from-list-element": "Zmień kolejność elementu w liście"
 	},
   "personal-data": {
     "caption": "Dane osobiste",
