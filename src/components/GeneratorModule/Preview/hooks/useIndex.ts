@@ -4,6 +4,7 @@ import { useQualifications } from "./useQualifications.ts";
 import { useAboutMeAtPage } from "./useAboutMeAtPage.ts";
 import { useBodyElements } from "./useBodyElements.ts";
 import { usePublications } from "./usePublications.ts";
+import { useReferences } from "./useReferences.ts";
 import { useExperience } from "./useExperience.ts";
 import { useNameLabel } from "./useFullName.ts";
 import { useEducation } from "./useEducation.ts";
@@ -12,7 +13,6 @@ import { useCallback } from "react";
 import { useCountry } from "./useCountry.ts";
 import { usePicture } from "./usePicture.ts";
 import { useMobile } from "./useMobile.ts";
-import { useLinks } from "./useLinks.ts";
 import { useEmail } from "./useEmail.ts";
 
 import { useColorsStore } from "../../../../store/colors/useColorsStore.ts";
@@ -55,10 +55,10 @@ export const useIndex = () => {
 		renderSidebarTag
 	);
 
+	const { renderReferences } = useReferences(renderSidebarCaption, renderSidebarTag);
 	const { renderCountry } = useCountry(renderSidebarCaption, renderSidebarTag);
 	const { renderMobile } = useMobile(renderSidebarCaption, renderSidebarTag);
 	const { renderEmail } = useEmail(renderSidebarCaption, renderSidebarTag);
-	const { renderLinks } = useLinks(renderSidebarCaption, renderSidebarTag);
 
 	const renderContent = useCallback(async (): Promise<Content> => {
 		return [
@@ -79,7 +79,7 @@ export const useIndex = () => {
 									renderCountry(),
 									renderLanguages(),
 									renderAboutMeAtSidebar(),
-									await renderLinks(),
+									await renderReferences(),
 								],
 							},
 							{
@@ -100,13 +100,13 @@ export const useIndex = () => {
 	}, [
 		sidebarBgColor,
 		renderEmail,
-		renderLinks,
 		renderMobile,
 		renderPicture,
 		renderCountry,
 		renderNameLabel,
 		renderEducation,
 		renderLanguages,
+		renderReferences,
 		renderExperience,
 		renderPublications,
 		renderAboutMeAtPage,

@@ -15,5 +15,5 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'experience',
 	'qualifications',
 	'publications',
-	'links',
+	'references',
 ];

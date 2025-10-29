@@ -43,7 +43,7 @@ export interface Profile {
 	experience: ExperienceField[];
 	qualifications: QualificationField[];
 	publications: PublicationField[];
-	links: LinkField[];
+	references: ReferenceField[];
 	generalSettings: GeneralSettings;
 }
 
@@ -92,7 +92,7 @@ export interface ExperienceField extends FormDatePool, OrderIndex {
 	description: string;
 }
 
-export interface LinkField extends OrderIndex {
+export interface ReferenceField extends OrderIndex {
 	label: string;
 	icon?: string;
 	link: string;

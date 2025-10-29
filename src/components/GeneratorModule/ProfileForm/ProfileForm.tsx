@@ -64,10 +64,10 @@ export const ProfileForm = (): React.ReactNode => {
 				return updateValues({ experience: values.experience });
 			}
 
-			const isLinksChange: boolean = !_.isEmpty(changedValues.links);
+			const isLinksChange: boolean = !_.isEmpty(changedValues.references);
 
 			if (isLinksChange) {
-				return updateValues({ links: values.links });
+				return updateValues({ references: values.references });
 			}
 
 			const isQualificationsChange: boolean = !_.isEmpty(

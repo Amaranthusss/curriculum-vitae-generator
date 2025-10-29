@@ -1,4 +1,5 @@
 import { Form, Input, Divider, Flex } from "antd";
+import { DragAndDropProfileList } from "../../../common/DragAndDropProfileList";
 import { DisplayLimitFormItem } from "../../../common/DisplayLimitFormItem/DisplayLimitFormItem";
 import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
@@ -10,11 +11,12 @@ import { useTranslation } from "react-i18next";
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
 
 import type { ExperienceField, GeneralSettings } from "../../../../store/profile/interface";
-import type { FormListFieldData } from "antd";
+import type { FormInstance, FormListFieldData } from "antd";
 import type { Profile } from "../../../../store/profile/interface";
 
 export const ExperienceList = (): React.ReactNode => {
 	const generalSettings: GeneralSettings = useProfileStore(({ generalSettings }) => generalSettings);
+	const form: FormInstance<Profile> = Form.useFormInstance();
 	const { t } = useTranslation();
 
 	return (
@@ -40,47 +42,51 @@ export const ExperienceList = (): React.ReactNode => {
 				</Flex>
 			</Flex>
 
-			<Form.List name={"experience" satisfies keyof Profile}>
-				{(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
-					<>
+			<DragAndDropProfileList form={form} listName={'experience'}>
+				<Form.List name={"experience" satisfies keyof Profile}>
+					{(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
+						<DragAndDropProfileList.Context>
+							{fields.map(
+								({ key, name, ...restField }): React.ReactNode => (
+									<DragAndDropProfileList.Item key={key} name={name} >
+										<Flex gap={8}>
+											<Flex vertical flex={1}>
+												<DatePickerFormItem
+													name={name}
+													restField={restField}
+													subname={"date" satisfies keyof ExperienceField}
+													parentName={["experience" satisfies keyof Profile]}
+													displayLimitDefault={generalSettings.experience.dateDisplayLimit}
+												/>
 
-						{fields.map(
-							({ key, name, ...restField }): React.ReactNode => (
-								<Flex key={key} gap={8}>
-									<Flex vertical flex={1}>
-										<DatePickerFormItem
-											name={name}
-											restField={restField}
-											subname={"date" satisfies keyof ExperienceField}
-											parentName={["experience" satisfies keyof Profile]}
-											displayLimitDefault={generalSettings.experience.dateDisplayLimit}
-											/>
+												<Form.Item
+													{...restField}
+													style={{ marginBottom: 8 }}
+													name={[name, "workStation" satisfies keyof ExperienceField]}
+												>
+													<Input placeholder={t("experience.work-station")} />
+												</Form.Item>
 
-										<Form.Item
-											{...restField}
-											style={{ marginBottom: 8 }}
-											name={[name, "workStation" satisfies keyof ExperienceField]}
-										>
-											<Input placeholder={t("experience.work-station")} />
-										</Form.Item>
+												<Form.Item
+													{...restField}
+													name={[name, "description" satisfies keyof ExperienceField]}
+												>
+													<Input.TextArea placeholder={t("experience.description")} />
+												</Form.Item>
+											</Flex>
 
-										<Form.Item
-											{...restField}
-											name={[name, "description" satisfies keyof ExperienceField]}
-										>
-											<Input.TextArea placeholder={t("experience.description")} />
-										</Form.Item>
-									</Flex>
+											<DeleteListItem name={name} remove={remove} />
+											<DragAndDropProfileList.Handler />
+										</Flex>
+									</DragAndDropProfileList.Item>
+								)
+							)}
 
-									<DeleteListItem name={name} remove={remove} />
-								</Flex>
-							)
-						)}
-
-						<AddListItem add={add} text={t("experience.add")} />
-					</>
-				)}
-			</Form.List>
+							<AddListItem add={add} text={t("experience.add")} />
+						</DragAndDropProfileList.Context>
+					)}
+				</Form.List>
+			</DragAndDropProfileList>
 		</>
 	);
 };

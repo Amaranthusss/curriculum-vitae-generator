@@ -1,4 +1,5 @@
 import { Form, Input, Divider, Flex, Space } from "antd";
+import { DragAndDropProfileList } from "../../../common/DragAndDropProfileList";
 import { DisplayLimitFormItem } from "../../../common/DisplayLimitFormItem/DisplayLimitFormItem";
 import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
@@ -10,11 +11,12 @@ import { useTranslation } from "react-i18next";
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
 
 import type { GeneralSettings, QualificationField } from "../../../../store/profile/interface";
-import type { FormListFieldData } from "antd";
+import type { FormInstance, FormListFieldData } from "antd";
 import type { Profile } from "../../../../store/profile/interface";
 
 export const QualificationsList = (): React.ReactNode => {
 	const generalSettings: GeneralSettings = useProfileStore(({ generalSettings }) => generalSettings);
+	const form: FormInstance<Profile> = Form.useFormInstance();
 	const { t } = useTranslation();
 
 	return (
@@ -40,62 +42,67 @@ export const QualificationsList = (): React.ReactNode => {
 				</Flex>
 			</Flex>
 
-			<Form.List name={"qualifications" satisfies keyof Profile}>
-				{(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
-					<>
-						{fields.map(
-							({ key, name, ...restField }): React.ReactNode => (
-								<Flex key={key} gap={8}>
-									<Flex vertical flex={1}>
+			<DragAndDropProfileList form={form} listName={'qualifications'}>
+				<Form.List name={"qualifications" satisfies keyof Profile}>
+					{(fields: FormListFieldData[], { add, remove }): React.ReactNode => (
+						<DragAndDropProfileList.Context>
+							{fields.map(
+								({ key, name, ...restField }): React.ReactNode => (
+									<DragAndDropProfileList.Item key={key} name={name} >
 										<Flex gap={8}>
-											<Space.Compact block>
-												<Form.Item
-													{...restField}
-													name={[name, "type" satisfies keyof QualificationField]}
-													style={{ width: "100%", marginBottom: 8 }}
-												>
-													<Input placeholder={t("qualifications.type")} />
-												</Form.Item>
+											<Flex vertical flex={1}>
+												<Flex gap={8}>
+													<Space.Compact block>
+														<Form.Item
+															{...restField}
+															name={[name, "type" satisfies keyof QualificationField]}
+															style={{ width: "100%", marginBottom: 8 }}
+														>
+															<Input placeholder={t("qualifications.type")} />
+														</Form.Item>
+
+														<Form.Item
+															{...restField}
+															name={[name, "name" satisfies keyof QualificationField]}
+															style={{ width: "100%", marginBottom: 8 }}
+														>
+															<Input placeholder={t("qualifications.name")} />
+														</Form.Item>
+													</Space.Compact>
+
+													<DatePickerFormItem
+														name={name}
+														disableRange
+														restField={restField}
+														placeholders={[t("qualifications.issue-date"), '']}
+														subname={"date" satisfies keyof QualificationField}
+														parentName={["qualifications" satisfies keyof Profile]}
+														displayLimitDefault={generalSettings.qualifications.dateDisplayLimit}
+													/>
+												</Flex>
 
 												<Form.Item
 													{...restField}
-													name={[name, "name" satisfies keyof QualificationField]}
-													style={{ width: "100%", marginBottom: 8 }}
+													name={[name, "description" satisfies keyof QualificationField]}
 												>
-													<Input placeholder={t("qualifications.name")} />
+													<Input.TextArea
+														placeholder={t("qualifications.description")}
+													/>
 												</Form.Item>
-											</Space.Compact>
+											</Flex>
 
-											<DatePickerFormItem
-												name={name}
-												disableRange
-												restField={restField}
-												placeholders={[t("qualifications.issue-date"), '']}
-												subname={"date" satisfies keyof QualificationField}
-												parentName={["qualifications" satisfies keyof Profile]}
-												displayLimitDefault={generalSettings.qualifications.dateDisplayLimit}
-											/>
+											<DeleteListItem name={name} remove={remove} />
+											<DragAndDropProfileList.Handler />
 										</Flex>
+									</DragAndDropProfileList.Item>
+								)
+							)}
 
-										<Form.Item
-											{...restField}
-											name={[name, "description" satisfies keyof QualificationField]}
-										>
-											<Input.TextArea
-												placeholder={t("qualifications.description")}
-											/>
-										</Form.Item>
-									</Flex>
-
-									<DeleteListItem name={name} remove={remove} />
-								</Flex>
-							)
-						)}
-
-						<AddListItem add={add} text={t("qualifications.add")} />
-					</>
-				)}
-			</Form.List>
+							<AddListItem add={add} text={t("qualifications.add")} />
+						</DragAndDropProfileList.Context>
+					)}
+				</Form.List>
+			</DragAndDropProfileList>
 		</>
 	);
 };

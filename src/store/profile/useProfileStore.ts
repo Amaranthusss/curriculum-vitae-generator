@@ -26,7 +26,7 @@ export const useProfileStore = create<ProfileStore>()(
 				email: "",
 				country: "",
 				mobile: "",
-				links: [],
+				references: [],
 				languages: [],
 				education: [],
 				experience: [],
