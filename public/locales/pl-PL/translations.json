@@ -11,8 +11,13 @@
     "surname": "Nazwisko",
     "full-name": "Imię i nazwisko",
     "country": "Kraj",
+		"contact-data": "Dane kontaktowe",
     "about-me": "O mnie",
+    "about-me-content": "Zawartość",
     "about-me-placeholder": "Napisz coś o sobie",
+    "about-me-position": "Położenie",
+    "about-me-sidebar-position": "Pasek boczny",
+    "about-me-page-position": "Zawartość strony",
     "email": "E-mail",
     "mobile": "Numer telefonu"
   },

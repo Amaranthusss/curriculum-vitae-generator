@@ -36,6 +36,7 @@ export interface Profile {
 	mobile: string;
 	country: string;
 	aboutMe?: string;
+	isAboutMeAtPage?: boolean
 	picture: string;
 	languages: LanguageField[];
 	education: EducationField[];

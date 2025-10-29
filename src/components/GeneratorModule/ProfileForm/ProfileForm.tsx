@@ -1,4 +1,4 @@
-import { Divider, Flex, Form, Input, Space, UploadProps } from "antd";
+import { Divider, Flex, Form, Input, Space, Switch } from "antd";
 import { QualificationsList } from "./QualificationsList/QualificationsList";
 import { PublicationsList } from "./PublicationsList/PublicationsList";
 import { ExperienceList } from "./ExperienceList/ExperienceList";
@@ -22,6 +22,7 @@ import _ from "lodash";
 import type { UploadImageController } from "../../common/UploadImage/UploadImage.interface";
 import type { GetInitialFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
+import type { UploadProps } from "antd";
 import type { Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
@@ -178,14 +179,9 @@ export const ProfileForm = (): React.ReactNode => {
 				</Flex>
 			</Flex>
 
-			<Divider />
-
-			<Form.Item
-				label={t("personal-data.about-me")}
-				name={"aboutMe" satisfies keyof Profile}
-			>
-				<Input.TextArea placeholder={t("personal-data.about-me-placeholder")} />
-			</Form.Item>
+			<Divider orientation={"left"}>
+				<Trans i18nKey={'personal-data.contact-data'} />
+			</Divider>
 
 			<Form.Item
 				label={t("personal-data.email")}
@@ -199,6 +195,30 @@ export const ProfileForm = (): React.ReactNode => {
 				name={"mobile" satisfies keyof Profile}
 			>
 				<Input placeholder={t("personal-data.mobile")} />
+			</Form.Item>
+
+			<Divider orientation={"left"}>
+				<Trans i18nKey={'personal-data.about-me'} />
+			</Divider>
+
+			<Form.Item
+				label={t("personal-data.about-me-content")}
+				name={"aboutMe" satisfies keyof Profile}
+			>
+				<Input.TextArea
+					rows={4}
+					placeholder={t("personal-data.about-me-placeholder")}
+				/>
+			</Form.Item>
+
+			<Form.Item
+				label={t("personal-data.about-me-position")}
+				name={"isAboutMeAtPage" satisfies keyof Profile}
+			>
+				<Switch
+					checkedChildren={t("personal-data.about-me-page-position")}
+					unCheckedChildren={t("personal-data.about-me-sidebar-position")}
+				/>
 			</Form.Item>
 
 			<LanguagesList />

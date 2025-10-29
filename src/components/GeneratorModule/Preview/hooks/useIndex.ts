@@ -1,14 +1,15 @@
+import { useAboutMeAtSidebar } from "./useAboutMeAtSidebar.ts";
 import { useSidebarElements } from "./useSidebarElements.ts";
 import { useQualifications } from "./useQualifications.ts";
+import { useAboutMeAtPage } from "./useAboutMeAtPage.ts";
 import { useBodyElements } from "./useBodyElements.ts";
 import { usePublications } from "./usePublications.ts";
 import { useExperience } from "./useExperience.ts";
 import { useNameLabel } from "./useFullName.ts";
 import { useEducation } from "./useEducation.ts";
 import { useLanguages } from "./useLanguages.ts";
-import { useCountry } from "./useCountry.ts";
 import { useCallback } from "react";
-import { useAboutMe } from "./useAboutMe.ts";
+import { useCountry } from "./useCountry.ts";
 import { usePicture } from "./usePicture.ts";
 import { useMobile } from "./useMobile.ts";
 import { useLinks } from "./useLinks.ts";
@@ -34,7 +35,9 @@ export const useIndex = () => {
 	const { renderNameLabel } = useNameLabel();
 	const { renderEducation } = useEducation(renderCaption, renderListItem);
 	const { renderExperience } = useExperience(renderCaption, renderListItem);
-	const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
+
+	const { renderAboutMeAtPage } = useAboutMeAtPage(renderCaption);
+	const { renderAboutMeAtSidebar } = useAboutMeAtSidebar(renderSidebarCaption, renderSidebarTag);
 
 	const { renderPublications } = usePublications(
 		renderCaption,
@@ -75,13 +78,14 @@ export const useIndex = () => {
 									renderMobile(),
 									renderCountry(),
 									renderLanguages(),
-									renderAboutMe(),
+									renderAboutMeAtSidebar(),
 									await renderLinks(),
 								],
 							},
 							{
 								stack: [
 									renderNameLabel(),
+									renderAboutMeAtPage(),
 									renderEducation(),
 									renderExperience(),
 									renderQualifications(),
@@ -98,15 +102,16 @@ export const useIndex = () => {
 		renderEmail,
 		renderLinks,
 		renderMobile,
-		renderAboutMe,
 		renderPicture,
 		renderCountry,
-		renderEducation,
 		renderNameLabel,
+		renderEducation,
 		renderLanguages,
 		renderExperience,
 		renderPublications,
+		renderAboutMeAtPage,
 		renderQualifications,
+		renderAboutMeAtSidebar,
 	]);
 
 	return { renderContent };

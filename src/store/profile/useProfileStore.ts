@@ -38,6 +38,7 @@ export const useProfileStore = create<ProfileStore>()(
 					publications: { dateDisplayLimit: DisplayLimit.Year },
 					qualifications: { dateDisplayLimit: DisplayLimit.Month },
 				},
+				isAboutMeAtPage: false,
 
 				getProfile: (): Profile => {
 					return _.pick(get(), ProfileKeys);
