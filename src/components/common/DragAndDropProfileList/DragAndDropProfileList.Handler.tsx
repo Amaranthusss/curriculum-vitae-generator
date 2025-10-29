@@ -3,10 +3,10 @@ import { Button } from 'antd';
 
 import { useContext } from "react";
 
-import { SortableListItemContext } from "../../../contexts/SortableListItemContext";
+import { DragAndDropProfileListHandlerContext } from "./contexts/DragAndDropProfileListHandlerContext";
 
-export const DragHandle = (): React.ReactNode => {
-	const { setActivatorNodeRef, listeners, attributes } = useContext(SortableListItemContext);
+export const DragAndDropProfileListHandler = (): React.ReactNode => {
+	const { setActivatorNodeRef, listeners, attributes } = useContext(DragAndDropProfileListHandlerContext);
 
 	return (
 		<Button

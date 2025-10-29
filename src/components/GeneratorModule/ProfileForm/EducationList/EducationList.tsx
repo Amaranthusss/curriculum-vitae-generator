@@ -4,7 +4,6 @@ import { DisplayLimitFormItem } from "../../../common/DisplayLimitFormItem/Displ
 import { DatePickerFormItem } from "../../../common/DatePickerFormItem/DatePickerFormItem";
 import { DeleteListItem } from "../../../common/DeleteListItem/DeleteListItem";
 import { AddListItem } from "../../../common/AddListItem/AddListItem";
-import { DragHandle } from "../../../common/DragHandle/DragHandle";
 import { Trans } from "react-i18next";
 
 import { useTranslation } from "react-i18next";
@@ -48,45 +47,45 @@ export const EducationList = (): React.ReactNode => {
 					{(fields: FormListFieldData[], { add, remove }): React.ReactNode => {
 						return (
 							<DragAndDropProfileList.Context>
-									{fields.map(
-										({ key, name, ...restField }): React.ReactNode => {
-											return (
-												<DragAndDropProfileList.Item key={key} name={name} >
-													<Flex gap={8}>
-														<Flex vertical flex={1}>
-															<DatePickerFormItem
-																name={name}
-																restField={restField}
-																subname={"date" satisfies keyof EducationField}
-																parentName={["education" satisfies keyof Profile]}
-																displayLimitDefault={generalSettings.education.dateDisplayLimit}
-															/>
+								{fields.map(
+									({ key, name, ...restField }): React.ReactNode => {
+										return (
+											<DragAndDropProfileList.Item key={key} name={name} >
+												<Flex gap={8}>
+													<Flex vertical flex={1}>
+														<DatePickerFormItem
+															name={name}
+															restField={restField}
+															subname={"date" satisfies keyof EducationField}
+															parentName={["education" satisfies keyof Profile]}
+															displayLimitDefault={generalSettings.education.dateDisplayLimit}
+														/>
 
-															<Form.Item
-																{...restField}
-																style={{ marginBottom: 8 }}
-																name={[name, "title" satisfies keyof EducationField]}
-															>
-																<Input placeholder={t("education.title")} />
-															</Form.Item>
+														<Form.Item
+															{...restField}
+															style={{ marginBottom: 8 }}
+															name={[name, "title" satisfies keyof EducationField]}
+														>
+															<Input placeholder={t("education.title")} />
+														</Form.Item>
 
-															<Form.Item
-																{...restField}
-																name={[name, "description" satisfies keyof EducationField]}
-															>
-																<Input.TextArea placeholder={t("education.description")} />
-															</Form.Item>
-														</Flex>
-
-														<DeleteListItem name={name} remove={remove} />
-														<DragHandle />
+														<Form.Item
+															{...restField}
+															name={[name, "description" satisfies keyof EducationField]}
+														>
+															<Input.TextArea placeholder={t("education.description")} />
+														</Form.Item>
 													</Flex>
-													</DragAndDropProfileList.Item>
-											);
-										}
-									)}
 
-									<AddListItem add={add} text={t("education.add")} />
+													<DeleteListItem name={name} remove={remove} />
+													<DragAndDropProfileList.Handler />
+												</Flex>
+											</DragAndDropProfileList.Item>
+										);
+									}
+								)}
+
+								<AddListItem add={add} text={t("education.add")} />
 							</DragAndDropProfileList.Context>
 						)
 					}}
