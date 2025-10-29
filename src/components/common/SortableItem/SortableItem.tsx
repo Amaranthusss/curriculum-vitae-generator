@@ -16,7 +16,10 @@ export const SortableItem = ({ itemKey, children }: SortableItemProps): React.Re
 		setNodeRef,
 		attributes,
 		setActivatorNodeRef,
-	} = useSortable({ id: itemKey });
+	} = useSortable({
+		id: itemKey,
+		animateLayoutChanges: () => false
+	});
 
 	const listStyle = useMemo((): CSSProperties => {
 		return {
@@ -32,7 +35,9 @@ export const SortableItem = ({ itemKey, children }: SortableItemProps): React.Re
 
 	return (
 		<SortableListItemContext.Provider value={memoizedValue}>
-			<div ref={setNodeRef} style={listStyle} >{children}</div>
+			<div ref={setNodeRef} style={listStyle}>
+				{children}
+			</div>
 		</SortableListItemContext.Provider>
 	);
 }
