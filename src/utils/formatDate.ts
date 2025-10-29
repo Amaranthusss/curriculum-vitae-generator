@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
 
+import type { GlobalLocaleDataReturn } from "dayjs";
+
 import { DisplayLimit } from "../constants/DisplayLimit";
 
 export const formatDate = (displayLimit: DisplayLimit | undefined): string => {
@@ -10,7 +12,12 @@ export const formatDate = (displayLimit: DisplayLimit | undefined): string => {
 			return "YYYY";
 
 		case DisplayLimit.Month:
-			return localFullFormat.replace(/[^M]*DD[^M]*[./-]*/, "");
+			{
+				const localeData: GlobalLocaleDataReturn = dayjs.localeData();
+				const monthFormat: "MM" | "M" = localeData.monthsShort() ? "MM" : "M";
+
+				return `${monthFormat}${localFullFormat.match(/[./-]/)?.[0] ?? "/"}YYYY`;
+			}
 
 		case DisplayLimit.Day:
 			return localFullFormat;
