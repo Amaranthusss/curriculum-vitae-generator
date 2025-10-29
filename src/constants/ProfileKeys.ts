@@ -1,4 +1,4 @@
-import type { Profile } from "./interface";
+import type { Profile } from "../store/profile/interface";
 
 export const ProfileKeys: (keyof Profile)[] = [
 	'aboutMe',
@@ -13,5 +13,6 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'publications',
 	'qualifications',
 	'surname',
-	'generalSettings'
+	'generalSettings',
+	'mobile'
 ];

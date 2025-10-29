@@ -12,7 +12,7 @@ import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
 
 import { DisplayLimit } from "../../constants/DisplayLimit";
-import { ProfileKeys } from "./constants";
+import { ProfileKeys } from "../../constants/ProfileKeys";
 import { ColorsKeys } from "../colors/constants";
 
 export const useProfileStore = create<ProfileStore>()(
@@ -25,6 +25,7 @@ export const useProfileStore = create<ProfileStore>()(
 				picture: "",
 				email: "",
 				country: "",
+				mobile: "",
 				links: [],
 				languages: [],
 				education: [],
@@ -39,7 +40,7 @@ export const useProfileStore = create<ProfileStore>()(
 				},
 
 				getProfile: (): Profile => {
-					return _.omit(get(), ['getProfile', 'saveProfile', 'loadProfile'] satisfies (keyof ProfileStore)[]);
+					return _.pick(get(), ProfileKeys);
 				},
 
 				saveProfile: (): void => {

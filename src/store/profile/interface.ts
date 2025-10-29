@@ -33,6 +33,7 @@ export interface Profile {
 	name: string;
 	surname: string;
 	email: string;
+	mobile: string;
 	country: string;
 	aboutMe?: string;
 	picture: string;

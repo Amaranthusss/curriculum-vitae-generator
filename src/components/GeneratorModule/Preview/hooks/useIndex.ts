@@ -10,6 +10,7 @@ import { useCountry } from "./useCountry.ts";
 import { useCallback } from "react";
 import { useAboutMe } from "./useAboutMe.ts";
 import { usePicture } from "./usePicture.ts";
+import { useMobile } from "./useMobile.ts";
 import { useLinks } from "./useLinks.ts";
 import { useEmail } from "./useEmail.ts";
 
@@ -20,90 +21,93 @@ import type { Content } from "pdfmake/interfaces";
 import { layout, page } from "../Preview.config.ts";
 
 export const useIndex = () => {
-  const sidebarBgColor: React.CSSProperties["color"] = useColorsStore(
-    ({ sidebarBgColor }) => sidebarBgColor
-  );
+	const sidebarBgColor: React.CSSProperties["color"] = useColorsStore(
+		({ sidebarBgColor }) => sidebarBgColor
+	);
 
-  const { renderCaption, renderListItem, renderSubListItem } =
-    useBodyElements();
+	const { renderCaption, renderListItem, renderSubListItem } =
+		useBodyElements();
 
-  const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
+	const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
 
-  const { renderPicture } = usePicture();
-  const { renderNameLabel } = useNameLabel();
-  const { renderEducation } = useEducation(renderCaption, renderListItem);
-  const { renderExperience } = useExperience(renderCaption, renderListItem);
-  const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
+	const { renderPicture } = usePicture();
+	const { renderNameLabel } = useNameLabel();
+	const { renderEducation } = useEducation(renderCaption, renderListItem);
+	const { renderExperience } = useExperience(renderCaption, renderListItem);
+	const { renderAboutMe } = useAboutMe(renderSidebarCaption, renderSidebarTag);
 
-  const { renderPublications } = usePublications(
-    renderCaption,
-    renderListItem,
-    renderSubListItem
-  );
+	const { renderPublications } = usePublications(
+		renderCaption,
+		renderListItem,
+		renderSubListItem
+	);
 
-  const { renderQualifications } = useQualifications(
-    renderCaption,
-    renderListItem
-  );
+	const { renderQualifications } = useQualifications(
+		renderCaption,
+		renderListItem
+	);
 
-  const { renderLanguages } = useLanguages(
-    renderSidebarCaption,
-    renderSidebarTag
-  );
+	const { renderLanguages } = useLanguages(
+		renderSidebarCaption,
+		renderSidebarTag
+	);
 
-  const { renderCountry } = useCountry(renderSidebarCaption, renderSidebarTag);
-  const { renderEmail } = useEmail(renderSidebarCaption, renderSidebarTag);
-  const { renderLinks } = useLinks(renderSidebarCaption, renderSidebarTag);
+	const { renderCountry } = useCountry(renderSidebarCaption, renderSidebarTag);
+	const { renderMobile } = useMobile(renderSidebarCaption, renderSidebarTag);
+	const { renderEmail } = useEmail(renderSidebarCaption, renderSidebarTag);
+	const { renderLinks } = useLinks(renderSidebarCaption, renderSidebarTag);
 
-  const renderContent = useCallback(async (): Promise<Content> => {
-    return [
-      {
-        table: {
-          widths: [layout.drawerWidth, "*"],
-          heights: page.a4Height,
-          body: [
-            [
-              {
-                text: "sidebar",
-                fillColor: sidebarBgColor,
-                border: [false, false, false, false],
-                stack: [
-                  renderPicture(),
-                  renderEmail(),
-                  renderCountry(),
-                  renderLanguages(),
-                  renderAboutMe(),
-                  await renderLinks(),
-                ],
-              },
-              {
-                stack: [
-                  renderNameLabel(),
-                  renderEducation(),
-                  renderExperience(),
-                  renderQualifications(),
-                  renderPublications(),
-                ],
-              },
-            ],
-          ],
-        },
-      },
-    ];
-  }, [
-    sidebarBgColor,
-    renderEmail,
-    renderLinks,
-    renderAboutMe,
-    renderPicture,
-    renderCountry,
-    renderEducation,
-    renderNameLabel,
-    renderLanguages,
-    renderExperience,
-    renderPublications,
-    renderQualifications,
-  ]);
+	const renderContent = useCallback(async (): Promise<Content> => {
+		return [
+			{
+				table: {
+					widths: [layout.drawerWidth, "*"],
+					heights: page.a4Height,
+					body: [
+						[
+							{
+								text: "sidebar",
+								fillColor: sidebarBgColor,
+								border: [false, false, false, false],
+								stack: [
+									renderPicture(),
+									renderEmail(),
+									renderMobile(),
+									renderCountry(),
+									renderLanguages(),
+									renderAboutMe(),
+									await renderLinks(),
+								],
+							},
+							{
+								stack: [
+									renderNameLabel(),
+									renderEducation(),
+									renderExperience(),
+									renderQualifications(),
+									renderPublications(),
+								],
+							},
+						],
+					],
+				},
+			},
+		];
+	}, [
+		sidebarBgColor,
+		renderEmail,
+		renderLinks,
+		renderMobile,
+		renderAboutMe,
+		renderPicture,
+		renderCountry,
+		renderEducation,
+		renderNameLabel,
+		renderLanguages,
+		renderExperience,
+		renderPublications,
+		renderQualifications,
+	]);
 
-  return { renderContent };
+	return { renderContent };
 };

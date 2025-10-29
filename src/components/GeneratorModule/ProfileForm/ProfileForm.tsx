@@ -194,6 +194,13 @@ export const ProfileForm = (): React.ReactNode => {
 				<Input placeholder={t("personal-data.email")} />
 			</Form.Item>
 
+			<Form.Item
+				label={t("personal-data.mobile")}
+				name={"mobile" satisfies keyof Profile}
+			>
+				<Input placeholder={t("personal-data.mobile")} />
+			</Form.Item>
+
 			<LanguagesList />
 			<EducationList />
 			<ExperienceList />

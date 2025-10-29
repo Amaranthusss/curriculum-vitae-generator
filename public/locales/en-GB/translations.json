@@ -13,7 +13,8 @@
     "country": "Country",
     "about-me": "About me",
     "about-me-placeholder": "Tell something about you",
-    "email": "E-mail"
+    "email": "E-mail",
+    "mobile": "Phone number"
   },
   "upload-image": {
     "add-picture": "Add picture",
