@@ -3,7 +3,9 @@
     "save-profile": "Profil speichern",
     "save-profile-tooltip": "Aktuelles Profil speichern",
     "load-profile": "Profil laden",
-    "load-profile-tooltip": "Profil aus Datei laden"
+    "load-profile-tooltip": "Profil aus Datei laden",
+		"remove-form-list-element": "Element aus der Liste entfernen",
+		"drag-and-drop-from-list-element": "Element in der Liste neu anordnen"
   },
   "personal-data": {
     "caption": "Persönliche Daten",
