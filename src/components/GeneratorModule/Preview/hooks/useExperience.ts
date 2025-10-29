@@ -38,18 +38,18 @@ export const useExperience = (
 
 					const { workStation, description, date } = experienceField;
 
-					const format: string = formatDate(date.displayLimit ?? generalSettings.experience.dateDisplayLimit);
+					const format: string = formatDate(date?.displayLimit ?? generalSettings.experience.dateDisplayLimit);
 
 					const startDateFormatted: string | undefined =
-						_.isArray(date.value) && !_.isNil(date.value?.[0])
+						_.isArray(date?.value) && !_.isNil(date?.value?.[0])
 							? dayjs(date.value[0]).format(format)
-							: !_.isArray(date.value) && !_.isNil(date.value)
+							: !_.isArray(date?.value) && !_.isNil(date?.value)
 								? dayjs(date.value).format(format)
 								: undefined;
 
 					const endDateFormatted: string | undefined = date?.present
 						? t("date-range-form-item.present")
-						: _.isArray(date.value) && !_.isNil(date?.value?.[1])
+						: _.isArray(date?.value) && !_.isNil(date?.value?.[1])
 							? dayjs(date.value[1]).format(format)
 							: undefined;
 

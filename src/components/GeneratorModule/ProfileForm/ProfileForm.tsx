@@ -16,6 +16,7 @@ import { useProfileStore } from "../../../store/profile/useProfileStore";
 import { useController } from "../../../hooks/useController";
 import { useFormStore } from "../../../store/form/useFormStore";
 
+import { assignOrderIndexes } from "../../../utils/assignOrderIndexes";
 import { getBase64 } from "../../../utils/getBase64";
 import _ from "lodash";
 
@@ -36,6 +37,7 @@ export const ProfileForm = (): React.ReactNode => {
 
 	const onValuesChange = useCallback(
 		(changedValues: Partial<Profile>, values: Profile): void => {
+
 			const isGeneralSettingsChange: boolean = !_.isEmpty(changedValues.generalSettings);
 
 			if (isGeneralSettingsChange) {
@@ -53,7 +55,7 @@ export const ProfileForm = (): React.ReactNode => {
 			const isEducationChange: boolean = !_.isEmpty(changedValues.education);
 
 			if (isEducationChange) {
-				return updateValues({ education: values.education });
+				return updateValues({ education: assignOrderIndexes(values.education) });
 			}
 
 			const isExperienceChange: boolean = !_.isEmpty(changedValues.experience);

@@ -30,13 +30,13 @@ export const usePublications = (
 
 				const { title, publisher, code, date } = publicationField;
 
-				const format: string = formatDate(date.displayLimit ?? generalSettings.publications.dateDisplayLimit);
+				const format: string = formatDate(date?.displayLimit ?? generalSettings.publications.dateDisplayLimit);
 
 				const publisherText: string = !_.isEmpty(publisher)
 					? ` - ${publisher}`
 					: "";
 
-				const publicationYearText: string = !_.isNil(date.value) && !_.isArray(date.value)
+				const publicationYearText: string = !_.isNil(date?.value) && !_.isArray(date?.value)
 					? `, ${dayjs(date.value).format(format)}`
 					: "";
 

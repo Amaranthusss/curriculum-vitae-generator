@@ -51,44 +51,48 @@ export type ProfileFile = Profile & Colors & { version: string, language: Langua
 
 export type SetProfileParams = (partial: Partial<Profile>) => void;
 
-export interface PublicationField extends FormDatePool {
-	title: string;
-	publisher: string;
-	code: string;
-}
-
-export interface QualificationField extends FormDatePool {
-	type: string;
-	name: string;
-	description?: string;
-}
-
-export interface LanguageField {
-	text: string;
-	level: LanguageLevel;
-}
-
-export interface FormDate {
-	value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
-	displayLimit?: DisplayLimit
-	present?: boolean;
+export interface OrderIndex {
+	orderIndex: number;
 }
 
 export interface FormDatePool {
 	date: FormDate;
 }
 
-export interface EducationField extends FormDatePool {
+export interface PublicationField extends FormDatePool, OrderIndex {
+	title: string;
+	publisher: string;
+	code: string;
+}
+
+export interface QualificationField extends FormDatePool, OrderIndex {
+	type: string;
+	name: string;
+	description?: string;
+}
+
+export interface LanguageField extends OrderIndex {
+	text: string;
+	level: LanguageLevel;
+}
+
+export interface FormDate {
+	value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
+	displayLimit?: DisplayLimit;
+	present?: boolean;
+}
+
+export interface EducationField extends FormDatePool, OrderIndex {
 	title: string;
 	description: string;
 }
 
-export interface ExperienceField extends FormDatePool {
+export interface ExperienceField extends FormDatePool, OrderIndex {
 	workStation: string;
 	description: string;
 }
 
-export interface LinkField {
+export interface LinkField extends OrderIndex {
 	label: string;
 	icon?: string;
 	link: string;

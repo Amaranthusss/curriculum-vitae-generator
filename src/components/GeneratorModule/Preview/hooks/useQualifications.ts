@@ -33,10 +33,10 @@ export const useQualifications = (
 
 					const { name, type, description, date } = qualificationField;
 
-					const format: string = formatDate(date.displayLimit ?? generalSettings.qualifications.dateDisplayLimit);
+					const format: string = formatDate(date?.displayLimit ?? generalSettings.qualifications.dateDisplayLimit);
 
 					const formatted: string | undefined =
-						!_.isNil(date.value) && !_.isArray(date.value) ? dayjs(date.value).format(format) : undefined;
+						!_.isNil(date?.value) && !_.isArray(date?.value) ? dayjs(date.value).format(format) : undefined;
 
 					const text: string = _.chain([
 						type,
