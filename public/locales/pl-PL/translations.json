@@ -40,7 +40,8 @@
   },
   "footer": {
     "caption": "Stopka CV",
-		"placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej"
+		"placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej",
+		"top-margin": "Przestrzeń nad tekstem"
   },
   "upload-image": {
     "add-picture": "Dodaj zdjęcie",

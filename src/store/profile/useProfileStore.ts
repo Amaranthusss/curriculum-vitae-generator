@@ -31,6 +31,7 @@ export const useProfileStore = create<ProfileStore>()(
 				aboutMeAlignment: 'justify',
 				interestsAlignment: 'justify',
 				footerAlignment: 'justify',
+				footerTopMargin: 8,
 				references: [],
 				languages: [],
 				education: [],

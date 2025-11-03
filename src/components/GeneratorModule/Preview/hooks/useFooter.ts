@@ -9,6 +9,7 @@ import type { Profile } from "../../../../store/profile/interface";
 
 export const useFooter = () => {
 	const footerAlignment: Profile["footerAlignment"] = useProfileStore(({ footerAlignment }) => footerAlignment);
+	const footerTopMargin: Profile["footerTopMargin"] = useProfileStore(({ footerTopMargin }) => footerTopMargin);
 	const footer: Profile["footer"] = useProfileStore(({ footer }) => footer);
 
 	const renderFooter = useCallback((): Content => {
@@ -16,16 +17,16 @@ export const useFooter = () => {
 
 		return [
 			{
+				text: footer,
 				color: 'gray',
 				fontSize: 8,
-				marginTop: 4,
 				marginLeft: 5,
 				marginRight: 5,
-				text: footer,
+				marginTop: footerTopMargin,
 				alignment: footerAlignment,
 			}
 		];
-	}, [footer, footerAlignment]);
+	}, [footer, footerAlignment, footerTopMargin]);
 
 	return { renderFooter };
 };

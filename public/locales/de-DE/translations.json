@@ -40,7 +40,8 @@
   },
   "footer": {
     "caption": "Lebenslauf-Fußzeile",
-    "placeholder": "Geben Sie Ihre Einwilligung zur Datenverarbeitung oder eine persönliche Nachricht an das rekrutierende Unternehmen ein"
+    "placeholder": "Geben Sie Ihre Einwilligung zur Datenverarbeitung oder eine persönliche Nachricht an das rekrutierende Unternehmen ein",
+		"top-margin": "Abstand über dem Text"
   },
   "upload-image": {
     "add-picture": "Bild hinzufügen",

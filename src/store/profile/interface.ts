@@ -39,6 +39,7 @@ export interface Profile {
 	aboutMe?: string;
 	aboutMeAlignment: Alignment;
 	footer?: string;
+	footerTopMargin: number;
 	footerAlignment: Alignment;
 	interests?: string;
 	interestsAlignment: Alignment;

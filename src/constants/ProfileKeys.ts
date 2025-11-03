@@ -14,6 +14,7 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'aboutMeAlignment',
 	'footer',
 	'footerAlignment',
+	'footerTopMargin',
 	'isAboutMeAtPage',
 	'languages',
 	'education',

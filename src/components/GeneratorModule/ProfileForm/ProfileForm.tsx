@@ -169,7 +169,7 @@ export const ProfileForm = (): React.ReactNode => {
 					label={t("cv-settings.date-column-widths")}
 					name={"dateColumnWidths" satisfies keyof Profile}
 				>
-					<Slider style={{width: 90}} min={25} max={90}/>
+					<Slider style={{ width: 90 }} min={25} max={90} />
 				</Form.Item>
 			</Flex>
 
@@ -287,12 +287,21 @@ export const ProfileForm = (): React.ReactNode => {
 				/>
 			</Form.Item>
 
-			<Form.Item
-				name={"footerAlignment" satisfies keyof Profile}
-				label={t('alignment.caption')}
-			>
-				<AlignmentSelector />
-			</Form.Item>
+			<Flex gap={24}>
+				<Form.Item
+					name={"footerAlignment" satisfies keyof Profile}
+					label={t('alignment.caption')}
+				>
+					<AlignmentSelector />
+				</Form.Item>
+
+				<Form.Item
+					label={t("footer.top-margin")}
+					name={"footerTopMargin" satisfies keyof Profile}
+				>
+					<Slider style={{ width: 200 }} min={0} max={600} />
+				</Form.Item>
+			</Flex>
 
 			<LanguagesList />
 			<EducationList />
