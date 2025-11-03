@@ -1,4 +1,5 @@
 import type { DisplayLimit } from "../../constants/DisplayLimit";
+import type { Alignment } from "pdfmake/interfaces";
 import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
@@ -36,7 +37,11 @@ export interface Profile {
 	mobile: string;
 	country: string;
 	aboutMe?: string;
+	aboutMeAlignment: Alignment;
 	footer?: string;
+	footerAlignment: Alignment;
+	interests?: string;
+	interestsAlignment: Alignment;
 	isAboutMeAtPage?: boolean;
 	dateColumnWidths: number;
 	dateDisplayStyle: DateDisplayStyle;

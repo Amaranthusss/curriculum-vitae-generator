@@ -13,10 +13,10 @@ export const useAboutMeAtSidebar = (
 	renderSidebarCaption: UseSidebarElements["renderSidebarCaption"],
 	renderSidebarTag: UseSidebarElements["renderSidebarTag"]
 ) => {
-	const { t } = useTranslation();
-
-	const aboutMe: Profile["aboutMe"] = useProfileStore(({ aboutMe }) => aboutMe);
+	const aboutMeAlignment: Profile["aboutMeAlignment"] = useProfileStore(({ aboutMeAlignment }) => aboutMeAlignment);
 	const isAboutMeAtPage: Profile["isAboutMeAtPage"] = useProfileStore(({ isAboutMeAtPage }) => isAboutMeAtPage);
+	const aboutMe: Profile["aboutMe"] = useProfileStore(({ aboutMe }) => aboutMe);
+	const { t } = useTranslation();
 
 	const renderAboutMeAtSidebar = useCallback((): Content => {
 		if (isAboutMeAtPage) return [];
@@ -24,9 +24,9 @@ export const useAboutMeAtSidebar = (
 
 		return [
 			renderSidebarCaption(t("personal-data.about-me")),
-			renderSidebarTag(aboutMe, { justify: true }),
+			renderSidebarTag(aboutMe, { alignment: aboutMeAlignment }),
 		];
-	}, [t, renderSidebarCaption, renderSidebarTag, aboutMe, isAboutMeAtPage]);
+	}, [t, renderSidebarCaption, renderSidebarTag, aboutMe, aboutMeAlignment, isAboutMeAtPage]);
 
 	return { renderAboutMeAtSidebar };
 };

@@ -28,6 +28,7 @@ import type { UpdateValues } from "../../../store/form/interface";
 import type { UploadProps } from "antd";
 import type { RenderMode } from "../../../store/app/interface";
 import type { DateDisplayStyle, Profile } from "../../../store/profile/interface";
+import { AlignmentSelector } from "../../common/AlignmentSelector/AlignmentSelector";
 
 export const ProfileForm = (): React.ReactNode => {
 	const { controller: imageController, setController: setImageController } = useController<UploadImageController>();
@@ -176,7 +177,7 @@ export const ProfileForm = (): React.ReactNode => {
 				<Trans i18nKey={"personal-data.caption"} />
 			</Divider>
 
-			<Flex gap={16}>
+			<Flex gap={24}>
 				<UploadImage setController={setImageController} onChange={onUploadImage} />
 
 				<Flex vertical>
@@ -238,14 +239,41 @@ export const ProfileForm = (): React.ReactNode => {
 				/>
 			</Form.Item>
 
-			<Form.Item
-				label={t("personal-data.about-me-position")}
-				name={"isAboutMeAtPage" satisfies keyof Profile}
-			>
-				<Switch
-					checkedChildren={t("personal-data.about-me-page-position")}
-					unCheckedChildren={t("personal-data.about-me-sidebar-position")}
+			<Flex gap={24}>
+				<Form.Item
+					label={t("personal-data.about-me-position")}
+					name={"isAboutMeAtPage" satisfies keyof Profile}
+				>
+					<Switch
+						checkedChildren={t("personal-data.about-me-page-position")}
+						unCheckedChildren={t("personal-data.about-me-sidebar-position")}
+					/>
+				</Form.Item>
+
+				<Form.Item
+					name={"aboutMeAlignment" satisfies keyof Profile}
+					label={t('alignment.caption')}
+				>
+					<AlignmentSelector />
+				</Form.Item>
+			</Flex>
+
+			<Divider orientation={"left"}>
+				<Trans i18nKey={'interests.caption'} />
+			</Divider>
+
+			<Form.Item name={"interests" satisfies keyof Profile}>
+				<Input.TextArea
+					rows={4}
+					placeholder={t("interests.placeholder")}
 				/>
+			</Form.Item>
+
+			<Form.Item
+				name={"interestsAlignment" satisfies keyof Profile}
+				label={t('alignment.caption')}
+			>
+				<AlignmentSelector />
 			</Form.Item>
 
 			<Divider orientation={"left"}>
@@ -257,6 +285,13 @@ export const ProfileForm = (): React.ReactNode => {
 					rows={4}
 					placeholder={t("footer.placeholder")}
 				/>
+			</Form.Item>
+
+			<Form.Item
+				name={"footerAlignment" satisfies keyof Profile}
+				label={t('alignment.caption')}
+			>
+				<AlignmentSelector />
 			</Form.Item>
 
 			<LanguagesList />

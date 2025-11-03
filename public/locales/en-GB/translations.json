@@ -99,6 +99,10 @@
     "light-icon": "Light",
     "dark-icon": "Dark"
   },
+	"interests": {
+		"caption": "Interests",
+		"placeholder": "Type your interests"
+	},
   "colors": {
     "primary": "Primary text color",
     "primary-bg": "Primary background color",
@@ -115,5 +119,12 @@
     "display-limit-month": "Month",
     "display-limit-day": "Day",
     "present": "Present"
-  }
+  },
+	"alignment": {
+		"caption": "Text alignment",
+		"left": "To left",
+		"right": "To right",
+		"center": "Center",
+		"justify": "Justify"
+	}
 }

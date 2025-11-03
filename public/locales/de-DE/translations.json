@@ -99,6 +99,10 @@
     "light-icon": "Hell",
     "dark-icon": "Dunkel"
   },
+  "interests": {
+    "caption": "Interessen",
+    "placeholder": "Listen Sie Ihre Interessen auf"
+  },
   "colors": {
     "primary": "Primärtextfarbe",
     "primary-bg": "Primärer Hintergrundfarbe",
@@ -115,5 +119,12 @@
     "display-limit-month": "Monat",
     "display-limit-day": "Tag",
     "present": "Gegenwärtig"
+  },
+  "alignment": {
+    "caption": "Textausrichtung",
+    "left": "Links",
+    "right": "Rechts",
+    "center": "Zentriert",
+    "justify": "Blocksatz"
   }
 }

@@ -14,10 +14,10 @@ import { paragraph } from "../Preview.config";
 export const useAboutMeAtPage = (
 	renderCaption: UseCommonElements["renderCaption"],
 ) => {
-	const { t } = useTranslation();
-
-	const aboutMe: Profile["aboutMe"] = useProfileStore(({ aboutMe }) => aboutMe);
+	const aboutMeAlignment: Profile["aboutMeAlignment"] = useProfileStore(({ aboutMeAlignment }) => aboutMeAlignment);
 	const isAboutMeAtPage: Profile["isAboutMeAtPage"] = useProfileStore(({ isAboutMeAtPage }) => isAboutMeAtPage);
+	const aboutMe: Profile["aboutMe"] = useProfileStore(({ aboutMe }) => aboutMe);
+	const { t } = useTranslation();
 
 	const renderAboutMeAtPage = useCallback((): Content => {
 		if (!isAboutMeAtPage) return [];
@@ -30,10 +30,11 @@ export const useAboutMeAtPage = (
 				marginTop: 4,
 				marginLeft: 5,
 				marginRight: 5,
+				alignment: aboutMeAlignment,
 				text: aboutMe
 			}
 		];
-	}, [t, renderCaption, aboutMe, isAboutMeAtPage]);
+	}, [t, renderCaption, aboutMe, aboutMeAlignment, isAboutMeAtPage]);
 
 	return { renderAboutMeAtPage };
 };

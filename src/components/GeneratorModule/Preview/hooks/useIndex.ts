@@ -6,6 +6,7 @@ import { useBodyElements } from "./useBodyElements.ts";
 import { usePublications } from "./usePublications.ts";
 import { useReferences } from "./useReferences.ts";
 import { useExperience } from "./useExperience.ts";
+import { useInterests } from "./useInterests.ts";
 import { useNameLabel } from "./useFullName.ts";
 import { useEducation } from "./useEducation.ts";
 import { useLanguages } from "./useLanguages.ts";
@@ -58,6 +59,7 @@ export const useIndex = () => {
 	);
 
 	const { renderReferences } = useReferences(renderSidebarCaption, renderSidebarTag);
+	const { renderInterests } = useInterests(renderSidebarCaption, renderSidebarTag);
 	const { renderCountry } = useCountry(renderSidebarCaption, renderSidebarTag);
 	const { renderMobile } = useMobile(renderSidebarCaption, renderSidebarTag);
 	const { renderEmail } = useEmail(renderSidebarCaption, renderSidebarTag);
@@ -82,6 +84,7 @@ export const useIndex = () => {
 									renderLanguages(),
 									renderAboutMeAtSidebar(),
 									await renderReferences(),
+									renderInterests(),
 								],
 							},
 							{
@@ -107,6 +110,7 @@ export const useIndex = () => {
 		renderMobile,
 		renderPicture,
 		renderCountry,
+		renderInterests,
 		renderNameLabel,
 		renderEducation,
 		renderLanguages,

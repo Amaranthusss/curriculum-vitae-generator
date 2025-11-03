@@ -11,6 +11,7 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'email',
 	'mobile',
 	'aboutMe',
+	'aboutMeAlignment',
 	'footer',
 	'isAboutMeAtPage',
 	'languages',
@@ -18,5 +19,7 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'experience',
 	'qualifications',
 	'publications',
+	'interests',
+	'interestsAlignment',
 	'references',
 ];

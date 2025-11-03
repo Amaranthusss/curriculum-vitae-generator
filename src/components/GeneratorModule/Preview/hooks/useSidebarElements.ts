@@ -3,7 +3,7 @@ import { useCallback } from "react";
 
 import _ from "lodash";
 
-import type { Content, Size, TableCell } from "pdfmake/interfaces";
+import type { Alignment, Content, Size, TableCell } from "pdfmake/interfaces";
 
 import { sidebar } from "../Preview.config";
 
@@ -51,7 +51,7 @@ export const useSidebarElements = () => {
 			extra?: {
 				textColor?: React.CSSProperties["color"];
 				disableMarginBottom?: boolean;
-				justify?: boolean;
+				alignment?: Alignment;
 			}
 		): Content => {
 			return {
@@ -64,7 +64,7 @@ export const useSidebarElements = () => {
 								text,
 								fontSize: sidebar.tag.fontSize,
 								color: extra?.textColor ?? sidebarColor,
-								alignment: extra?.justify ? "justify" : undefined,
+								alignment: extra?.alignment,
 								marginBottom: extra?.disableMarginBottom
 									? 0
 									: sidebar.tag.marginBottom,
