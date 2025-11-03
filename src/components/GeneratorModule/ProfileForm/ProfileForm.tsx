@@ -1,5 +1,6 @@
-import { Divider, Flex, Form, Input, InputNumber, Select, Space, Switch } from "antd";
+import { Divider, Flex, Form, Input, Select, Slider, Space, Switch } from "antd";
 import { QualificationsList } from "./QualificationsList/QualificationsList";
+import { AlignmentSelector } from "../../common/AlignmentSelector/AlignmentSelector";
 import { PublicationsList } from "./PublicationsList/PublicationsList";
 import { ExperienceList } from "./ExperienceList/ExperienceList";
 import { ReferencesList } from "./ReferencesList/ReferencesList";
@@ -28,7 +29,6 @@ import type { UpdateValues } from "../../../store/form/interface";
 import type { UploadProps } from "antd";
 import type { RenderMode } from "../../../store/app/interface";
 import type { DateDisplayStyle, Profile } from "../../../store/profile/interface";
-import { AlignmentSelector } from "../../common/AlignmentSelector/AlignmentSelector";
 
 export const ProfileForm = (): React.ReactNode => {
 	const { controller: imageController, setController: setImageController } = useController<UploadImageController>();
@@ -169,7 +169,7 @@ export const ProfileForm = (): React.ReactNode => {
 					label={t("cv-settings.date-column-widths")}
 					name={"dateColumnWidths" satisfies keyof Profile}
 				>
-					<InputNumber placeholder={t("cv-settings.date-column-widths")} />
+					<Slider style={{width: 90}} min={25} max={90}/>
 				</Form.Item>
 			</Flex>
 
