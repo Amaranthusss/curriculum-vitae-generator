@@ -11,6 +11,17 @@
 		"render-mode-manual": "Odświeżaj ręcznie",
 		"render-mode-manual-trigger": "Odśwież"
 	},
+	"cv-settings": {
+		"caption": "Ustawienia CV",
+		"date-column-widths": "Szerokość dat",
+		"date-range-display-type": "Sposób wyświetlania dat:",
+		"date-range-inline": "W ciągu z myślinikiem",
+		"date-range-vertical": "Pionowo bez myślinika",
+		"date-range-seperated-vertical": "Pionowo z myślinikiem",
+		"date-range-from-to": "Od ... do ...",
+		"date-range-from-tag": "od",
+		"date-range-to-tag": "do"
+	},
   "personal-data": {
     "caption": "Dane osobiste",
     "name": "Imię",
@@ -99,6 +110,6 @@
 		"display-limit-year": "Rok",
 		"display-limit-month": "Miesiąc",
 		"display-limit-day": "Dzień",
-    "present": "Aktualnie"
+    "present": "Obecnie"
   }
 }

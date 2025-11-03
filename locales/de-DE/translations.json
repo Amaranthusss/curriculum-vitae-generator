@@ -11,6 +11,17 @@
     "render-mode-manual": "Manuell aktualisieren",
     "render-mode-manual-trigger": "Aktualisieren"
   },
+  "cv-settings": {
+    "caption": "Lebenslauf-Einstellungen",
+    "date-column-widths": "Datumsbreiten",
+    "date-range-display-type": "Art der Datumsanzeige:",
+    "date-range-inline": "In einer Zeile mit Bindestrich",
+    "date-range-vertical": "Vertikal ohne Bindestrich",
+    "date-range-seperated-vertical": "Vertikal mit Bindestrich",
+    "date-range-from-to": "Von ... bis ...",
+    "date-range-from-tag": "von",
+    "date-range-to-tag": "bis"
+  },
   "personal-data": {
     "caption": "Persönliche Daten",
     "name": "Name",
