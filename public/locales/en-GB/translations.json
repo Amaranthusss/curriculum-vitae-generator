@@ -5,7 +5,11 @@
 		"load-profile": "Load profile",
 		"load-profile-tooltip": "Load a profile from file",
 		"remove-form-list-element": "Remove item from list",
-		"drag-and-drop-from-list-element": "Reorder item in list"
+		"drag-and-drop-from-list-element": "Reorder item in list",
+		"render-mode-on-change": "Refresh on each change",
+		"render-mode-debounced": "Refresh with delay",
+		"render-mode-manual": "Refresh manually",
+		"render-mode-manual-trigger": "Refresh"
 	},
   "personal-data": {
     "caption": "Personal data",

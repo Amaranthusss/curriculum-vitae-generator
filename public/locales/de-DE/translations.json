@@ -4,8 +4,12 @@
     "save-profile-tooltip": "Aktuelles Profil speichern",
     "load-profile": "Profil laden",
     "load-profile-tooltip": "Profil aus Datei laden",
-		"remove-form-list-element": "Element aus der Liste entfernen",
-		"drag-and-drop-from-list-element": "Element in der Liste neu anordnen"
+    "remove-form-list-element": "Element aus der Liste entfernen",
+    "drag-and-drop-from-list-element": "Element in der Liste neu anordnen",
+    "render-mode-on-change": "Bei jeder Änderung aktualisieren",
+    "render-mode-debounced": "Mit Verzögerung aktualisieren",
+    "render-mode-manual": "Manuell aktualisieren",
+    "render-mode-manual-trigger": "Aktualisieren"
   },
   "personal-data": {
     "caption": "Persönliche Daten",
@@ -13,7 +17,7 @@
     "surname": "Nachname",
     "full-name": "Vollständiger Name",
     "country": "Land",
-		"contact-data": "Kontaktdaten",
+    "contact-data": "Kontaktdaten",
     "about-me": "Über mich",
     "about-me-content": "Inhalt",
     "about-me-placeholder": "Erzähle etwas über dich",

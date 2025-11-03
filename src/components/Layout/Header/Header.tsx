@@ -1,3 +1,4 @@
+import { RenderModeSelector } from "../../common/RenderModeSelector/RenderModeSelector";
 import { Flex, Menu, Space } from "antd";
 import { LanguageSelector } from "../../common/LanguageSelector/LanguageSelector";
 import { ProfileManager } from "../../common/ProfileManager/ProfileManager";
@@ -24,6 +25,7 @@ export const Header = (): React.ReactNode => {
 				defaultSelectedKeys={[RouteUrl.Generator]}
 			/>
 			<Space>
+				<RenderModeSelector />
 				<ProfileManager />
 				<LanguageSelector />
 			</Space>

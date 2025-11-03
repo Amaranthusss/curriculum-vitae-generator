@@ -5,7 +5,11 @@
 		"load-profile": "Wczytaj profil",
 		"load-profile-tooltip": "Wczytaj ustawienia z pliku",
 		"remove-form-list-element": "Usuń element z listy",
-		"drag-and-drop-from-list-element": "Zmień kolejność elementu w liście"
+		"drag-and-drop-from-list-element": "Zmień kolejność elementu w liście",
+		"render-mode-on-change": "Odświeżaj przy każdej zmianie",
+		"render-mode-debounced": "Odświeżaj z opóźnieniem",
+		"render-mode-manual": "Odświeżaj ręcznie",
+		"render-mode-manual-trigger": "Odśwież"
 	},
   "personal-data": {
     "caption": "Dane osobiste",

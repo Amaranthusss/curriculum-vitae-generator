@@ -8,13 +8,15 @@ import { EducationList } from "./EducationList/EducationList";
 import { UploadImage } from "../../common/UploadImage/UploadImage";
 import { Trans } from "react-i18next";
 
-import { useCallback, useEffect } from "react";
+import { useProfilePictureListener } from "./_hooks/useProfilePictureListener";
+import { useManualRenderListener } from "./_hooks/useManualRenderListener";
 import { useTranslation } from "react-i18next";
+import { useController } from "../../../hooks/useController";
+import { useCallback } from "react";
 import { useMemo } from "react";
 
-import { useProfileStore } from "../../../store/profile/useProfileStore";
-import { useController } from "../../../hooks/useController";
 import { useFormStore } from "../../../store/form/useFormStore";
+import { useAppStore } from "../../../store/app/useAppStore";
 
 import { assignOrderIndexes } from "../../../utils/assignOrderIndexes";
 import { getBase64 } from "../../../utils/getBase64";
@@ -24,11 +26,12 @@ import type { UploadImageController } from "../../common/UploadImage/UploadImage
 import type { GetInitialFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
 import type { UploadProps } from "antd";
+import type { RenderMode } from "../../../store/app/interface";
 import type { Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
 	const { controller: imageController, setController: setImageController } = useController<UploadImageController>();
-	const signalProfile = useFormStore(({ signalProfile }) => signalProfile);
+	const renderMode: RenderMode = useAppStore(({ renderMode }) => renderMode);
 	const [form] = Form.useForm();
 	const { t } = useTranslation();
 
@@ -91,6 +94,21 @@ export const ProfileForm = (): React.ReactNode => {
 		[updateValues]
 	);
 
+	const updateAllValues = useCallback((_: Partial<Profile>, profile: Profile): void => {
+		updateValues(profile);
+	}, [updateValues])
+
+	const onValuesChangeBasedOnRenderMode = useMemo(() => {
+		switch (renderMode) {
+			case 'onChange':
+				return onValuesChange;
+			case 'debounced':
+				return _.debounce(updateAllValues, 1000);
+			case 'manual':
+				return;
+		}
+	}, [onValuesChange, updateAllValues, renderMode]);
+
 	const convertPictureToBase64 = useCallback(
 		async (
 			value: ReturnType<Exclude<UploadProps["beforeUpload"], undefined>> | null
@@ -115,32 +133,14 @@ export const ProfileForm = (): React.ReactNode => {
 		return getInitialFormValues();
 	}, [getInitialFormValues]);
 
-	useEffect((): void => {
-		if (signalProfile == null) return;
-
-		const profile: Profile = useProfileStore.getState().getProfile();
-
-		if (profile.picture && _.startsWith(profile.picture, 'data:')) {
-			imageController.current?.setFileList([
-				{
-					uid: '-1',
-					name: 'profile-picture.png',
-					status: 'done',
-					url: profile.picture
-				},
-			]);
-		} else {
-			imageController.current?.setFileList([]);
-		}
-
-		form.setFieldsValue(profile);
-	}, [imageController, signalProfile, form]);
+	useProfilePictureListener(form, imageController);
+	useManualRenderListener(form, updateValues);
 
 	return (
 		<Form<Profile>
 			form={form}
 			name={"profileForm"}
-			onValuesChange={onValuesChange}
+			onValuesChange={onValuesChangeBasedOnRenderMode}
 			initialValues={initialValues}
 			style={{ paddingRight: 12 }}
 		>
