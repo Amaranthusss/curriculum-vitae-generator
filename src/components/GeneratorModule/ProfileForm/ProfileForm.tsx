@@ -1,4 +1,4 @@
-import { Divider, Flex, Form, Input, Space, Switch } from "antd";
+import { Divider, Flex, Form, Input, InputNumber, Select, Space, Switch } from "antd";
 import { QualificationsList } from "./QualificationsList/QualificationsList";
 import { PublicationsList } from "./PublicationsList/PublicationsList";
 import { ExperienceList } from "./ExperienceList/ExperienceList";
@@ -27,7 +27,7 @@ import type { GetInitialFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
 import type { UploadProps } from "antd";
 import type { RenderMode } from "../../../store/app/interface";
-import type { Profile } from "../../../store/profile/interface";
+import type { DateDisplayStyle, Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
 	const { controller: imageController, setController: setImageController } = useController<UploadImageController>();
@@ -144,6 +144,34 @@ export const ProfileForm = (): React.ReactNode => {
 			initialValues={initialValues}
 			style={{ paddingRight: 12 }}
 		>
+			<Divider orientation={"left"}>
+				<Trans i18nKey={"cv-settings.caption"} />
+			</Divider>
+
+			<Flex gap={24}>
+				<Form.Item
+					label={t("cv-settings.date-range-display-type")}
+					name={"dateDisplayStyle" satisfies keyof Profile}
+				>
+					<Select
+						style={{ minWidth: 185 }}
+						options={[
+							{ value: 'inline' satisfies DateDisplayStyle, label: t("cv-settings.date-range-inline") },
+							{ value: 'from-to' satisfies DateDisplayStyle, label: t("cv-settings.date-range-from-to") },
+							{ value: 'vertical' satisfies DateDisplayStyle, label: t("cv-settings.date-range-vertical") },
+							{ value: 'seperated-vertical' satisfies DateDisplayStyle, label: t("cv-settings.date-range-seperated-vertical") },
+						]}
+					/>
+				</Form.Item>
+
+				<Form.Item
+					label={t("cv-settings.date-column-widths")}
+					name={"dateColumnWidths" satisfies keyof Profile}
+				>
+					<InputNumber placeholder={t("cv-settings.date-column-widths")} />
+				</Form.Item>
+			</Flex>
+
 			<Divider orientation={"left"}>
 				<Trans i18nKey={"personal-data.caption"} />
 			</Divider>

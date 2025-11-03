@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
+import { useProfileStore } from "../../../../store/profile/useProfileStore";
 import { useColorsStore } from "../../../../store/colors/useColorsStore";
 
 import _ from "lodash";
 
 import type { Content, Size, TableCell } from "pdfmake/interfaces";
+import type { DateDisplayStyle } from "../../../../store/profile/interface";
 
 import { subParagraph } from "../Preview.config";
 import { TextMarker } from "../../../../constants/TextMarker";
@@ -13,120 +16,135 @@ import { splitter } from "../Preview.config";
 import { caption } from "../Preview.config";
 import { color } from "../Preview.config";
 
-const dateColumnWidth = 60;
-
 export const useBodyElements = () => {
-  const primaryBgColor: React.CSSProperties["color"] = useColorsStore(
-    ({ primaryBgColor }) => primaryBgColor
-  );
+	const primaryBgColor: React.CSSProperties["color"] = useColorsStore(({ primaryBgColor }) => primaryBgColor);
+	const dateDisplayStyle: DateDisplayStyle = useProfileStore(({ dateDisplayStyle }) => dateDisplayStyle);
+	const dateColumnWidths: number = useProfileStore(({ dateColumnWidths }) => dateColumnWidths);
+	const { t } = useTranslation();
 
-  const renderCaption = useCallback((text: string): Content => {
-    return {
-      table: {
-        widths: ["*"],
-        body: [[{ text, ...caption }]],
-      },
-    };
-  }, []);
+	const renderCaption = useCallback((text: string): Content => {
+		return {
+			table: {
+				widths: ["*"],
+				body: [[{ text, ...caption }]],
+			},
+		};
+	}, []);
 
-  const parseColoredText = useCallback(
-    (text: string | undefined): Content[] => {
-      if (_.isNil(text) || _.isEmpty(text)) return [];
+	const parseColoredText = useCallback(
+		(text: string | undefined): Content[] => {
+			if (_.isNil(text) || _.isEmpty(text)) return [];
 
-      const parts: Content[] = [];
-      const regex: RegExp = new RegExp(
-        `${TextMarker.PrimaryBgColor}(.*?)${TextMarker.PrimaryBgColor}`,
-        "g"
-      );
+			const parts: Content[] = [];
+			const regex: RegExp = new RegExp(
+				`${TextMarker.PrimaryBgColor}(.*?)${TextMarker.PrimaryBgColor}`,
+				"g"
+			);
 
-      let lastIndex: number = 0;
+			let lastIndex: number = 0;
 
-      text.replace(
-        regex,
-        (match: string, group: Content, index: number): string => {
-          if (index > lastIndex) {
-            parts.push({ text: text.substring(lastIndex, index) });
-          }
+			text.replace(
+				regex,
+				(match: string, group: Content, index: number): string => {
+					if (index > lastIndex) {
+						parts.push({ text: text.substring(lastIndex, index) });
+					}
 
-          parts.push({ text: group, color: primaryBgColor });
-          lastIndex = index + match.length;
+					parts.push({ text: group, color: primaryBgColor });
+					lastIndex = index + match.length;
 
-          return match;
-        }
-      );
+					return match;
+				}
+			);
 
-      if (lastIndex < text.length) {
-        parts.push({ text: text.substring(lastIndex) });
-      }
+			if (lastIndex < text.length) {
+				parts.push({ text: text.substring(lastIndex) });
+			}
 
-      return parts.length > 0 ? parts : [{ text }];
-    },
-    [primaryBgColor]
-  );
+			return parts.length > 0 ? parts : [{ text }];
+		},
+		[primaryBgColor]
+	);
 
-  const renderListItem = useCallback(
-    (
-      text: string,
-      extra?: {
-        startDate?: string;
-        endDate?: string;
-        tab?: number;
-        disableLine?: boolean;
-        disableMarginBottom?: boolean;
-      }
-    ): Content => {
-      const body: TableCell[] = [];
-      const widths: Size[] = [];
+	const joinDateRange = useCallback((startDate: string, endDate: string): string => {
+		switch (dateDisplayStyle) {
+			case 'inline':
+				return `${startDate} - ${endDate}`;
+			case 'vertical':
+				return `${startDate}\n${endDate}`;
+			case 'seperated-vertical':
+				return `${startDate} -\n${endDate}`;
+			case 'from-to':
+				return `${t('cv-settings.date-range-from-tag')} ${startDate}\n${t('cv-settings.date-range-to-tag')} ${endDate}`;
+		}
+	}, [t, dateDisplayStyle])
 
-      const overwrittenStyles: TableCell = {
-        ...paragraph,
-        marginBottom: extra?.disableMarginBottom ? 0 : paragraph.marginBottom,
-        marginLeft: extra?.tab,
-      };
+	const renderListItem = useCallback(
+		(
+			text: string,
+			extra?: {
+				startDate?: string;
+				endDate?: string;
+				tab?: number;
+				disableLine?: boolean;
+				disableMarginBottom?: boolean;
+			}
+		): Content => {
+			const body: TableCell[] = [];
+			const widths: Size[] = [];
 
-      if (extra?.startDate != null || extra?.endDate != null) {
-        const jointText: string | null =
-          extra?.startDate != null && extra?.endDate
-            ? `${extra?.startDate}\n${extra?.endDate}`
-            : null;
+			const overwrittenStyles: TableCell = {
+				...paragraph,
+				marginBottom: extra?.disableMarginBottom ? 0 : paragraph.marginBottom,
+				marginLeft: extra?.tab,
+			};
 
-        body.push({
-          text: jointText ?? extra?.endDate ?? extra?.startDate,
-          ...paragraph,
-          ...splitter,
-          ...overwrittenStyles,
-        });
+			if (extra?.startDate != null || extra?.endDate != null) {
+				const jointText: string | null =
+					(
+						!_.isNil(extra?.startDate) &&
+						!_.isNil(extra?.endDate) &&
+						!_.isEmpty(extra.startDate) &&
+						!_.isEmpty(extra.endDate)
+					)
+						? joinDateRange(extra.startDate, extra.endDate)
+						: null;
 
-        widths.push(dateColumnWidth);
-      }
+				body.push({
+					text: jointText ?? extra?.endDate ?? extra?.startDate,
+					...paragraph,
+					...splitter,
+					...overwrittenStyles,
+				});
 
-      body.push({
-        text: parseColoredText(text),
-        ...paragraph,
-        ...splitter,
-        ...overwrittenStyles,
-      });
+				widths.push(dateColumnWidths);
+			}
 
-      widths.push("*");
+			body.push({
+				text: parseColoredText(text),
+				...paragraph,
+				...splitter,
+				...overwrittenStyles,
+			});
 
-      return {
-        table: { widths, body: [body] },
-        layout: {
-          hLineColor: extra?.disableLine ? "white" : color.secondary,
-        },
-      };
-    },
-    [parseColoredText]
-  );
+			widths.push("*");
 
-  const renderSubListItem = useCallback((text: string): Content => {
-    return {
-      table: { widths: ["*"], body: [[{ text, ...subParagraph }]] },
-      layout: "noBorders",
-    };
-  }, []);
+			return {
+				table: { widths, body: [body] },
+				layout: {
+					hLineColor: extra?.disableLine ? "white" : color.secondary,
+				},
+			};
+		}, [parseColoredText, joinDateRange, dateColumnWidths]);
 
-  return { renderCaption, renderListItem, renderSubListItem };
+	const renderSubListItem = useCallback((text: string): Content => {
+		return {
+			table: { widths: ["*"], body: [[{ text, ...subParagraph }]] },
+			layout: "noBorders",
+		};
+	}, []);
+
+	return { renderCaption, renderListItem, renderSubListItem };
 };
 
 export type UseCommonElements = ReturnType<typeof useBodyElements>;

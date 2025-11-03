@@ -36,7 +36,9 @@ export interface Profile {
 	mobile: string;
 	country: string;
 	aboutMe?: string;
-	isAboutMeAtPage?: boolean
+	isAboutMeAtPage?: boolean;
+	dateColumnWidths: number;
+	dateDisplayStyle: DateDisplayStyle;
 	picture: string;
 	languages: LanguageField[];
 	education: EducationField[];
@@ -97,3 +99,5 @@ export interface ReferenceField extends OrderIndex {
 	icon?: string;
 	link: string;
 }
+
+export type DateDisplayStyle = 'inline' | 'seperated-vertical' | 'vertical' | 'from-to';

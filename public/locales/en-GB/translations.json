@@ -1,23 +1,34 @@
 {
-	"app-settings": {
-		"save-profile": "Save profile",
-		"save-profile-tooltip": "Save the current profile",
-		"load-profile": "Load profile",
-		"load-profile-tooltip": "Load a profile from file",
-		"remove-form-list-element": "Remove item from list",
-		"drag-and-drop-from-list-element": "Reorder item in list",
-		"render-mode-on-change": "Refresh on each change",
-		"render-mode-debounced": "Refresh with delay",
-		"render-mode-manual": "Refresh manually",
-		"render-mode-manual-trigger": "Refresh"
-	},
+  "app-settings": {
+    "save-profile": "Save profile",
+    "save-profile-tooltip": "Save the current profile",
+    "load-profile": "Load profile",
+    "load-profile-tooltip": "Load a profile from file",
+    "remove-form-list-element": "Remove item from list",
+    "drag-and-drop-from-list-element": "Reorder item in list",
+    "render-mode-on-change": "Refresh on each change",
+    "render-mode-debounced": "Refresh with delay",
+    "render-mode-manual": "Refresh manually",
+    "render-mode-manual-trigger": "Refresh"
+  },
+  "cv-settings": {
+    "caption": "CV settings",
+    "date-column-widths": "Date column widths",
+    "date-range-display-type": "Date display style:",
+    "date-range-inline": "Inline with dash",
+    "date-range-vertical": "Vertical without dash",
+    "date-range-seperated-vertical": "Vertical with dash",
+		"date-range-from-to": "From ... to ...",
+		"date-range-from-tag": "from",
+		"date-range-to-tag": "to"
+  },
   "personal-data": {
     "caption": "Personal data",
     "name": "Name",
     "surname": "Surname",
     "full-name": "Full name",
     "country": "Country",
-		"contact-data": "Contact data",
+    "contact-data": "Contact data",
     "about-me": "About me",
     "about-me-content": "Content",
     "about-me-placeholder": "Tell something about you",
@@ -93,12 +104,12 @@
     "sidebar-caption": "Sidebar caption text color",
     "sidebar-caption-bg": "Sidebar caption background color"
   },
-	"date-range-form-item": {
+  "date-range-form-item": {
     "start-date": "Start date",
     "end-date": "End date",
-		"display-limit-year": "Year",
-		"display-limit-month": "Month",
-		"display-limit-day": "Day",
-		"present": "Present"
-	}
+    "display-limit-year": "Year",
+    "display-limit-month": "Month",
+    "display-limit-day": "Day",
+    "present": "Present"
+  }
 }

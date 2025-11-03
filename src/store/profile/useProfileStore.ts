@@ -32,12 +32,14 @@ export const useProfileStore = create<ProfileStore>()(
 				experience: [],
 				qualifications: [],
 				publications: [],
+				dateColumnWidths: 45,
 				generalSettings: {
 					education: { dateDisplayLimit: DisplayLimit.Month },
 					experience: { dateDisplayLimit: DisplayLimit.Month },
 					publications: { dateDisplayLimit: DisplayLimit.Year },
 					qualifications: { dateDisplayLimit: DisplayLimit.Month },
 				},
+				dateDisplayStyle: 'seperated-vertical',
 				isAboutMeAtPage: false,
 
 				getProfile: (): Profile => {
