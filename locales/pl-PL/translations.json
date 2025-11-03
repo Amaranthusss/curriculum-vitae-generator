@@ -40,7 +40,8 @@
   },
   "footer": {
     "caption": "Stopka CV",
-		"placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej"
+		"placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej",
+		"top-margin": "Przestrzeń nad tekstem"
   },
   "upload-image": {
     "add-picture": "Dodaj zdjęcie",
@@ -99,6 +100,10 @@
     "light-icon": "Tryb jasny",
     "dark-icon": "Tryb ciemny"
   },
+	"interests": {
+		"caption": "Zainteresowania",
+		"placeholder": "Wymień swoje zainteresowania"
+	},
   "colors": {
     "primary": "Kolor tekstu przewodniego motywu",
     "primary-bg": "Kolor tła przewodniego motywu",
@@ -115,5 +120,12 @@
     "display-limit-month": "Miesiąc",
     "display-limit-day": "Dzień",
     "present": "Obecnie"
-  }
+  },
+	"alignment": {
+		"caption": "Wyrównanie tekstu",
+		"left": "Do lewej",
+		"right": "Do prawej",
+		"center": "Wycentruj",
+		"justify": "Wyjustuj"
+	}
 }

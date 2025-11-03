@@ -40,7 +40,8 @@
   },
   "footer": {
     "caption": "Lebenslauf-Fußzeile",
-    "placeholder": "Geben Sie Ihre Einwilligung zur Datenverarbeitung oder eine persönliche Nachricht an das rekrutierende Unternehmen ein"
+    "placeholder": "Geben Sie Ihre Einwilligung zur Datenverarbeitung oder eine persönliche Nachricht an das rekrutierende Unternehmen ein",
+		"top-margin": "Abstand über dem Text"
   },
   "upload-image": {
     "add-picture": "Bild hinzufügen",
@@ -99,6 +100,10 @@
     "light-icon": "Hell",
     "dark-icon": "Dunkel"
   },
+  "interests": {
+    "caption": "Interessen",
+    "placeholder": "Listen Sie Ihre Interessen auf"
+  },
   "colors": {
     "primary": "Primärtextfarbe",
     "primary-bg": "Primärer Hintergrundfarbe",
@@ -115,5 +120,12 @@
     "display-limit-month": "Monat",
     "display-limit-day": "Tag",
     "present": "Gegenwärtig"
+  },
+  "alignment": {
+    "caption": "Textausrichtung",
+    "left": "Links",
+    "right": "Rechts",
+    "center": "Zentriert",
+    "justify": "Blocksatz"
   }
 }
