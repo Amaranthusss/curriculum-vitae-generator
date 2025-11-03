@@ -59,6 +59,7 @@ export const DatePickerFormItem = ({
 				<DatePickerField
 					picker={picker}
 					present={present}
+					disableRange={disableRange}
 					placeholder={[
 						placeholders?.[0] ?? t("date-range-form-item.start-date"),
 						placeholders?.[1] ?? t("date-range-form-item.end-date"),

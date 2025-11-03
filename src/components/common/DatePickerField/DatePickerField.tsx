@@ -11,8 +11,9 @@ export const DatePickerField = ({
 	present,
 	onChange,
 	placeholder,
+	disableRange,
 }: DatePickerFieldProps): React.ReactNode => {
-	if (present) {
+	if (present || disableRange) {
 		return (
 			<DatePicker
 				value={value as NoUndefinedRangeValueType<Dayjs> | null}
