@@ -1,34 +1,34 @@
 {
-	"app-settings": {
-		"save-profile": "Zapisz profil",
-		"save-profile-tooltip": "Zapisz aktualne ustawienia",
-		"load-profile": "Wczytaj profil",
-		"load-profile-tooltip": "Wczytaj ustawienia z pliku",
-		"remove-form-list-element": "Usuń element z listy",
-		"drag-and-drop-from-list-element": "Zmień kolejność elementu w liście",
-		"render-mode-on-change": "Odświeżaj przy każdej zmianie",
-		"render-mode-debounced": "Odświeżaj z opóźnieniem",
-		"render-mode-manual": "Odświeżaj ręcznie",
-		"render-mode-manual-trigger": "Odśwież"
-	},
-	"cv-settings": {
-		"caption": "Ustawienia CV",
-		"date-column-widths": "Szerokość dat",
-		"date-range-display-type": "Sposób wyświetlania dat:",
-		"date-range-inline": "W ciągu z myślinikiem",
-		"date-range-vertical": "Pionowo bez myślinika",
-		"date-range-seperated-vertical": "Pionowo z myślinikiem",
-		"date-range-from-to": "Od ... do ...",
-		"date-range-from-tag": "od",
-		"date-range-to-tag": "do"
-	},
+  "app-settings": {
+    "save-profile": "Zapisz profil",
+    "save-profile-tooltip": "Zapisz aktualne ustawienia",
+    "load-profile": "Wczytaj profil",
+    "load-profile-tooltip": "Wczytaj ustawienia z pliku",
+    "remove-form-list-element": "Usuń element z listy",
+    "drag-and-drop-from-list-element": "Zmień kolejność elementu w liście",
+    "render-mode-on-change": "Odświeżaj przy każdej zmianie",
+    "render-mode-debounced": "Odświeżaj z opóźnieniem",
+    "render-mode-manual": "Odświeżaj ręcznie",
+    "render-mode-manual-trigger": "Odśwież"
+  },
+  "cv-settings": {
+    "caption": "Ustawienia CV",
+    "date-column-widths": "Szerokość dat",
+    "date-range-display-type": "Sposób wyświetlania dat:",
+    "date-range-inline": "W ciągu z myślinikiem",
+    "date-range-vertical": "Pionowo bez myślinika",
+    "date-range-seperated-vertical": "Pionowo z myślinikiem",
+    "date-range-from-to": "Od ... do ...",
+    "date-range-from-tag": "od",
+    "date-range-to-tag": "do"
+  },
   "personal-data": {
     "caption": "Dane osobiste",
     "name": "Imię",
     "surname": "Nazwisko",
     "full-name": "Imię i nazwisko",
     "country": "Kraj",
-		"contact-data": "Dane kontaktowe",
+    "contact-data": "Dane kontaktowe",
     "about-me": "O mnie",
     "about-me-content": "Zawartość",
     "about-me-placeholder": "Napisz coś o sobie",
@@ -37,6 +37,10 @@
     "about-me-page-position": "Zawartość strony",
     "email": "E-mail",
     "mobile": "Numer telefonu"
+  },
+  "footer": {
+    "caption": "Stopka CV",
+		"placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej"
   },
   "upload-image": {
     "add-picture": "Dodaj zdjęcie",
@@ -107,9 +111,9 @@
   "date-range-form-item": {
     "start-date": "Data rozpoczęcia",
     "end-date": "Data zakończenia",
-		"display-limit-year": "Rok",
-		"display-limit-month": "Miesiąc",
-		"display-limit-day": "Dzień",
+    "display-limit-year": "Rok",
+    "display-limit-month": "Miesiąc",
+    "display-limit-day": "Dzień",
     "present": "Obecnie"
   }
 }
