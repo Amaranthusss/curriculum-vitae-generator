@@ -22,6 +22,7 @@ export const useProfileStore = create<ProfileStore>()(
 				name: "",
 				surname: "",
 				aboutMe: "",
+				footer: "",
 				picture: "",
 				email: "",
 				country: "",

@@ -2,6 +2,8 @@ import type { Profile } from "../store/profile/interface";
 
 export const ProfileKeys: (keyof Profile)[] = [
 	'generalSettings',
+	'dateColumnWidths',
+	'dateDisplayStyle',
 	'name',
 	'surname',
 	'country',
@@ -9,6 +11,7 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'email',
 	'mobile',
 	'aboutMe',
+	'footer',
 	'isAboutMeAtPage',
 	'languages',
 	'education',

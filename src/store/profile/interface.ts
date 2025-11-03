@@ -36,6 +36,7 @@ export interface Profile {
 	mobile: string;
 	country: string;
 	aboutMe?: string;
+	footer?: string;
 	isAboutMeAtPage?: boolean;
 	dateColumnWidths: number;
 	dateDisplayStyle: DateDisplayStyle;

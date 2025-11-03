@@ -12,6 +12,7 @@ import { useLanguages } from "./useLanguages.ts";
 import { useCallback } from "react";
 import { useCountry } from "./useCountry.ts";
 import { usePicture } from "./usePicture.ts";
+import { useFooter } from "./useFooter.ts";
 import { useMobile } from "./useMobile.ts";
 import { useEmail } from "./useEmail.ts";
 
@@ -31,6 +32,7 @@ export const useIndex = () => {
 
 	const { renderSidebarCaption, renderSidebarTag } = useSidebarElements();
 
+	const { renderFooter } = useFooter();
 	const { renderPicture } = usePicture();
 	const { renderNameLabel } = useNameLabel();
 	const { renderEducation } = useEducation(renderCaption, renderListItem);
@@ -90,6 +92,7 @@ export const useIndex = () => {
 									renderExperience(),
 									renderQualifications(),
 									renderPublications(),
+									renderFooter(),
 								],
 							},
 						],
@@ -100,6 +103,7 @@ export const useIndex = () => {
 	}, [
 		sidebarBgColor,
 		renderEmail,
+		renderFooter,
 		renderMobile,
 		renderPicture,
 		renderCountry,

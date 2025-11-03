@@ -18,9 +18,9 @@
     "date-range-inline": "Inline with dash",
     "date-range-vertical": "Vertical without dash",
     "date-range-seperated-vertical": "Vertical with dash",
-		"date-range-from-to": "From ... to ...",
-		"date-range-from-tag": "from",
-		"date-range-to-tag": "to"
+    "date-range-from-to": "From ... to ...",
+    "date-range-from-tag": "from",
+    "date-range-to-tag": "to"
   },
   "personal-data": {
     "caption": "Personal data",
@@ -37,6 +37,10 @@
     "about-me-page-position": "Page content",
     "email": "E-mail",
     "mobile": "Phone number"
+  },
+  "footer": {
+    "caption": "CV footer",
+    "placeholder": "Enter consent for personal data processing or a personalized message for the recruiting company"
   },
   "upload-image": {
     "add-picture": "Add picture",

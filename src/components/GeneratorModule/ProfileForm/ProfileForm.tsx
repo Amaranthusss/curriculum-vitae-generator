@@ -231,10 +231,7 @@ export const ProfileForm = (): React.ReactNode => {
 				<Trans i18nKey={'personal-data.about-me'} />
 			</Divider>
 
-			<Form.Item
-				label={t("personal-data.about-me-content")}
-				name={"aboutMe" satisfies keyof Profile}
-			>
+			<Form.Item name={"aboutMe" satisfies keyof Profile} >
 				<Input.TextArea
 					rows={4}
 					placeholder={t("personal-data.about-me-placeholder")}
@@ -248,6 +245,17 @@ export const ProfileForm = (): React.ReactNode => {
 				<Switch
 					checkedChildren={t("personal-data.about-me-page-position")}
 					unCheckedChildren={t("personal-data.about-me-sidebar-position")}
+				/>
+			</Form.Item>
+
+			<Divider orientation={"left"}>
+				<Trans i18nKey={'footer.caption'} />
+			</Divider>
+
+			<Form.Item name={"footer" satisfies keyof Profile} 	>
+				<Input.TextArea
+					rows={4}
+					placeholder={t("footer.placeholder")}
 				/>
 			</Form.Item>
 
