@@ -14,17 +14,23 @@ export const useInterests = (
 	renderSidebarTag: UseSidebarElements["renderSidebarTag"]
 ) => {
 	const interestsAlignment: Profile["interestsAlignment"] = useProfileStore(({ interestsAlignment }) => interestsAlignment);
+	const interestsLabel: Profile["interestsLabel"] = useProfileStore(({ interestsLabel }) => interestsLabel);
 	const interests: Profile["interests"] = useProfileStore(({ interests }) => interests);
 	const { t } = useTranslation();
 
 	const renderInterests = useCallback((): Content => {
 		if (_.isEmpty(interests) || _.isNil(interests)) return [];
 
+		const caption: string =
+			interestsLabel === 'interests' ? t('interests.interests-label') :
+				interestsLabel === 'hobbies' ? t('interests.hobbies-label') :
+					'';
+
 		return [
-			renderSidebarCaption(t("interests.caption")),
+			renderSidebarCaption(caption),
 			renderSidebarTag(interests, { alignment: interestsAlignment }),
 		];
-	}, [t, renderSidebarCaption, renderSidebarTag, interests, interestsAlignment]);
+	}, [t, renderSidebarCaption, renderSidebarTag, interests, interestsLabel, interestsAlignment]);
 
 	return { renderInterests };
 };

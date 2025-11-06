@@ -101,8 +101,11 @@
     "dark-icon": "Dunkel"
   },
   "interests": {
-    "caption": "Interessen",
-    "placeholder": "Listen Sie Ihre Interessen auf"
+		"caption": "Interessen / Hobbys",
+		"caption-select": "Überschrift",
+		"hobbies-label": "Hobbys",
+		"interests-label": "Interessen",
+		"placeholder": "Listen Sie Ihre Interessen auf"
   },
   "colors": {
     "primary": "Primärtextfarbe",

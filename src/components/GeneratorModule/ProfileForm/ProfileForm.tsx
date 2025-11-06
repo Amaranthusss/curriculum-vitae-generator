@@ -23,12 +23,12 @@ import { assignOrderIndexes } from "../../../utils/assignOrderIndexes";
 import { getBase64 } from "../../../utils/getBase64";
 import _ from "lodash";
 
+import type { DateDisplayStyle, InterestsLabel, Profile } from "../../../store/profile/interface";
 import type { UploadImageController } from "../../common/UploadImage/UploadImage.interface";
 import type { GetInitialFormValues } from "../../../store/form/interface";
 import type { UpdateValues } from "../../../store/form/interface";
 import type { UploadProps } from "antd";
 import type { RenderMode } from "../../../store/app/interface";
-import type { DateDisplayStyle, Profile } from "../../../store/profile/interface";
 
 export const ProfileForm = (): React.ReactNode => {
 	const { controller: imageController, setController: setImageController } = useController<UploadImageController>();
@@ -269,12 +269,26 @@ export const ProfileForm = (): React.ReactNode => {
 				/>
 			</Form.Item>
 
-			<Form.Item
-				name={"interestsAlignment" satisfies keyof Profile}
-				label={t('alignment.caption')}
-			>
-				<AlignmentSelector />
-			</Form.Item>
+			<Flex gap={24}>
+				<Form.Item
+					name={"interestsLabel" satisfies keyof Profile}
+					label={t('interests.caption-select')}
+				>
+					<Select
+						options={[
+							{ value: 'hobbies' satisfies InterestsLabel, label: t('interests.hobbies-label') },
+							{ value: 'interests' satisfies InterestsLabel, label: t('interests.interests-label') },
+						]}
+					/>
+				</Form.Item>
+
+				<Form.Item
+					name={"interestsAlignment" satisfies keyof Profile}
+					label={t('alignment.caption')}
+				>
+					<AlignmentSelector />
+				</Form.Item>
+			</Flex>
 
 			<Divider orientation={"left"}>
 				<Trans i18nKey={'footer.caption'} />

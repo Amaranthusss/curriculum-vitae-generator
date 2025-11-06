@@ -22,6 +22,7 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'qualifications',
 	'publications',
 	'interests',
+	'interestsLabel',
 	'interestsAlignment',
 	'references',
 ];

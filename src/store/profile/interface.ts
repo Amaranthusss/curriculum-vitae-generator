@@ -42,6 +42,7 @@ export interface Profile {
 	footerTopMargin: number;
 	footerAlignment: Alignment;
 	interests?: string;
+	interestsLabel: InterestsLabel;
 	interestsAlignment: Alignment;
 	isAboutMeAtPage?: boolean;
 	dateColumnWidths: number;
@@ -108,3 +109,5 @@ export interface ReferenceField extends OrderIndex {
 }
 
 export type DateDisplayStyle = 'inline' | 'seperated-vertical' | 'vertical' | 'from-to';
+
+export type InterestsLabel = 'hobbies' | 'interests';

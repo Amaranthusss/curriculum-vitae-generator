@@ -101,7 +101,10 @@
     "dark-icon": "Tryb ciemny"
   },
 	"interests": {
-		"caption": "Zainteresowania",
+		"caption": "Zainteresowania / Hobby",
+		"caption-select": "Nagłówek",
+		"hobbies-label": "Hobby",
+		"interests-label": "Zainteresowania",
 		"placeholder": "Wymień swoje zainteresowania"
 	},
   "colors": {
