@@ -101,7 +101,10 @@
     "dark-icon": "Dark"
   },
   "interests": {
-    "caption": "Interests",
+    "caption": "Interests / Hobbies",
+		"caption-select": "Label",
+		"hobbies-label": "Hobbies",
+		"interests-label": "Interests",
     "placeholder": "Type your interests"
   },
   "colors": {
