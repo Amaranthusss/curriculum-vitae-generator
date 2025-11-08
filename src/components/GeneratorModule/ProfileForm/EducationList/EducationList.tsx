@@ -9,6 +9,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
+import { useAppStore } from "../../../../store/app/useAppStore";
 
 import type { EducationField, GeneralSettings } from "../../../../store/profile/interface";
 import type { FormInstance, FormListFieldData } from "antd";
@@ -16,6 +17,7 @@ import type { Profile } from "../../../../store/profile/interface";
 
 export const EducationList = (): React.ReactNode => {
 	const generalSettings: GeneralSettings = useProfileStore(({ generalSettings }) => generalSettings);
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const form: FormInstance<Profile> = Form.useFormInstance();
 	const { t } = useTranslation();
 
@@ -28,7 +30,7 @@ export const EducationList = (): React.ReactNode => {
 					</Divider>
 				</Flex>
 
-				<Flex style={{ minWidth: 200 }}>
+				<Flex style={{ minWidth: isCompact ? 0 : 200 }}>
 					<Divider orientation={"center"} >
 						<DisplayLimitFormItem
 							style={{ margin: 0 }}

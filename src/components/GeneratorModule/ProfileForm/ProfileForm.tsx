@@ -143,13 +143,13 @@ export const ProfileForm = (): React.ReactNode => {
 			name={"profileForm"}
 			onValuesChange={onValuesChangeBasedOnRenderMode}
 			initialValues={initialValues}
-			style={{ paddingRight: 12 }}
+			style={{ paddingRight: 12, flex: 1, maxWidth: '100%' }}
 		>
 			<Divider orientation={"left"}>
 				<Trans i18nKey={"cv-settings.caption"} />
 			</Divider>
 
-			<Flex gap={24}>
+			<Flex gap={24} wrap>
 				<Form.Item
 					label={t("cv-settings.date-range-display-type")}
 					name={"dateDisplayStyle" satisfies keyof Profile}
@@ -177,7 +177,7 @@ export const ProfileForm = (): React.ReactNode => {
 				<Trans i18nKey={"personal-data.caption"} />
 			</Divider>
 
-			<Flex gap={24}>
+			<Flex gap={24} wrap>
 				<UploadImage setController={setImageController} onChange={onUploadImage} />
 
 				<Flex vertical>
@@ -239,7 +239,7 @@ export const ProfileForm = (): React.ReactNode => {
 				/>
 			</Form.Item>
 
-			<Flex gap={24}>
+			<Flex gap={24} wrap>
 				<Form.Item
 					label={t("personal-data.about-me-position")}
 					name={"isAboutMeAtPage" satisfies keyof Profile}
@@ -269,7 +269,7 @@ export const ProfileForm = (): React.ReactNode => {
 				/>
 			</Form.Item>
 
-			<Flex gap={24}>
+			<Flex gap={24} wrap>
 				<Form.Item
 					name={"interestsLabel" satisfies keyof Profile}
 					label={t('interests.caption-select')}
@@ -301,7 +301,7 @@ export const ProfileForm = (): React.ReactNode => {
 				/>
 			</Form.Item>
 
-			<Flex gap={24}>
+			<Flex gap={24} wrap>
 				<Form.Item
 					name={"footerAlignment" satisfies keyof Profile}
 					label={t('alignment.caption')}

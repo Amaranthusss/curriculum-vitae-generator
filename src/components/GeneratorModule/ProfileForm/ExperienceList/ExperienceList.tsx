@@ -9,6 +9,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
+import { useAppStore } from "../../../../store/app/useAppStore";
 
 import type { ExperienceField, GeneralSettings } from "../../../../store/profile/interface";
 import type { FormInstance, FormListFieldData } from "antd";
@@ -17,6 +18,7 @@ import type { Profile } from "../../../../store/profile/interface";
 export const ExperienceList = (): React.ReactNode => {
 	const generalSettings: GeneralSettings = useProfileStore(({ generalSettings }) => generalSettings);
 	const form: FormInstance<Profile> = Form.useFormInstance();
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const { t } = useTranslation();
 
 	return (
@@ -24,11 +26,11 @@ export const ExperienceList = (): React.ReactNode => {
 			<Flex>
 				<Flex flex={1}>
 					<Divider orientation={"left"}>
-						<Trans i18nKey={"experience.caption"} />
+						<Trans i18nKey={!isCompact ? "experience.caption" : "experience.caption-short"} />
 					</Divider>
 				</Flex>
 
-				<Flex style={{ minWidth: 200 }}>
+				<Flex style={{ minWidth: isCompact ? 0 : 200 }}>
 					<Divider orientation={"center"} >
 						<DisplayLimitFormItem
 							style={{ margin: 0 }}

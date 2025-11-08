@@ -8,21 +8,26 @@ import { useAppStore } from "../../store/app/useAppStore";
 import styles from "./GeneratorModule.module.scss";
 
 export const GeneratorModule = (): React.ReactNode => {
-  const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 
-  return (
-    <Flex style={{ height: "100%" }} gap={16}>
-      <ColorsPicker />
-      <Divider type={"vertical"} style={{ height: "100%" }} />
-      <Splitter layout={!isCompact ? "horizontal" : "vertical"}>
-        <Splitter.Panel className={styles.profileFormSplitter} min={350}>
-          <ProfileForm />
-        </Splitter.Panel>
+	return (
+		<Flex style={{ height: "100%" }} gap={16}>
+			{!isCompact && <>
+				<ColorsPicker />
+				<Divider type={"vertical"} style={{ height: "100%" }} />
+			</>}
 
-        <Splitter.Panel className={styles.previewSplitter}>
-          <Preview />
-        </Splitter.Panel>
-      </Splitter>
-    </Flex>
-  );
+			{!isCompact ? (
+				<Splitter layout={"horizontal"}>
+					<Splitter.Panel className={styles.profileFormSplitter} min={350}>
+						<ProfileForm />
+					</Splitter.Panel>
+
+					<Splitter.Panel className={styles.previewSplitter}>
+						<Preview />
+					</Splitter.Panel>
+				</Splitter>
+			) : <ProfileForm />}
+		</Flex>
+	);
 };

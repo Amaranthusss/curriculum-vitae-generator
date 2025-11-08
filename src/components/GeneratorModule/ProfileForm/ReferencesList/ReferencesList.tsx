@@ -7,6 +7,8 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
 
+import { useAppStore } from "../../../../store/app/useAppStore";
+
 import _ from "lodash";
 
 import type { FormInstance, FormListFieldData } from "antd";
@@ -20,6 +22,7 @@ import styles from "./ReferencesList.module.scss";
 
 export const ReferencesList = (): React.ReactNode => {
 	const form: FormInstance<Profile> = Form.useFormInstance();
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const { t } = useTranslation();
 
 	const predefiniedIcons = useMemo((): SelectOption[] => {
@@ -74,7 +77,7 @@ export const ReferencesList = (): React.ReactNode => {
 							({ key, name, ...restField }): React.ReactNode => (
 								<DragAndDropProfileList.Item key={key} name={name} >
 									<Flex gap={8}>
-										<Flex flex={1} gap={8}>
+										<Flex vertical={isCompact} flex={1} gap={isCompact ? 0 : 8}>
 											<Form.Item
 												{...restField}
 												name={[name, "label"]}

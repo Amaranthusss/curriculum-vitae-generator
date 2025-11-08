@@ -5,15 +5,21 @@ import { ProfileManager } from "../../common/ProfileManager/ProfileManager";
 
 import { useMemo } from "react";
 
+import { useAppStore } from "../../../store/app/useAppStore";
+
 import type { MenuItemType } from "antd/es/menu/interface";
 import type { ItemType } from "antd/es/menu/interface";
 
 import { RouteUrl } from "../../../constants/RouteUrl";
 
 export const Header = (): React.ReactNode => {
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
+
 	const items = useMemo((): ItemType<MenuItemType>[] => {
 		return [{ key: RouteUrl.Generator, label: "Curriculum Vitae Generator" }];
 	}, []);
+
+	if (isCompact) return null;
 
 	return (
 		<Flex justify={"space-between"} align={"center"}>

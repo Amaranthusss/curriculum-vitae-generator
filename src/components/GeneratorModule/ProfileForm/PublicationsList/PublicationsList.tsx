@@ -9,6 +9,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
+import { useAppStore } from "../../../../store/app/useAppStore";
 
 import type { GeneralSettings, PublicationField } from "../../../../store/profile/interface";
 import type { FormInstance, FormListFieldData } from "antd";
@@ -16,6 +17,7 @@ import type { Profile } from "../../../../store/profile/interface";
 
 export const PublicationsList = (): React.ReactNode => {
 	const generalSettings: GeneralSettings = useProfileStore(({ generalSettings }) => generalSettings);
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const form: FormInstance<Profile> = Form.useFormInstance();
 	const { t } = useTranslation();
 
@@ -28,7 +30,7 @@ export const PublicationsList = (): React.ReactNode => {
 					</Divider>
 				</Flex>
 
-				<Flex style={{ minWidth: 200 }}>
+				<Flex style={{ minWidth: isCompact ? 0 : 200 }}>
 					<Divider orientation={"center"} >
 						<DisplayLimitFormItem
 							style={{ margin: 0 }}
@@ -51,7 +53,7 @@ export const PublicationsList = (): React.ReactNode => {
 									<DragAndDropProfileList.Item key={key} name={name} >
 										<Flex gap={8}>
 											<Flex vertical flex={1}>
-												<Flex gap={8}>
+												<Flex vertical={isCompact} gap={isCompact ? 0 : 8}>
 													<Form.Item
 														{...restField}
 														name={[name, "title" satisfies keyof PublicationField]}
@@ -71,7 +73,7 @@ export const PublicationsList = (): React.ReactNode => {
 													/>
 												</Flex>
 
-												<Flex gap={8}>
+												<Flex vertical={isCompact} gap={isCompact ? 0 : 8}>
 													<Flex flex={2}>
 														<Form.Item
 															{...restField}

@@ -9,6 +9,7 @@ import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
 import { useProfileStore } from "../../../../store/profile/useProfileStore";
+import { useAppStore } from "../../../../store/app/useAppStore";
 
 import type { GeneralSettings, QualificationField } from "../../../../store/profile/interface";
 import type { FormInstance, FormListFieldData } from "antd";
@@ -16,6 +17,7 @@ import type { Profile } from "../../../../store/profile/interface";
 
 export const QualificationsList = (): React.ReactNode => {
 	const generalSettings: GeneralSettings = useProfileStore(({ generalSettings }) => generalSettings);
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const form: FormInstance<Profile> = Form.useFormInstance();
 	const { t } = useTranslation();
 
@@ -24,11 +26,11 @@ export const QualificationsList = (): React.ReactNode => {
 			<Flex>
 				<Flex flex={1}>
 					<Divider orientation={"left"}>
-						<Trans i18nKey={"qualifications.caption"} />
+						<Trans i18nKey={!isCompact ? "qualifications.caption" : "qualifications.caption-short"} />
 					</Divider>
 				</Flex>
 
-				<Flex style={{ minWidth: 200 }}>
+				<Flex style={{ minWidth: isCompact ? 0 : 200 }}>
 					<Divider orientation={"center"} >
 						<DisplayLimitFormItem
 							style={{ margin: 0 }}
@@ -51,7 +53,7 @@ export const QualificationsList = (): React.ReactNode => {
 									<DragAndDropProfileList.Item key={key} name={name} >
 										<Flex gap={8}>
 											<Flex vertical flex={1}>
-												<Flex gap={8}>
+												<Flex vertical={isCompact} gap={8}>
 													<Space.Compact block>
 														<Form.Item
 															{...restField}

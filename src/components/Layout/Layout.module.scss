@@ -1,12 +1,31 @@
 .layout {
-  height: 100vh;
+	height: 100vh;
+	overflow-y: hidden;
 
-  > .content {
-    margin: 24px;
-    padding: 24px;
-  }
+	>.content {
+		margin: 24px;
+		padding: 24px;
+		height: fit-content;
+	}
 
-  > .footer {
-    text-align: center;
-  }
+	>.footer {
+		text-align: center;
+	}
+
+	@media (max-width: 900px) {
+		>.content {
+			margin: 12px;
+			margin-bottom: unset;
+			padding: 12px;
+			overflow-y: auto;
+		}
+
+		>.footer {
+			padding-block: 4px;
+		}
+
+		div[class~='ant-form-item'] {
+			margin-bottom: 12px;
+		}
+	}
 }

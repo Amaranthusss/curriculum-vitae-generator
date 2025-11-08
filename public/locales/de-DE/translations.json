@@ -69,12 +69,14 @@
   },
   "experience": {
     "caption": "Berufserfahrung",
+    "caption-short": "Berufserfahrung",
     "add": "Erfahrung hinzufügen",
     "work-station": "Arbeitsstelle",
     "description": "Beschreibung der Arbeitsstelle"
   },
   "qualifications": {
     "caption": "Zusätzliche Qualifikationen",
+    "caption-short": "Qualifikationen",
     "add": "Qualifikation hinzufügen",
     "type": "Typ",
     "name": "Name",

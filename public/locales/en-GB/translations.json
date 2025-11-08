@@ -69,12 +69,14 @@
   },
   "experience": {
     "caption": "Professional experience",
+    "caption-short": "Experience",
     "add": "Add experience",
     "work-station": "Work station",
     "description": "Work station description"
   },
   "qualifications": {
     "caption": "Additional qualifications",
+    "caption-short": "Qualifications",
     "add": "Add qualification",
     "type": "Type",
     "name": "Name",

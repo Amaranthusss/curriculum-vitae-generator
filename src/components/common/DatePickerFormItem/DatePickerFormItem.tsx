@@ -1,10 +1,12 @@
-import { Button, Checkbox, Form, Space } from "antd";
+import { Button, Checkbox, Flex, Form, Space } from "antd";
 import { DisplayLimitFormItem } from "../DisplayLimitFormItem/DisplayLimitFormItem";
 import { DatePickerField } from "../DatePickerField/DatePickerField";
 import { Trans } from "react-i18next";
 
-import { useCallback, useState } from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+import { useAppStore } from "../../../store/app/useAppStore";
 
 import type { DatePickerProps, FormInstance } from "antd";
 import type { DatePickerFormItemProps } from "./DatePickerFormItem.interface";
@@ -24,6 +26,7 @@ export const DatePickerFormItem = ({
 	displayLimitDefault,
 }: DatePickerFormItemProps): React.ReactNode => {
 	const form: FormInstance<Profile> = Form.useFormInstance();
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const present = Form.useWatch([...parentName, name, subname, "present"], form);
 
 	const displayLimitDefaultToPicker = useCallback((displayLimit?: DisplayLimit): DatePickerProps['picker'] => {
@@ -49,8 +52,13 @@ export const DatePickerFormItem = ({
 		setPicker(displayLimitDefaultToPicker(value));
 	}, [displayLimitDefaultToPicker]);
 
+	const InputsProvider = useCallback(({ children }: PropsWithChildren): React.ReactNode => {
+		if (isCompact) return <Flex vertical style={{ paddingBottom: !disableRange ? 12 : undefined }}>{children}</Flex>;
+		else return <Space.Compact className={styles.compactSpace}>{children}</Space.Compact>;
+	}, [isCompact, disableRange])
+
 	return (
-		<Space.Compact className={styles.compactSpace}>
+		<InputsProvider>
 			<Form.Item
 				{...restField}
 				name={[name, subname, "value" satisfies keyof FormDate]}
@@ -81,6 +89,7 @@ export const DatePickerFormItem = ({
 						{...restField}
 						name={[name, subname, "present" satisfies keyof FormDate]}
 						valuePropName={"checked"}
+						style={{ marginBottom: 0 }}
 					>
 						<Checkbox>
 							<Trans i18nKey={"date-range-form-item.present"} />
@@ -88,6 +97,6 @@ export const DatePickerFormItem = ({
 					</Form.Item>
 				</Button>
 			)}
-		</Space.Compact>
+		</InputsProvider>
 	);
 };
