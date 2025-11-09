@@ -22,6 +22,10 @@
     "date-range-from-tag": "von",
     "date-range-to-tag": "bis"
   },
+  "compact-components": {
+    "settings-modal-title": "Einstellungen",
+    "preview-modal-title": "Lebenslauf-Vorschau"
+  },
   "personal-data": {
     "caption": "Persönliche Daten",
     "name": "Name",
@@ -41,7 +45,7 @@
   "footer": {
     "caption": "Lebenslauf-Fußzeile",
     "placeholder": "Geben Sie Ihre Einwilligung zur Datenverarbeitung oder eine persönliche Nachricht an das rekrutierende Unternehmen ein",
-		"top-margin": "Abstand über dem Text"
+    "top-margin": "Abstand über dem Text"
   },
   "upload-image": {
     "add-picture": "Bild hinzufügen",
@@ -69,12 +73,14 @@
   },
   "experience": {
     "caption": "Berufserfahrung",
+    "caption-short": "Berufserfahrung",
     "add": "Erfahrung hinzufügen",
     "work-station": "Arbeitsstelle",
     "description": "Beschreibung der Arbeitsstelle"
   },
   "qualifications": {
     "caption": "Zusätzliche Qualifikationen",
+    "caption-short": "Qualifikationen",
     "add": "Qualifikation hinzufügen",
     "type": "Typ",
     "name": "Name",
@@ -101,11 +107,11 @@
     "dark-icon": "Dunkel"
   },
   "interests": {
-		"caption": "Interessen / Hobbys",
-		"caption-select": "Überschrift",
-		"hobbies-label": "Hobbys",
-		"interests-label": "Interessen",
-		"placeholder": "Listen Sie Ihre Interessen auf"
+    "caption": "Interessen / Hobbys",
+    "caption-select": "Überschrift",
+    "hobbies-label": "Hobbys",
+    "interests-label": "Interessen",
+    "placeholder": "Listen Sie Ihre Interessen auf"
   },
   "colors": {
     "primary": "Primärtextfarbe",

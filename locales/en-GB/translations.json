@@ -22,6 +22,10 @@
     "date-range-from-tag": "from",
     "date-range-to-tag": "to"
   },
+	"compact-components": {
+		"settings-modal-title": "Settings",
+		"preview-modal-title": "CV Preview"
+	},
   "personal-data": {
     "caption": "Personal data",
     "name": "Name",
@@ -69,12 +73,14 @@
   },
   "experience": {
     "caption": "Professional experience",
+    "caption-short": "Experience",
     "add": "Add experience",
     "work-station": "Work station",
     "description": "Work station description"
   },
   "qualifications": {
     "caption": "Additional qualifications",
+    "caption-short": "Qualifications",
     "add": "Add qualification",
     "type": "Type",
     "name": "Name",

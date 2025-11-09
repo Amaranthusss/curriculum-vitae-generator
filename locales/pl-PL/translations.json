@@ -22,6 +22,10 @@
     "date-range-from-tag": "od",
     "date-range-to-tag": "do"
   },
+	"compact-components": {
+		"settings-modal-title": "Ustawienia",
+		"preview-modal-title": "Podgląd CV"
+	},
   "personal-data": {
     "caption": "Dane osobiste",
     "name": "Imię",
@@ -69,12 +73,14 @@
   },
   "experience": {
     "caption": "Doświadczenie zawodowe",
+    "caption-short": "Doświadczenie",
     "add": "Dodaj doświadczenie",
     "work-station": "Stanowisko",
     "description": "Opis stanowiska"
   },
   "qualifications": {
     "caption": "Dodatkowe kwalifikacje",
+    "caption-short": "Kwalifikacje",
     "add": "Dodaj kwalifikację",
     "type": "Typ",
     "name": "Nazwa",
