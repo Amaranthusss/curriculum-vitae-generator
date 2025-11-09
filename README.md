@@ -1,6 +1,15 @@
-# Curriculum Vitae Generator
 
-A simple application to generate your own curriculum vitae. Just fill out the form, and you'll receive a ready-to-download PDF file to send to potential employers. The PDF preview is updated in real time, reflecting changes made in the form. You can also customize the file’s colors and more. Set all your preferences to create the perfect CV.
+# Curriculum Vitae Generator
+![Curriculum Vitae Generator](public/assets/logo.png)
+
+A simple web application for generating your own curriculum vitae (CV).  
+Just fill out the form, and you'll get a ready-to-download PDF file you can send to potential employers.  
+
+The live PDF preview updates in real time as you edit the form.  
+You can also customize the colors and layout to suit your preferences — everything you need to create the perfect CV.  
+
+The application **does not store** any personal data.  
+You can safely save your configuration locally on your device and reload it later to continue where you left off.
 
 ## Deployment 🚀
 

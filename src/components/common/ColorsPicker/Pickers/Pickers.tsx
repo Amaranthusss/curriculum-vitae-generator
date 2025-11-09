@@ -3,6 +3,8 @@ import { ColorPicker, Form, Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 
+import { useAppStore } from "../../../../store/app/useAppStore";
+
 import _ from "lodash";
 
 import type { PickersProps } from "./Pickers.interface";
@@ -10,6 +12,7 @@ import type { Colors } from "../../../../store/colors/interface";
 import type { Color } from "antd/es/color-picker";
 
 export const Pickers = ({ initialValues }: PickersProps): React.ReactNode => {
+	const isCompact: boolean = useAppStore(({ isCompact }) => isCompact);
 	const { t } = useTranslation();
 
 	const getColorPickerLabel = useCallback(
@@ -41,7 +44,7 @@ export const Pickers = ({ initialValues }: PickersProps): React.ReactNode => {
 	}, []);
 
 	return (
-		<div style={{ overflowY: 'auto', maxHeight: '100%', paddingRight: 8 }}>
+		<div style={{ overflowY: 'auto', maxHeight: '100%', paddingRight: 8, display: isCompact ? 'flex' : undefined, gap: 12 }}>
 			{_.map(initialValues, (_color, param): React.ReactNode => {
 				const typedParam: keyof Colors = param as keyof Colors;
 
