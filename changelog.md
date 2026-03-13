@@ -1,0 +1,7 @@
+### 2025.11.09 - v1.0.0
+	- 🔧 Initialized the first ready-to-use version.
+
+### 2026.03.13 - v1.0.1
+	- 🐛 Limited profile store subscription in the Preview component.
+	- 🔧 Set a new default CV profile picture.
+	- 🔧 Implemented a changelog and displayed the application version in the footer.

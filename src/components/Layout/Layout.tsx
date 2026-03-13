@@ -34,7 +34,7 @@ export const Layout = (): React.ReactNode => {
 				</LayoutProvider.Content>
 
 				<LayoutProvider.Footer className={styles.footer}>
-					Oskar Szkurłat ©{new Date().getFullYear()}
+					Oskar Szkurłat ©{new Date().getFullYear()} - v{import.meta.env.VERSION}
 				</LayoutProvider.Footer>
 			</Suspense>
 		</LayoutProvider>
