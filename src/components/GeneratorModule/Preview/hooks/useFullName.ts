@@ -37,7 +37,7 @@ export const useNameLabel = () => {
           body: [
             [
               {
-                text: joinNameAndSurname() ?? "John Doe",
+                text: joinNameAndSurname() ?? " ",
                 style: [{ fontFeatures: ["c2sc", "smcp"] }],
                 fillColor: primaryBgColor,
                 color: primaryColor,

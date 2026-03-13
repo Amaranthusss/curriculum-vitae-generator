@@ -49,6 +49,10 @@ export const useProfileStore = create<ProfileStore>()(
 				dateDisplayStyle: 'seperated-vertical',
 				isAboutMeAtPage: false,
 
+				isChange: (): boolean => {
+					return !_.isEqual(_.pick(get(), ProfileKeys), initialProfile);
+				},
+
 				getProfile: (): Profile => {
 					return _.pick(get(), ProfileKeys);
 				},
@@ -69,17 +73,13 @@ export const useProfileStore = create<ProfileStore>()(
 					const url: string = URL.createObjectURL(blob);
 					const link: HTMLAnchorElement = document.createElement("a");
 
-					console.log('colors', colors)
-					console.log('profile', profile)
-					console.log('profileFile', profileFile)
-
 					link.href = url;
 					link.download = (useFormStore.getState().joinNameAndSurname() ?? 'profile') + ".json";
 					link.click();
 					URL.revokeObjectURL(url);
 				},
 
-				loadProfile: async () => {
+				loadProfile: async (): Promise<void> => {
 					return new Promise<void>((resolve: () => void, reject: (reason: Error | string) => void) => {
 						const input: HTMLInputElement = document.createElement("input");
 
@@ -108,7 +108,7 @@ export const useProfileStore = create<ProfileStore>()(
 								useFormStore.getState().triggerSignalProfile();
 								useColorsStore.getState().setColors(colors);
 								useColorsStore.getState().triggerSignalProfile();
-								i18n.changeLanguage(loadedProfile.language)
+								i18n.changeLanguage(loadedProfile.language);
 								resolve();
 							} catch (error: unknown) {
 								console.error("Could not read the file", error);
@@ -142,3 +142,8 @@ const toFormDate = (date: FormDate): FormDate => {
 
 	return { value, present: date.present ? date.present : undefined, displayLimit: date.displayLimit };
 }
+
+
+const initialProfile: Profile = _.cloneDeep(
+	_.pick(useProfileStore.getInitialState(), ProfileKeys)
+);

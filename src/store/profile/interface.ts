@@ -5,6 +5,7 @@ import type { Colors } from "../colors/interface";
 import type { Dayjs } from "dayjs";
 
 export interface ProfileStore extends Profile {
+	isChange: () => boolean;
 	getProfile: () => Profile;
 	saveProfile: () => void;
 	loadProfile: () => Promise<void>;

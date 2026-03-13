@@ -1,0 +1,234 @@
+{
+  "generalSettings": {
+    "education": {
+      "dateDisplayLimit": "year"
+    },
+    "experience": {
+      "dateDisplayLimit": "month"
+    },
+    "qualifications": {
+      "dateDisplayLimit": "month"
+    },
+    "publications": {
+      "dateDisplayLimit": "year"
+    }
+  },
+  "dateColumnWidths": 55,
+  "dateDisplayStyle": "inline",
+  "name": "John Example",
+  "surname": "Doe",
+  "country": "United Kingdom",
+  "picture": "",
+  "email": "john.doe@gmail.com",
+  "mobile": "+44 0000 000000",
+  "aboutMe": "Motivated and detail-oriented data analyst with strong experience in transforming complex datasets into meaningful business insights. Skilled in Python, SQL, and modern data visualisation tools, with a passion for solving problems through data-driven decision-making. Experienced in collaborating with cross-functional teams and delivering analytical solutions that support strategic business objectives. Committed to continuous learning and improving analytical processes to increase efficiency and accuracy.",
+  "aboutMeAlignment": "justify",
+  "footer": "*I hereby give consent for my personal data included in this application to be processed by [Company Name] for the purposes of the recruitment process in accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 (General Data Protection Regulation – GDPR).",
+  "footerAlignment": "justify",
+  "footerTopMargin": 50,
+  "isAboutMeAtPage": true,
+  "languages": [
+    {
+      "level": 7,
+      "text": "English",
+      "orderIndex": 0
+    },
+    {
+      "text": "Spanish",
+      "level": 5,
+      "orderIndex": 1
+    },
+    {
+      "text": "German",
+      "level": 2,
+      "orderIndex": 2
+    }
+  ],
+  "education": [
+    {
+      "title": "Master of Science (MSc)",
+      "description": "in Data Analytics – University of Leeds",
+      "date": {
+        "value": [
+          "2015-12-31T23:00:00.000Z",
+          "2016-12-31T23:00:00.000Z"
+        ],
+        "displayLimit": "year"
+      },
+      "orderIndex": 0
+    },
+    {
+      "title": "Bachelor of Science (BSc)",
+      "description": "in Computer Science – University of Manchester",
+      "date": {
+        "value": [
+          "2012-12-31T23:00:00.000Z",
+          "2015-12-31T23:00:00.000Z"
+        ],
+        "displayLimit": "year"
+      },
+      "orderIndex": 1
+    },
+    {
+      "title": "General Certificate of Secondary Education (GCSE)",
+      "orderIndex": 2,
+      "description": "Manchester Grammar School",
+      "date": {
+        "value": [
+          "2007-12-31T23:00:00.000Z",
+          "2012-12-31T23:00:00.000Z"
+        ]
+      }
+    }
+  ],
+  "experience": [
+    {
+      "workStation": "Senior Data Analyst",
+      "description": "TechNova Solutions Ltd, Manchester\n• Leading data analysis projects for enterprise clients\n• Developing predictive models using Python and SQL\n• Creating interactive dashboards using Power BI and Tableau\n• Mentoring junior analysts and supporting their professional development",
+      "date": {
+        "value": "2021-03-06T23:00:00.000Z",
+        "present": true
+      },
+      "orderIndex": 0
+    },
+    {
+      "workStation": "Data Analyst",
+      "orderIndex": 1,
+      "description": "Insight Data Group, Leeds\n• Analysed large datasets to support marketing campaigns\n• Built automated reporting pipelines\n• Collaborated with cross-functional teams to deliver data-driven insights\n• Improved campaign performance through advanced data analysis",
+      "date": {
+        "value": [
+          "2017-07-11T22:00:00.000Z",
+          "2021-02-11T23:00:00.000Z"
+        ]
+      }
+    },
+    {
+      "workStation": "Junior Data Analyst (Internship)",
+      "orderIndex": 2,
+      "description": "NorthEdge Analytics, Manchester\n• Assisted senior analysts in collecting and cleaning large datasets\n• Prepared weekly performance reports using Excel and SQL\n• Supported the development of internal dashboards for business monitoring\n• Conducted basic statistical analysis to support business recommendations",
+      "date": {
+        "value": [
+          "2016-01-31T23:00:00.000Z",
+          "2017-01-31T23:00:00.000Z"
+        ]
+      }
+    }
+  ],
+  "qualifications": [
+    {
+      "type": "Certificate",
+      "name": "Google Data Analytics Professional Certificate",
+      "description": "Issued by Google / Coursera",
+      "date": {
+        "value": "2020-04-30T22:00:00.000Z"
+      },
+      "orderIndex": 0
+    },
+    {
+      "name": "Data Analyst Associate",
+      "type": "Microsoft Certified",
+      "description": "Issued by Microsoft",
+      "date": {
+        "value": "2021-05-30T22:00:00.000Z"
+      },
+      "orderIndex": 1
+    },
+    {
+      "name": "Python for Data Science and Machine Learning",
+      "description": "Issued by Udemy",
+      "type": "Bootcamp",
+      "date": {
+        "value": "2019-05-27T22:00:00.000Z"
+      },
+      "orderIndex": 2
+    },
+    {
+      "name": "Advanced SQL for Data Professionals",
+      "description": "Issued by DataCamp",
+      "type": "Course",
+      "date": {
+        "value": "2018-08-05T22:00:00.000Z"
+      },
+      "orderIndex": 3
+    },
+    {
+      "name": "Data Visualisation with Tableau",
+      "orderIndex": 4,
+      "type": "Course",
+      "description": "Issued by Coursera",
+      "date": {
+        "value": "2018-01-31T23:00:00.000Z"
+      }
+    },
+    {
+      "name": "Statistics for Data Science and Business Analysis",
+      "orderIndex": 5,
+      "description": "Issued by Udemy",
+      "type": "Course",
+      "date": {
+        "value": "2017-01-31T23:00:00.000Z"
+      }
+    },
+    {
+      "description": "Issued by DataCamp",
+      "orderIndex": 6,
+      "name": "Machine Learning Fundamentals",
+      "type": "Course",
+      "date": {
+        "value": "2016-12-31T23:00:00.000Z"
+      }
+    }
+  ],
+  "publications": [
+    {
+      "title": "Improving Marketing ROI with Predictive Analytics",
+      "publisher": "Journal of Business Data Science",
+      "code": "sensors-23-03109",
+      "date": {
+        "value": "2022-10-25T22:00:00.000Z"
+      },
+      "orderIndex": 0
+    },
+    {
+      "title": "Data Visualisation Techniques for Business Intelligence",
+      "publisher": "Analytics Today Magazine",
+      "code": "issn-2544-2740",
+      "date": {
+        "value": "2020-12-31T23:00:00.000Z"
+      },
+      "orderIndex": 1
+    }
+  ],
+  "interests": "• Reading books about technology and economics\n• Long-distance running\n• Photography\n• Travelling and cultural exploration",
+  "interestsLabel": "hobbies",
+  "interestsAlignment": "left",
+  "references": [
+    {
+      "link": "https://github.com/JohnDoe",
+      "icon": "./assets/icons/light/github.svg",
+      "label": "GitHub",
+      "orderIndex": 0
+    },
+    {
+      "link": "https://linkedin.com/in/john-doe-000000000",
+      "label": "LinkedIn",
+      "icon": "./assets/icons/light/linkedin.svg",
+      "orderIndex": 1
+    },
+    {
+      "icon": "./assets/icons/light/youtube.svg",
+      "link": "https://www.youtube.com/@johndoe",
+      "label": "YouTube",
+      "orderIndex": 2
+    }
+  ],
+  "primaryColor": "#ffffff",
+  "primaryBgColor": "#064374",
+  "secondaryColor": "#61a2d4",
+  "sidebarBgColor": "#00050d",
+  "sidebarColor": "#ffffff",
+  "sidebarSidebarCaptionBgColor": "#1f314e",
+  "sidebarSidebarCaptionColor": "#ffffff",
+  "version": "2026-03-13T09:34:52.051Z",
+  "language": "en-GB"
+}
