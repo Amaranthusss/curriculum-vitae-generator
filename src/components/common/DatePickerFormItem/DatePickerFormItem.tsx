@@ -53,7 +53,7 @@ export const DatePickerFormItem = ({
 	}, [displayLimitDefaultToPicker]);
 
 	const InputsProvider = useCallback(({ children }: PropsWithChildren): React.ReactNode => {
-		if (isCompact) return <Flex vertical style={{ paddingBottom: !disableRange ? 12 : undefined }}>{children}</Flex>;
+		if (isCompact) return <Flex vertical style={{ gap: 12, paddingBottom: !disableRange ? 12 : undefined }}>{children}</Flex>;
 		else return <Space.Compact className={styles.compactSpace}>{children}</Space.Compact>;
 	}, [isCompact, disableRange])
 
