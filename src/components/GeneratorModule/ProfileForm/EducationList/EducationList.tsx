@@ -31,7 +31,7 @@ export const EducationList = (): React.ReactNode => {
 				</Flex>
 
 				<Flex style={{ minWidth: isCompact ? 0 : 200 }}>
-					<Divider orientation={"center"} >
+					<Divider orientation={"center"}>
 						<DisplayLimitFormItem
 							style={{ margin: 0 }}
 							name={[

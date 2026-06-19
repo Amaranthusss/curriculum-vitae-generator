@@ -128,7 +128,8 @@
     "display-limit-year": "Year",
     "display-limit-month": "Month",
     "display-limit-day": "Day",
-    "present": "Present"
+    "present": "Present",
+    "skip-dash": "Skip dash"
   },
   "alignment": {
     "caption": "Text alignment",

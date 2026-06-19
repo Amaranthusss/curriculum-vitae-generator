@@ -66,14 +66,20 @@ export const useBodyElements = () => {
 		[primaryBgColor]
 	);
 
-	const joinDateRange = useCallback((startDate: string, endDate: string): string => {
+	const joinDateRange = useCallback((
+		startDate: string,
+		endDate: string,
+		skipDash: boolean = false
+	): string => {
+		const dashChar: string = !skipDash ? '-' : '';
+
 		switch (dateDisplayStyle) {
 			case 'inline':
-				return `${startDate} - ${endDate}`;
+				return `${startDate} ${dashChar} ${endDate}`;
 			case 'vertical':
 				return `${startDate}\n${endDate}`;
 			case 'seperated-vertical':
-				return `${startDate} -\n${endDate}`;
+				return `${startDate} ${dashChar}\n${endDate}`;
 			case 'from-to':
 				return `${t('cv-settings.date-range-from-tag')} ${startDate}\n${t('cv-settings.date-range-to-tag')} ${endDate}`;
 		}
@@ -86,6 +92,7 @@ export const useBodyElements = () => {
 				startDate?: string;
 				endDate?: string;
 				tab?: number;
+				skipDash?: boolean;
 				disableLine?: boolean;
 				disableMarginBottom?: boolean;
 			}
@@ -107,7 +114,7 @@ export const useBodyElements = () => {
 						!_.isEmpty(extra.startDate) &&
 						!_.isEmpty(extra.endDate)
 					)
-						? joinDateRange(extra.startDate, extra.endDate)
+						? joinDateRange(extra.startDate, extra.endDate, extra.skipDash)
 						: null;
 
 				body.push({

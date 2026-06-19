@@ -5,3 +5,6 @@
 	- 🐛 Limited profile store subscription in the Preview component.
 	- 🔧 Set a new default CV profile picture.
 	- 🔧 Implemented a changelog and displayed the application version in the footer.
+
+### 2026.06.19 - v1.0.2
+	- 🔧 Implemented a skip dash checkbox for date range pickers.

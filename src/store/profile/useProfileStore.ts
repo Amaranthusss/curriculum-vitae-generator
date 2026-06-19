@@ -132,7 +132,7 @@ const mapFormDatePoolIsoStringDates = <T extends FormDatePool>(fields: T[]): T[]
 }
 
 const toFormDate = (date: FormDate): FormDate => {
-	if (_.isNil(date)) return { value: null, present: false };
+	if (_.isNil(date)) return { value: null, present: false, skipDash: false };
 
 	const value: FormDate['value'] =
 		_.isNil(date.value) ? null
@@ -140,7 +140,12 @@ const toFormDate = (date: FormDate): FormDate => {
 				: _.isString(date.value) ? dayjs(date.value)
 					: null;
 
-	return { value, present: date.present ? date.present : undefined, displayLimit: date.displayLimit };
+	return {
+		value,
+		displayLimit: date.displayLimit,
+		present: date.present ? date.present : undefined,
+		skipDash: date.skipDash ? date.skipDash : undefined,
+	};
 }
 
 

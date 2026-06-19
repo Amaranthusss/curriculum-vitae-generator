@@ -91,6 +91,7 @@ export interface FormDate {
 	value: Dayjs | LimitedArray<Dayjs | null, 2> | null;
 	displayLimit?: DisplayLimit;
 	present?: boolean;
+	skipDash?: boolean;
 }
 
 export interface EducationField extends FormDatePool, OrderIndex {

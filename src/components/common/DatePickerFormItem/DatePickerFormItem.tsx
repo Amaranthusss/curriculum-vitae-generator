@@ -87,6 +87,21 @@ export const DatePickerFormItem = ({
 				<Button className={styles.present}>
 					<Form.Item
 						{...restField}
+						name={[name, subname, "skipDash" satisfies keyof FormDate]}
+						valuePropName={"checked"}
+						style={{ marginBottom: 0 }}
+					>
+						<Checkbox>
+							<Trans i18nKey={"date-range-form-item.skip-dash"} />
+						</Checkbox>
+					</Form.Item>
+				</Button>
+			)}
+
+			{!disableRange && (
+				<Button className={styles.present}>
+					<Form.Item
+						{...restField}
 						name={[name, subname, "present" satisfies keyof FormDate]}
 						valuePropName={"checked"}
 						style={{ marginBottom: 0 }}

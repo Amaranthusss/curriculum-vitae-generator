@@ -22,10 +22,10 @@
     "date-range-from-tag": "od",
     "date-range-to-tag": "do"
   },
-	"compact-components": {
-		"settings-modal-title": "Ustawienia",
-		"preview-modal-title": "Podgląd CV"
-	},
+  "compact-components": {
+    "settings-modal-title": "Ustawienia",
+    "preview-modal-title": "Podgląd CV"
+  },
   "personal-data": {
     "caption": "Dane osobiste",
     "name": "Imię",
@@ -44,8 +44,8 @@
   },
   "footer": {
     "caption": "Stopka CV",
-		"placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej",
-		"top-margin": "Przestrzeń nad tekstem"
+    "placeholder": "Wprowadź zgody na przetwarzanie danych osobowych lub dedykowaną wiadomość dla firmy rekrutującej",
+    "top-margin": "Przestrzeń nad tekstem"
   },
   "upload-image": {
     "add-picture": "Dodaj zdjęcie",
@@ -106,13 +106,13 @@
     "light-icon": "Tryb jasny",
     "dark-icon": "Tryb ciemny"
   },
-	"interests": {
-		"caption": "Zainteresowania / Hobby",
-		"caption-select": "Nagłówek",
-		"hobbies-label": "Hobby",
-		"interests-label": "Zainteresowania",
-		"placeholder": "Wymień swoje zainteresowania"
-	},
+  "interests": {
+    "caption": "Zainteresowania / Hobby",
+    "caption-select": "Nagłówek",
+    "hobbies-label": "Hobby",
+    "interests-label": "Zainteresowania",
+    "placeholder": "Wymień swoje zainteresowania"
+  },
   "colors": {
     "primary": "Kolor tekstu przewodniego motywu",
     "primary-bg": "Kolor tła przewodniego motywu",
@@ -128,13 +128,14 @@
     "display-limit-year": "Rok",
     "display-limit-month": "Miesiąc",
     "display-limit-day": "Dzień",
-    "present": "Obecnie"
+    "present": "Obecnie",
+    "skip-dash": "Pomiń myślnik"
   },
-	"alignment": {
-		"caption": "Wyrównanie tekstu",
-		"left": "Do lewej",
-		"right": "Do prawej",
-		"center": "Wycentruj",
-		"justify": "Wyjustuj"
-	}
+  "alignment": {
+    "caption": "Wyrównanie tekstu",
+    "left": "Do lewej",
+    "right": "Do prawej",
+    "center": "Wycentruj",
+    "justify": "Wyjustuj"
+  }
 }
