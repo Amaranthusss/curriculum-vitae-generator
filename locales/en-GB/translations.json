@@ -40,7 +40,8 @@
     "about-me-sidebar-position": "Sidebar",
     "about-me-page-position": "Page content",
     "email": "E-mail",
-    "mobile": "Phone number"
+    "mobile": "Phone number",
+		"margin-bottom": "Bottom margin"
   },
   "footer": {
     "caption": "CV footer",

@@ -40,7 +40,8 @@
     "about-me-sidebar-position": "Seitenleiste",
     "about-me-page-position": "Seiteninhalt",
     "email": "E-Mail",
-    "mobile": "Telefonnummer"
+    "mobile": "Telefonnummer",
+		"margin-bottom": "Unterer Rand"
   },
   "footer": {
     "caption": "Lebenslauf-Fußzeile",
