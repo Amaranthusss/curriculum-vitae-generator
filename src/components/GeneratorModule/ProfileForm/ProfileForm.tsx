@@ -207,6 +207,13 @@ export const ProfileForm = (): React.ReactNode => {
 					>
 						<Input placeholder={t("personal-data.country")} />
 					</Form.Item>
+
+					<Form.Item
+						label={t("personal-data.margin-bottom")}
+						name={"fullNameMarginBottom" satisfies keyof Profile}
+					>
+						<Slider min={0} max={100} />
+					</Form.Item>
 				</Flex>
 			</Flex>
 

@@ -4,6 +4,7 @@ export const ProfileKeys: (keyof Profile)[] = [
 	'generalSettings',
 	'dateColumnWidths',
 	'dateDisplayStyle',
+	'fullNameMarginBottom',
 	'name',
 	'surname',
 	'country',

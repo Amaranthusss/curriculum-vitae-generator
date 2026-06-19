@@ -48,6 +48,7 @@ export interface Profile {
 	isAboutMeAtPage?: boolean;
 	dateColumnWidths: number;
 	dateDisplayStyle: DateDisplayStyle;
+	fullNameMarginBottom: number;
 	picture: string;
 	languages: LanguageField[];
 	education: EducationField[];

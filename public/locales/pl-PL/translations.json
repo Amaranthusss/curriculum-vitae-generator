@@ -40,7 +40,8 @@
     "about-me-sidebar-position": "Pasek boczny",
     "about-me-page-position": "Zawartość strony",
     "email": "E-mail",
-    "mobile": "Numer telefonu"
+    "mobile": "Numer telefonu",
+		"margin-bottom": "Dolny margines"
   },
   "footer": {
     "caption": "Stopka CV",

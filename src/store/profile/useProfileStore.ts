@@ -41,6 +41,7 @@ export const useProfileStore = create<ProfileStore>()(
 				qualifications: [],
 				publications: [],
 				dateColumnWidths: 45,
+				fullNameMarginBottom: 20,
 				generalSettings: {
 					education: { dateDisplayLimit: DisplayLimit.Month },
 					experience: { dateDisplayLimit: DisplayLimit.Month },
