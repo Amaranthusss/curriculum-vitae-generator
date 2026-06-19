@@ -87,7 +87,8 @@
       "description": "TechNova Solutions Ltd, Manchester\n• Leading data analysis projects for enterprise clients\n• Developing predictive models using Python and SQL\n• Creating interactive dashboards using Power BI and Tableau\n• Mentoring junior analysts and supporting their professional development",
       "date": {
         "value": "2021-03-06T23:00:00.000Z",
-        "present": true
+        "present": true,
+        "separator": " "
       },
       "orderIndex": 0
     },
@@ -99,7 +100,8 @@
         "value": [
           "2017-07-11T22:00:00.000Z",
           "2021-02-11T23:00:00.000Z"
-        ]
+        ],
+        "separator": " "
       }
     },
     {
@@ -110,7 +112,8 @@
         "value": [
           "2016-01-31T23:00:00.000Z",
           "2017-01-31T23:00:00.000Z"
-        ]
+        ],
+        "separator": " "
       }
     }
   ],
@@ -229,6 +232,6 @@
   "sidebarColor": "#ffffff",
   "sidebarSidebarCaptionBgColor": "#1f314e",
   "sidebarSidebarCaptionColor": "#ffffff",
-  "version": "2026-03-13T09:34:52.051Z",
+  "version": "2026-06-19T19:16:59.010Z",
   "language": "en-GB"
 }

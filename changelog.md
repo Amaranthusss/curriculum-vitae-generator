@@ -8,3 +8,4 @@
 
 ### 2026.06.19 - v1.0.2
 	- 🔧 Implemented a separator input for date range pickers.
+	- 🐛 Removed dash character separators from the example preview in the professional experience section.
