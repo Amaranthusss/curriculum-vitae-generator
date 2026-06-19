@@ -68,7 +68,7 @@ export const useEducation = (
 						startDate: startDateFormatted,
 						endDate: endDateFormatted,
 						disableLine: _.eq(index + 1, _.size(education)),
-						skipDash: date.skipDash,
+						separator: date.separator,
 					});
 				}
 			),

@@ -68,7 +68,7 @@ export const useExperience = (
 						startDate: startDateFormatted,
 						endDate: endDateFormatted,
 						disableLine: _.eq(index + 1, _.size(experience)),
-						skipDash: date.skipDash,
+						separator: date.separator,
 					});
 				}
 			),

@@ -1,4 +1,4 @@
-import { Button, Checkbox, Flex, Form, Space } from "antd";
+import { Button, Checkbox, Flex, Form, Input, Space } from "antd";
 import { DisplayLimitFormItem } from "../DisplayLimitFormItem/DisplayLimitFormItem";
 import { DatePickerField } from "../DatePickerField/DatePickerField";
 import { Trans } from "react-i18next";
@@ -84,18 +84,14 @@ export const DatePickerFormItem = ({
 			/>
 
 			{!disableRange && (
-				<Button className={styles.present}>
-					<Form.Item
-						{...restField}
-						name={[name, subname, "skipDash" satisfies keyof FormDate]}
-						valuePropName={"checked"}
-						style={{ marginBottom: 0 }}
-					>
-						<Checkbox>
-							<Trans i18nKey={"date-range-form-item.skip-dash"} />
-						</Checkbox>
-					</Form.Item>
-				</Button>
+				<Form.Item
+					{...restField}
+					style={{ marginBottom: 0 }}
+					className={styles.separator}
+					name={[name, subname, "separator" satisfies keyof FormDate]}
+				>
+					<Input placeholder={t("date-range-form-item.separator")} />
+				</Form.Item>
 			)}
 
 			{!disableRange && (

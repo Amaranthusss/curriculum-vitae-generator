@@ -129,7 +129,7 @@
     "display-limit-month": "Monat",
     "display-limit-day": "Tag",
     "present": "Gegenwärtig",
-    "skip-dash": "Bindestrich überspringen"
+    "separator": "Trennzeichen"
   },
   "alignment": {
     "caption": "Textausrichtung",

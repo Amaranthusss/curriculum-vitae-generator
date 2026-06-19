@@ -7,4 +7,4 @@
 	- 🔧 Implemented a changelog and displayed the application version in the footer.
 
 ### 2026.06.19 - v1.0.2
-	- 🔧 Implemented a skip dash checkbox for date range pickers.
+	- 🔧 Implemented a separator input for date range pickers.

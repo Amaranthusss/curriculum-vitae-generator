@@ -129,7 +129,7 @@
     "display-limit-month": "Miesiąc",
     "display-limit-day": "Dzień",
     "present": "Obecnie",
-    "skip-dash": "Pomiń myślnik"
+    "separator": "Separator"
   },
   "alignment": {
     "caption": "Wyrównanie tekstu",

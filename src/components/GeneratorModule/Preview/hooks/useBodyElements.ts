@@ -9,6 +9,7 @@ import _ from "lodash";
 import type { Content, Size, TableCell } from "pdfmake/interfaces";
 import type { DateDisplayStyle } from "../../../../store/profile/interface";
 
+import { DefaultDateRangeSeparator } from "../../../../constants/DefaultDateRangeSeparator";
 import { subParagraph } from "../Preview.config";
 import { TextMarker } from "../../../../constants/TextMarker";
 import { paragraph } from "../Preview.config";
@@ -69,17 +70,17 @@ export const useBodyElements = () => {
 	const joinDateRange = useCallback((
 		startDate: string,
 		endDate: string,
-		skipDash: boolean = false
+		separator: string | undefined
 	): string => {
-		const dashChar: string = !skipDash ? '-' : '';
+		const separatorResults: string = separator != null ? separator : DefaultDateRangeSeparator;
 
 		switch (dateDisplayStyle) {
 			case 'inline':
-				return `${startDate} ${dashChar} ${endDate}`;
+				return `${startDate}${separatorResults}${endDate}`;
 			case 'vertical':
 				return `${startDate}\n${endDate}`;
 			case 'seperated-vertical':
-				return `${startDate} ${dashChar}\n${endDate}`;
+				return `${startDate}${separatorResults}\n${endDate}`;
 			case 'from-to':
 				return `${t('cv-settings.date-range-from-tag')} ${startDate}\n${t('cv-settings.date-range-to-tag')} ${endDate}`;
 		}
@@ -92,7 +93,7 @@ export const useBodyElements = () => {
 				startDate?: string;
 				endDate?: string;
 				tab?: number;
-				skipDash?: boolean;
+				separator?: string;
 				disableLine?: boolean;
 				disableMarginBottom?: boolean;
 			}
@@ -114,7 +115,7 @@ export const useBodyElements = () => {
 						!_.isEmpty(extra.startDate) &&
 						!_.isEmpty(extra.endDate)
 					)
-						? joinDateRange(extra.startDate, extra.endDate, extra.skipDash)
+						? joinDateRange(extra.startDate, extra.endDate, extra.separator)
 						: null;
 
 				body.push({

@@ -11,6 +11,7 @@ import type { FormDate, FormDatePool, Profile, ProfileFile, ProfileStore } from 
 import type { Language } from "../../constants/Language";
 import type { Colors } from "../colors/interface";
 
+import { DefaultDateRangeSeparator } from "../../constants/DefaultDateRangeSeparator";
 import { DisplayLimit } from "../../constants/DisplayLimit";
 import { ProfileKeys } from "../../constants/ProfileKeys";
 import { ColorsKeys } from "../colors/constants";
@@ -132,7 +133,7 @@ const mapFormDatePoolIsoStringDates = <T extends FormDatePool>(fields: T[]): T[]
 }
 
 const toFormDate = (date: FormDate): FormDate => {
-	if (_.isNil(date)) return { value: null, present: false, skipDash: false };
+	if (_.isNil(date)) return { value: null, present: false, separator: DefaultDateRangeSeparator };
 
 	const value: FormDate['value'] =
 		_.isNil(date.value) ? null
@@ -144,7 +145,7 @@ const toFormDate = (date: FormDate): FormDate => {
 		value,
 		displayLimit: date.displayLimit,
 		present: date.present ? date.present : undefined,
-		skipDash: date.skipDash ? date.skipDash : undefined,
+		separator: date.separator ? date.separator : undefined,
 	};
 }
 
